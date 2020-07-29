@@ -9,8 +9,8 @@
       </div>
       <div class="modal-body">Выберите Выйти, если хотите закончить работу в панели администратора</div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Отмена</button>
-        <a class="btn btn-primary" href="/logout">Выйти</a>
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" href="/logout">Logout</a>
       </div>
     </div>
   </div>
