@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login',function(){
-	return view('login');
+Route::get('/login',"LoginController@login")->name("login");
+Route::post('/login',"LoginController@enterPhone");
+Route::post("/enterCode","LoginController@enterCode");
+Route::get("/logout","LoginController@logOut");
+Route::group(['middleware' => ['auth']], function () {
+	Route::get("/dashboard","LoginController@dashboard");
 });

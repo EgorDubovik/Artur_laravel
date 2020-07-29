@@ -19,21 +19,15 @@
   <div class="container">
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Вход в панель администратора</div>
-      <!-- <?php if(isset($ERR) && !$ERR):?>
-      <div class='err-ent' style='text-align: center;color: #c72a2a;'>ошибка данных</div>
-      <?php endif;?> -->
       <div class="card-body">
-        <form method="post">
+        <form method="post" action="enterCode">
+        	@csrf
           <div class="form-group">
-            <label for="loginAdminPassword">Логин</label>
-            <input class="form-control" type="text" name="login" placeholder="Логин">
+            <label for="loginAdminPassword">Enter code</label>
+            <input type="hidden" name="phone_number" value="{{$phone_number}}">
+            <input class="form-control" type="text" name="code" placeholder="Enter code" value="{{$code}}">
           </div>
-          <div class="form-group">
-            <label for="loginAdminPassword">Пароль</label>
-            <input class="form-control" type="password" name="pass" placeholder="Пароль">
-          </div>
-          
-          <button type="submit" class="btn btn-primary btn-block" >Войти</button>
+          <button type="submit" class="btn btn-primary btn-block" >Enter</button>
         </form>
         <!-- <div class="alert alert-danger mt-2">Ошибка входа! Попробуйте еще раз.</div> -->
         
