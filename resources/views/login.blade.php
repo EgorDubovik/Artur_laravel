@@ -1,9 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>SB Admin - Artur</title>
+  <!-- Bootstrap core CSS-->
+  <link href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="{{ URL::asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template-->
+  <link href="{{ URL::asset('css/sb-admin.css') }}" rel="stylesheet">
 </head>
-<body>
-Login
+
+<body class="bg-dark">
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header">Вход в панель администратора</div>
+      <!-- <?php if(isset($ERR) && !$ERR):?>
+      <div class='err-ent' style='text-align: center;color: #c72a2a;'>ошибка данных</div>
+      <?php endif;?> -->
+      <div class="card-body">
+        <form method="post">
+          <div class="form-group">
+            <label for="loginAdminPassword">Логин</label>
+            <input class="form-control" type="text" name="login" placeholder="Логин">
+          </div>
+          <div class="form-group">
+            <label for="loginAdminPassword">Пароль</label>
+            <input class="form-control" type="password" name="pass" placeholder="Пароль">
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-block" >Войти</button>
+        </form>
+        <!-- <div class="alert alert-danger mt-2">Ошибка входа! Попробуйте еще раз.</div> -->
+        
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{{ URL::asset('/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- Core plugin JavaScript-->
+  <script src="{{ URL::asset('/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 </body>
+
 </html>
