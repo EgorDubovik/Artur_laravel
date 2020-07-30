@@ -20,5 +20,5 @@ Route::post('/login',"LoginController@enterPhone");
 Route::post("/enterCode","LoginController@enterCode");
 Route::get("/logout","LoginController@logOut");
 Route::group(['middleware' => ['auth']], function () {
-	Route::get("/dashboard","LoginController@dashboard");
+	Route::get("/dashboard","DashBoardController@dashboard");
 });

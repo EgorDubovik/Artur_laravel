@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-  <a class="navbar-brand" href="/admin">Artur.com Панель управления</a>
+  <a class="navbar-brand" href="/dashboard">Artur.com Панель управления</a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Дашборд">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="/dashboard">
           <i class="fa fa-list-alt"></i>
-          <span class="nav-link-text"> Дашборд</span>
+          <span class="nav-link-text"> Dashboard</span>
         </a>
       </li>
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Мастера">

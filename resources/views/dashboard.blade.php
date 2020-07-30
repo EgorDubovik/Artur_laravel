@@ -6,7 +6,7 @@
     	<div class="col-12">
       		<div class="main-box no-header clearfix">
         		<div class="main-box-body clearfix">
-          			<h1>Дашборд</h1>
+          			<h1>Dashboard ({{Auth::id()}})</h1>
         		</div>
       		</div>
 		</div>

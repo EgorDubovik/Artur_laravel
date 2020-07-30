@@ -14,19 +14,27 @@ class LoginController extends Controller
 	protected $loginPath = '/login';
 
     public function login(Request $request){
-    	return view('auth.login');
+        if(!Auth::check()){
+    	   return view('auth.login');
+        } else {
+            return redirect('dashboard');
+        }
     }
 
     public function enterPhone(Request $request){
-    	$user = User::where("phone_number",$request->phone_number)->first();
-    	if($user){
-    		$code = mt_rand(1111,9999);
-    		$user->code = $code;
-    		$user->save();
-    		return view('auth.enterCode')->with(array("code"=>$code,"phone_number"=>$request->phone_number));
-    	} else {
-    		return back();
-    	}
+        if(!Auth::check()){
+        	$user = User::where("phone_number",$request->phone_number)->first();
+        	if($user){
+        		$code = mt_rand(1111,9999);
+        		$user->code = $code;
+        		$user->save();
+        		return view('auth.enterCode')->with(array("code"=>$code,"phone_number"=>$request->phone_number));
+        	} else {
+        		return back();
+        	}
+        } else {
+            return redirect("dashboard");
+        }
     }
 
 
@@ -48,12 +56,5 @@ class LoginController extends Controller
     	Auth::logout();
     	return redirect("login");
     }
-
-    public function dashboard(Request $request){
-    	return view("dashboard");
-    	
-    	
-    }
-
     
 }
