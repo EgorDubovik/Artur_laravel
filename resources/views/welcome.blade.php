@@ -84,7 +84,7 @@
                     Laravel
                 </div>
 
-                
+                <a href="/login" style="font-size: 40px;">LOGIN</a>
             </div>
         </div>
     </body>
