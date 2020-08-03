@@ -6,7 +6,7 @@
                     <div class="nav-link-icon">
                       <i class="fas fa-align-center"></i>
                     </div>
-                    Dashboards
+                    Dashboard
                 </a>
                 <a class="nav-link" href="/fba">
                     <div class="nav-link-icon">

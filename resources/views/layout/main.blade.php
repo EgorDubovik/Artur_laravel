@@ -8,6 +8,7 @@
         <meta name="author" content="" />
         <title>Dashboard - SB Admin Pro</title>
         <link href="{{ URL::asset('css/styles.css')}}" rel="stylesheet" />
+        <link href="{{ URL::asset('css/style.css')}}" rel="stylesheet" />
         <link href="{{ URL::asset('vendor/font-awesome/css/all.css')}}" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <link href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet" crossorigin="anonymous" />
@@ -22,9 +23,8 @@
 
     <div id="layoutSidenav_content">
       <main>
-        <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
-
-        </header>
+        @yield('content')
+      </main>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
