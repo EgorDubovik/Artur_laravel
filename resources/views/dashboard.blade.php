@@ -1,13 +1,27 @@
-@extends('layout.main');
+@extends('layout.main')
 
 @section('content')
+
 <div class="container-fluid">
   	<div class="row">
     	<div class="col-12">
-      		<div class="main-box no-header clearfix">
-        		<div class="main-box-body clearfix">
-          			<h1>Dashboard ({{Auth::id()}})</h1>
-        		</div>
+      		<div class="container">
+      			<div class="row">
+      				<div class="col-6">
+      					<div class="card">
+      						<div class="card-header">
+      							<i class="fab fa-amazon mr"> </i>FBA
+      						</div>
+      						<div class="card-body">
+      							same text here...
+      						</div>
+      					</div>
+      				</div>
+
+      				<div class="col-6">
+      					FBM
+      				</div>
+      			</div>	
       		</div>
 		</div>
 	</div>

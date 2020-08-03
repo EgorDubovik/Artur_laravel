@@ -11,11 +11,12 @@
   <!-- Bootstrap core CSS-->
   <link href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="{{ URL::asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('vendor/font-awesome/css/all.css')}}" rel="stylesheet" type="text/css">
   <!-- Page level plugin CSS-->
   <link href="{{ URL::asset('vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="{{ URL::asset('css/sb-admin.css')}}" rel="stylesheet">
+  <link href="{{ URL::asset('css/style.css')}}" rel="stylesheet">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -23,9 +24,6 @@
   @extends('layout/top_left');
   <div class="content-wrapper">
     @yield('content')
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-    <?php //include ROOT.'/views/layout/footer.php'; ?>
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
