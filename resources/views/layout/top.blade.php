@@ -24,11 +24,11 @@
         </li>
         <li class="nav-item dropdown no-caret mr-2 dropdown-user">
             <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user-circle user-icon"></i>
+                <i class="far fa-user user-icon"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                 <h6 class="dropdown-header d-flex align-items-center">
-                    <i class="fas fa-user-circle user-icon"></i>
+                    <i class="far fa-user user-icon"></i>
                     <div class="dropdown-user-details" style="margin-left: 10px;">
                         <div class="dropdown-user-details-name">Valerie Luna</div>
                         <div class="dropdown-user-details-email">vluna@aol.com</div>
