@@ -1,48 +1,40 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin Pro</title>
+        <link href="{{ URL::asset('css/styles.css')}}" rel="stylesheet" />
+        <link href="{{ URL::asset('vendor/font-awesome/css/all.css')}}" rel="stylesheet" />
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <link href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet" crossorigin="anonymous" />
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+       <!--  <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.27.0/feather.min.js" crossorigin="anonymous"></script>
+    </head>
+<body class="nav-fixed">
+  @include('layout/top')
+  <div id="layoutSidenav">
+    @include('layout/left')
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>feelqueen.by admin panel</title>
-  <!-- Bootstrap core CSS-->
-  <link href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="{{ URL::asset('vendor/font-awesome/css/all.css')}}" rel="stylesheet" type="text/css">
-  <!-- Page level plugin CSS-->
-  <link href="{{ URL::asset('vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
-  <!-- Custom styles for this template-->
-  <link href="{{ URL::asset('css/sb-admin.css')}}" rel="stylesheet">
-  <link href="{{ URL::asset('css/style.css')}}" rel="stylesheet">
-</head>
+    <div id="layoutSidenav_content">
+      <main>
+        <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
-  <!-- Navigation-->
-  @extends('layout/top_left');
-  <div class="content-wrapper">
-    @yield('content')
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
-    <!-- Logout Modal-->
-    @extends('layout/logoutmodel');
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ URL::asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="{{ URL::asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="{{ URL::asset('vendor/datatables/jquery.dataTables.js')}}"></script>
-    <script src="{{ URL::asset('vendor/datatables/dataTables.bootstrap4.js')}}"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="{{ URL::asset('js/sb-admin.min.js')}}"></script>
-    
-    <!-- Custom scripts for this page-->
+        </header>
+    </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="{{ URL::asset('js/scripts.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
