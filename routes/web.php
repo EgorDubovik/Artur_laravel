@@ -21,4 +21,6 @@ Route::post("/enterCode","LoginController@enterCode");
 Route::get("/logout","LoginController@logOut");
 Route::group(['middleware' => ['auth']], function () {
 	Route::get("/dashboard","DashBoardController@dashboard");
+	Route::get("/account","AccountController@account");
+	Route::post("/account","AccountController@account");
 });

@@ -15,6 +15,8 @@ class FirstUser extends Seeder
         DB::table("users")->insert([
         	'email'=>'posik.web.m@gmail.com',
         	'phone_number'=>'7542264666',
+            'first_name'=>'Egor',
+            'last_name'=>'Dubovik',
         ]);
     }
 }

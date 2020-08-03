@@ -7,3 +7,20 @@ i.mr{
 .pd-dash-footer{
 	padding: 5px 0px;
 }
+
+.form-control::placeholder {
+	color: #cdcdcd;
+	opacity: 1;
+	font-weight: normal;
+
+}
+
+.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #cdcdcd;
+    font-weight: normal;
+}
+
+.form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: #cdcdcd;
+    font-weight: normal;
+ }

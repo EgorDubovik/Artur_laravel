@@ -12,6 +12,9 @@ class DashBoardController extends Controller
 
     public function dashboard(Request $request){
     	$user = User::find(Auth::id());
-    	return view("dashboard");
+    	
+    	
+
+    	return view("dashboard")->with(['user'=>$user]);
     }
 }
