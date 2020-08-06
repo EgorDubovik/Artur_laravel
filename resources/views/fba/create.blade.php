@@ -16,25 +16,25 @@
 							<div class="form-row">
 								<div class="form-group col-md-4">
 									<label for="box-width">Width</label>
-									<input type="text" class="form-control" id="box-width"  name="box-width">
+									<input type="text" class="form-control" id="box-width"  name="box-width" placeholder="0.00 sm">
 								</div>
 								<div class="form-group col-md-4">
 									<label for="box-length">Length</label>
-									<input type="text" class="form-control" id="box-length"  name="box-length">
+									<input type="text" class="form-control" id="box-length"  name="box-length" placeholder="0.00 sm">
 								</div>
 								<div class="form-group col-md-4">
 									<label for="box-height">Height</label>
-									<input type="text" class="form-control" id="box-height"  name="box-height">
+									<input type="text" class="form-control" id="box-height"  name="box-height" placeholder="0.00 sm">
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form form-group col-md-6">
 									<label for="box-weight">Weight</label>
-									<input type="text" class="form-control" id="box-weight" name="box-weight">
+									<input type="text" class="form-control" id="box-weight" name="box-weight" placeholder="0.00 gr">
 								</div>
 								<div class="form form-group col-md-6">
 									<label for="box-count">Count</label>
-									<input type="text" class="form-control" id="box-count" name="box-count">
+									<input type="text" class="form-control" id="box-count" name="box-count" placeholder="0 unit">
 								</div>
 							</div>
 							<hr>
