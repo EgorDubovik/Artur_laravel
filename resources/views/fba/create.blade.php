@@ -8,11 +8,11 @@
 			<!-- Basic Card-->
 			<div id="basic">
 				<div class="card mb-4">
-					<div class="card-header">Create new FBA</div>
+					<div class="card-header">Create New FBA Order. STEP 1</div>
 					<div class="card-body">
 						<form>
 							
-							<p>Инфрмация о размерах</p>
+							<p>Укажите информацию об упаковке в которой придет товар</p>
 							<div class="form-row">
 								<div class="form-group col-md-4">
 									<label for="box-width">Width</label>
@@ -39,9 +39,10 @@
 							</div>
 							<hr>
 							<div style="padding: 10px;">
-								<p class="text-center">Дополнительно услуги над каждым придметом</p>
+								
 								<div class="form-row">
 									<div class="form-group col-md-4">
+										<p class="text-center">Укажите размеры вашего продукта</p>
 										<label for="item-width">Width</label>
 										<input type="text" class="form-control form-control-solid" id="item-width"  name="item-width">
 
@@ -56,6 +57,7 @@
 									</div>
 									<div class="form-group col-md-2"></div>
 									<div class="form-group col-md-6">
+										<p class="text-center">Укажите необходимые услуги для каждого отдельного Вашего продукта</p>
 										<div class="custom-control custom-checkbox custom-control-solid">
 										    <input class="custom-control-input" id="customCheckSolid1" type="checkbox">
 										    <label class="custom-control-label" for="customCheckSolid1">FNSKU Labeling <small class="text-muted ml-2">($0.10 per unit)</small></label>
@@ -81,20 +83,20 @@
 										    <label class="custom-control-label" for="customCheckSolid6">Marketing inserts <small class="text-muted ml-2">($0.10 per unit)</small></label>
 										</div>
 										<div class="custom-control custom-checkbox custom-control-solid">
-										    <input class="custom-control-input" id="customCheckSolid6" type="checkbox">
-										    <label class="custom-control-label" for="customCheckSolid6">Polybags <small class="text-muted ml-2">($0.10 per unit)</small></label>
+										    <input class="custom-control-input" id="customCheckSolid7" type="checkbox">
+										    <label class="custom-control-label" for="customCheckSolid7">Polybags <small class="text-muted ml-2">($0.10 per unit)</small></label>
 										</div>
 										<div class="custom-control custom-checkbox custom-control-solid">
-										    <input class="custom-control-input" id="customCheckSolid6" type="checkbox">
-										    <label class="custom-control-label" for="customCheckSolid6">Boxes <small class="text-muted ml-2">($0.10 per unit)</small></label>
+										    <input class="custom-control-input" id="customCheckSolid8" type="checkbox">
+										    <label class="custom-control-label" for="customCheckSolid8">Boxes <small class="text-muted ml-2">($0.10 per unit)</small></label>
 										</div>
 										<div class="custom-control custom-checkbox custom-control-solid">
-										    <input class="custom-control-input" id="customCheckSolid6" type="checkbox">
-										    <label class="custom-control-label" for="customCheckSolid6">Bubble wrap <small class="text-muted ml-2">($0.10 per unit)</small></label>
+										    <input class="custom-control-input" id="customCheckSolid9" type="checkbox">
+										    <label class="custom-control-label" for="customCheckSolid9">Bubble wrap <small class="text-muted ml-2">($0.10 per unit)</small></label>
 										</div>
 										<div class="custom-control custom-checkbox custom-control-solid">
-										    <input class="custom-control-input" id="customCheckSolid6" type="checkbox">
-										    <label class="custom-control-label" for="customCheckSolid6">Wrap Paper <small class="text-muted ml-2">($0.10 per unit)</small></label>
+										    <input class="custom-control-input" id="customCheckSolid10" type="checkbox">
+										    <label class="custom-control-label" for="customCheckSolid10">Wrap Paper <small class="text-muted ml-2">($0.10 per unit)</small></label>
 										</div>
 									</div>
 								</div>

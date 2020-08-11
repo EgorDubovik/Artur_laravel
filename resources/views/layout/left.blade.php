@@ -12,7 +12,7 @@
                     <div class="nav-link-icon">
                       <i class="fas fa-truck-loading"></i>
                     </div>
-                    FBA доставка
+                    FBA Сервис
                 </a>
             </div>
         </div>
