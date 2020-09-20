@@ -36,10 +36,10 @@
 						  </div>
 					 </div>
 					 <div class="card-footer">
-						<a href="/fba/create" class="btn btn-success btn-block">Создать Новый заказ ФБА</a>
+						<a href="/fba/create" class="btn btn-success btn-block">Создать Новый заказ FBA</a>
 						<a href=#>
 						  <div class="d-flex align-items-center justify-content-between small text-body pd-dash-footer" style="padding-top: 10px; ">
-							 Посмотреть все заказы ФБА
+							 Посмотреть все заказы FBA
 							 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 						  </div>
 						</a>
