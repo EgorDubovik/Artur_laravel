@@ -19,7 +19,15 @@
         <div class="sidenav-footer">
             <div class="sidenav-footer-content">
                 <div class="sidenav-footer-subtitle">Logged in as:</div>
-                <div class="sidenav-footer-title">Valerie Luna</div>
+                <div class="sidenav-footer-title">
+                    @if($user->first_name==null) FirstName
+                    @else {{$user->first_name}}
+                    @endif
+
+                    @if($user->last_name==null) LastName
+                    @else {{$user->last_name}}
+                    @endif
+                </div>
             </div>
         </div>
     </nav>
