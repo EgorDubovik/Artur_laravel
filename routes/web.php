@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', "LoginController@login");
+Route::get('/', function(){
+	return redirect("login");
+});
 
 Route::get('/login',"LoginController@login")->name("login");
 Route::post('/login',"LoginController@enterPhone");
