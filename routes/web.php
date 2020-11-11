@@ -16,14 +16,11 @@ Route::get('/', function(){
 });
 
 Route::get('/login',"LoginController@login")->name("login");
-Route::post('/login',"LoginController@enterPhone");
-Route::post("/enterCode","LoginController@enterCode");
+Route::post('/actionLogin',"LoginController@actionLogin");
 Route::get("/logout","LoginController@logOut");
+
 Route::group(['middleware' => ['auth']], function () {
 	Route::get("/dashboard","DashBoardController@dashboard");
 	Route::get("/account","AccountController@account");
 	Route::post("/account","AccountController@account");
-	/* FBA routes */
-	Route::get("/fba/create","FBAController@createFBA");
-
 });

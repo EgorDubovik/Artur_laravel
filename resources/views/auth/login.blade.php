@@ -23,8 +23,9 @@
                                     <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
                                         <!-- Login form-->
-                                        <form method="post">
+                                        <form method="post" action="/actionLogin">
                                           @csrf
+                                            <input type="hidden" name="event" value="login">
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Phone number</label>
@@ -33,7 +34,7 @@
                                             
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input class="form-control py-4" id="inputPassword" type="text" name="inputPassword" placeholder="Enter your password" />
+                                                <input type="password" class="form-control py-4" id="inputPassword" type="text" name="password" placeholder="Enter your password" />
                                             </div>
 
                                             <!-- Form Group (remember password checkbox)-->

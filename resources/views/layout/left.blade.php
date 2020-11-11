@@ -8,18 +8,6 @@
                     </div>
                     Dashboard
                 </a>
-                <a class="nav-link" href="/fba">
-                    <div class="nav-link-icon">
-                      <i class="fas fa-truck-loading"></i>
-                    </div>
-                    FBA Сервис
-                </a>
-                <a class="nav-link" href="/fbm">
-                    <div class="nav-link-icon">
-                      <i class="fas fa-warehouse"></i>
-                    </div>
-                    FBM Сервис
-                </a>
             </div>
         </div>
         <div class="sidenav-footer">
