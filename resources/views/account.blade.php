@@ -76,6 +76,39 @@
                 </div>
             </div>
         </div>
+        <div class="col-xl-4">   
+            <div class="card mb-4">
+                <div class="card-header">Change password</div>
+                <div class="card-body">
+                    <form method="post">
+                        @csrf
+                        <input type="hidden" name="event" value="change_password">
+                        <div class="form-group">
+                            <!-- Form Row-->
+                            <div class="form-row">
+                                
+                                <label class="small mb-1" for="inputoldPassword">Old password</label>
+                                <input class="form-control" id="inputoldPassword" type="password" placeholder="Enter your old password" name="old_password" />
+                            </div>
+                            <div class="form-row">
+                                <label class="small mb-1" for="inputnewPassword">New password</label>
+                                <input class="form-control" id="inputnewPassword" name="new_password" type="password" placeholder="Enter your new password" />
+                            </div>
+                            <div class="form-row">
+                                <label class="small mb-1" for="inputnewPassword2">Confirme new password</label>
+                                <input class="form-control" id="inputnewPassword2" name="new_password2" type="password" placeholder="Confirme your new password" />
+                                
+                            </div>
+                        </div>
+                        <div class="form-row ">
+                            <!-- Save changes button-->
+                            <button class="btn btn-primary" type="submit" type="button">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 @stop
