@@ -21,7 +21,7 @@ Route::get("/logout","LoginController@logOut");
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::group(['middleware'=>['admin']],function(){
-		Route::get('/testadmin',function(){
+		Route::get('/admin/users',function(){
 			return "hello admin";
 		});
 	});

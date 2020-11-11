@@ -8,6 +8,15 @@
                     </div>
                     Dashboard
                 </a>
+
+                @if(Auth::user()->is_admin)
+                    <a class="nav-link" href="/admin/users">
+                        <div class="nav-link-icon">
+                          <i class="fas fa-align-center"></i>
+                        </div>
+                        Users
+                    </a>
+                @endif
             </div>
         </div>
         <div class="sidenav-footer">
