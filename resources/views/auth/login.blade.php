@@ -31,6 +31,11 @@
                                                 <input class="form-control py-4" id="inputEmailAddress" type="text" name="phone_number" placeholder="Enter phone number" />
                                             </div>
                                             
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="inputPassword">Password</label>
+                                                <input class="form-control py-4" id="inputPassword" type="text" name="inputPassword" placeholder="Enter your password" />
+                                            </div>
+
                                             <!-- Form Group (remember password checkbox)-->
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
