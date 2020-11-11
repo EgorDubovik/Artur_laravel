@@ -20,7 +20,13 @@ Route::post('/actionLogin',"LoginController@actionLogin");
 Route::get("/logout","LoginController@logOut");
 
 Route::group(['middleware' => ['auth']], function () {
+	Route::group(['middleware'=>['admin']],function(){
+		Route::get('/testadmin',function(){
+			return "hello admin";
+		});
+	});
 	Route::get("/dashboard","DashBoardController@dashboard");
 	Route::get("/account","AccountController@account");
 	Route::post("/account","AccountController@account");
 });
+

@@ -15,6 +15,7 @@ class AddPasswordToUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string("password")->after('email');
+            $table->boolean('is_admin')->nullable();
         });
     }
 
@@ -27,6 +28,7 @@ class AddPasswordToUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn("password");
+            $table->dropColumn("is_admin");
         });
     }
 }
