@@ -21,9 +21,7 @@ Route::get("/logout","LoginController@logOut");
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::group(['middleware'=>['admin']],function(){
-		Route::get('/admin/users',function(){
-			return "hello admin";
-		});
+		Route::get('/admin/users',"AdminController@listUsers");
 	});
 	Route::get("/dashboard","DashBoardController@dashboard");
 	Route::get("/account","AccountController@account");
