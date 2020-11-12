@@ -18,5 +18,6 @@ class User extends Authenticatable
         'company_name',
         'location',
         'is_admin',
+        'created_at'
     ];
 }

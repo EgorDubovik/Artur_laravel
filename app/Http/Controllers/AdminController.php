@@ -29,12 +29,15 @@ class AdminController extends Controller
 				}
 			}
 		}
+
+
 		return view("admin.add_user")->with(['event'=>$event,'error'=>$error]);
 	}
 
 	public function listUsers(Request $request){
-		$user = User::find(Auth::id());
-		return view("admin.users");
+		
+		$users = User::where("id","<>",Auth::user()->id)->orderBy("id",'desc')->get();
+		return view("admin.users")->with(["users"=>$users]);
 	}
 
 }

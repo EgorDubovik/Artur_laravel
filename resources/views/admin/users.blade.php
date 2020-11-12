@@ -29,19 +29,20 @@
 						</tr>
 					</tfoot>
 					<tbody>
+						@foreach($users as $auser)
 						<tr>
-							<td>Tiger Nixon</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
+							<td>{{$auser->first_name}} {{$auser->last_name}}</td>
+							<td>{{$auser->created_at}}</td>
+							<td>$0,0</td>
 							<td>
-								<div class="badge badge-primary badge-pill">Paed</div>
+								<div class="badge badge-primary badge-pill">Active</div>
 							</td>
 							<td>
 								<button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="more-vertical"></i></button>
 								<button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
 							</td>
 						</tr>
-						
+						@endforeach
 					</tbody>
 				</table>
 				

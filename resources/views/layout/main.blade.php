@@ -37,7 +37,9 @@
   <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" crossorigin="anonymous"></script>
   <script type="text/javascript">
     $(document).ready( function () {
-      $('#dataTable').DataTable();
+      $('#dataTable').DataTable({
+        "ordering": false
+      });
     });
   </script>
 </body>
