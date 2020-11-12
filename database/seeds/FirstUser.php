@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Carbon\Carbon;
 class FirstUser extends Seeder
 {
     /**
@@ -14,9 +14,12 @@ class FirstUser extends Seeder
         //
         DB::table("users")->insert([
         	'email'=>'posik.web.m@gmail.com',
-        	'phone_number'=>'7542264666',
+            'password'=>password_hash("ilavebspu", PASSWORD_BCRYPT),
             'first_name'=>'Egor',
             'last_name'=>'Dubovik',
+            'is_admin'=>1,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
     }
 }
