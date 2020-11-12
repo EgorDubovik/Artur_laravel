@@ -28,8 +28,8 @@
                                             <input type="hidden" name="event" value="login">
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress">Phone number</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="text" name="phone_number" placeholder="Enter phone number" />
+                                                <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                                <input class="form-control py-4" id="inputEmailAddress" type="text" name="email" placeholder="Enter email" />
                                             </div>
                                             
                                             <div class="form-group">

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Hash;
 class FirstUser extends Seeder
 {
     /**
@@ -14,7 +15,7 @@ class FirstUser extends Seeder
         //
         DB::table("users")->insert([
         	'email'=>'posik.web.m@gmail.com',
-            'password'=>password_hash("ilavebspu", PASSWORD_BCRYPT),
+            'password'=>Hash::make("ilavebspu"),
             'first_name'=>'Egor',
             'last_name'=>'Dubovik',
             'is_admin'=>1,
