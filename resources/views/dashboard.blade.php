@@ -55,7 +55,7 @@
 								<div class="third" id="sq-postal-code"></div>
 								<button id="sq-creditcard" class="button-credit-card" onclick="onGetCardNonce(event)">Pay $1.00</button>
 							</div>
-							<input type="hidden" id="amount" name="amount" value="10">
+							<input type="hidden" id="amount" name="amount" value="100">
 							<input type="hidden" id="cardnonce" value="def" name="cardnonce">
 						</form>
 					</div>
