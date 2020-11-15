@@ -40,7 +40,7 @@ class AccountController extends Controller
     }
 
     public function getPay(Request $request){
-        dd($request);
+        //dd($request);
         $transaction = Square::charge([
             'amount' => $request->amount,
             'card_nonce' => $request->cardnonce,
