@@ -5,6 +5,7 @@ const paymentForm = new SqPaymentForm({
  
  //TODO: Replace with your sandbox application ID
  applicationId: applicationId,
+ locationId: locationId,
  inputClass: 'sq-input',
  // Customize the CSS for SqPaymentForm iframe elements
  inputStyles: [{
@@ -38,9 +39,37 @@ const paymentForm = new SqPaymentForm({
      * Triggered when: SqPaymentForm completes a card nonce request
      */
     cardNonceResponseReceived: function (errors, nonce, cardData) {
+      
+      if(errors){
+        return ;
+      }
+
+      document.getElementById('card-nonce').value = nonce;
       console.log(nonce);
+      document.getElementById('pay-form').submit();
     }
-  }
+  },
+  createPaymentRequest: function () {
+
+    return {
+      requestShippingAddress: false,
+      requestBillingInfo: true,
+      currencyCode: "USD",
+      countryCode: "US",
+      total: {
+        label: "MERCHANT NAME",
+        amount: document.getElementById('amount').value,
+        pending: false
+      },
+      lineItems: [
+        {
+          label: "Subtotal",
+          amount: document.getElementById('amount').value,
+          pending: false
+        }
+      ]
+    }
+  },
 });
 
 
