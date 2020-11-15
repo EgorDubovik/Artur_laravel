@@ -42,7 +42,7 @@ class AccountController extends Controller
     public function getPay(Request $request){
         //dd($request);
         $transaction = Square::charge([
-            'amount' => $request->amount,
+            'amount' => (int)$request->amount,
             'card_nonce' => $request->cardnonce,
             'location_id' => env('SQUARE_LOCATION'),
             'currency' => 'USD'
