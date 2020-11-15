@@ -44,7 +44,7 @@ const paymentForm = new SqPaymentForm({
         return ;
       }
 
-      document.getElementById('card-nonce').value = nonce;
+      document.getElementById('cardnonce').value = nonce;
       console.log(nonce);
       document.getElementById('pay-form').submit();
     }

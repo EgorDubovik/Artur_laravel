@@ -36,6 +36,6 @@ class AccountController extends Controller
     }
 
     public function getPay(Request $request){
-        dd($request->nonce);
+        dd($request->cardnonce);
     }
 }

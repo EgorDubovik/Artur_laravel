@@ -56,7 +56,7 @@
 								<button id="sq-creditcard" class="button-credit-card" onclick="onGetCardNonce(event)">Pay $1.00</button>
 							</div>
 							<input type="hidden" id="amount" name="amount" value="100">
-							<input type="hidden" id="card-nonce" name="nonce">
+							<input type="hidden" id="cardnonce" name="nonce">
 						</form>
 					</div>
 				</div>
