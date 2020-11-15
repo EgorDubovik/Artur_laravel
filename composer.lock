@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b8f151fd808270865ccff1863570db3",
+    "content-hash": "b312aa3f90ff5672b6b961bc47a604d0",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -999,32 +999,32 @@
         },
         {
             "name": "nikolag/core",
-            "version": "v2.4.0",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NikolaGavric94/nikolag-core.git",
-                "reference": "98de5b64dc92ba709bea98ae3f0dc02678ddd451"
+                "reference": "a53acf8b35a7d979244ba259054135a38e62a964"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NikolaGavric94/nikolag-core/zipball/98de5b64dc92ba709bea98ae3f0dc02678ddd451",
-                "reference": "98de5b64dc92ba709bea98ae3f0dc02678ddd451",
+                "url": "https://api.github.com/repos/NikolaGavric94/nikolag-core/zipball/a53acf8b35a7d979244ba259054135a38e62a964",
+                "reference": "a53acf8b35a7d979244ba259054135a38e62a964",
                 "shasum": ""
             },
             "require": {
-                "illuminate/config": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "illuminate/console": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "illuminate/container": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "illuminate/contracts": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "illuminate/database": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "illuminate/filesystem": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "illuminate/support": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
+                "illuminate/config": "~5.5|~5.6|~5.7",
+                "illuminate/console": "~5.5|~5.6|~5.7",
+                "illuminate/container": "~5.5|~5.6|~5.7",
+                "illuminate/contracts": "~5.5|~5.6|~5.7",
+                "illuminate/database": "~5.5|~5.6|~5.7",
+                "illuminate/filesystem": "~5.5|~5.6|~5.7",
+                "illuminate/support": "~5.5|~5.6|~5.7",
                 "php": ">=7.0.0"
             },
             "type": "laravel-package",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4.x-dev"
+                    "dev-master": "2.x-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1067,43 +1067,37 @@
                 "payments",
                 "payments laravel integration"
             ],
-            "time": "2020-03-22T01:20:52+00:00"
+            "time": "2019-02-26T21:02:15+00:00"
         },
         {
             "name": "nikolag/laravel-square",
-            "version": "v2.5.0",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NikolaGavric94/laravel-square.git",
-                "reference": "7c2b3e3b396e7d65c82b38a2bd82b73823eb55bc"
+                "reference": "58fbe7c6baa1b96930cdbcd44092e3ae152ad5cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NikolaGavric94/laravel-square/zipball/7c2b3e3b396e7d65c82b38a2bd82b73823eb55bc",
-                "reference": "7c2b3e3b396e7d65c82b38a2bd82b73823eb55bc",
+                "url": "https://api.github.com/repos/NikolaGavric94/laravel-square/zipball/58fbe7c6baa1b96930cdbcd44092e3ae152ad5cf",
+                "reference": "58fbe7c6baa1b96930cdbcd44092e3ae152ad5cf",
                 "shasum": ""
             },
             "require": {
-                "illuminate/config": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "illuminate/console": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "illuminate/container": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "illuminate/contracts": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "illuminate/database": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "illuminate/filesystem": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "illuminate/support": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
-                "nikolag/core": "2.4.*",
-                "php": ">=7.1.0",
-                "square/connect": "2.20190925.0"
+                "laravel/framework": "^5.5",
+                "laravel/tinker": "~1.0",
+                "nikolag/core": "2.1.*",
+                "php": ">=7.0.0",
+                "square/connect": "2.5.*"
             },
             "require-dev": {
-                "fzaninotto/faker": "^1.4",
-                "orchestra/testbench": "~3.6|~3.7|~3.8|~4.0|~5.0",
-                "phpunit/phpunit": "~6.0|~7.0|~8.0"
+                "orchestra/testbench": "3.5.*",
+                "phpunit/phpunit": "~6.0"
             },
             "type": "laravel-package",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5.x-dev"
+                    "dev-master": "2.1.x-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1141,7 +1135,6 @@
             "description": "Square API integration with Laravel built on nikolag/core",
             "keywords": [
                 "laravel",
-                "laravel square",
                 "library",
                 "nikolag",
                 "nikolag square",
@@ -1151,7 +1144,7 @@
                 "square laravel integration",
                 "square-laravel"
             ],
-            "time": "2020-03-27T10:01:03+00:00"
+            "time": "2018-06-17T05:41:53+00:00"
         },
         {
             "name": "opis/closure",
@@ -1631,16 +1624,16 @@
         },
         {
             "name": "square/connect",
-            "version": "2.20190925.0",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/square/connect-php-sdk.git",
-                "reference": "9d94237953c438f07f5f0471a2ab0f3848368b80"
+                "reference": "f4b1934bff596673919950e21493181479d9ed46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/square/connect-php-sdk/zipball/9d94237953c438f07f5f0471a2ab0f3848368b80",
-                "reference": "9d94237953c438f07f5f0471a2ab0f3848368b80",
+                "url": "https://api.github.com/repos/square/connect-php-sdk/zipball/f4b1934bff596673919950e21493181479d9ed46",
+                "reference": "f4b1934bff596673919950e21493181479d9ed46",
                 "shasum": ""
             },
             "require": {
@@ -1662,7 +1655,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache-2.0"
+                "Apache v2"
             ],
             "authors": [
                 {
@@ -1678,7 +1671,7 @@
                 "sdk",
                 "swagger"
             ],
-            "time": "2019-09-25T17:56:04+00:00"
+            "time": "2017-11-13T22:27:57+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4066,6 +4059,7 @@
                 "faker",
                 "fixtures"
             ],
+            "abandoned": true,
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
@@ -4861,6 +4855,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
