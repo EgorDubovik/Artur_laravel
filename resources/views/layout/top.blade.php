@@ -31,15 +31,15 @@
                     <i class="far fa-user user-icon"></i>
                     <div class="dropdown-user-details" style="margin-left: 10px;">
                         <div class="dropdown-user-details-name">
-                            @if($user->first_name==null) FirstName
-                            @else {{$user->first_name}}
+                            @if(Auth::user()->first_name==null) FirstName
+                            @else {{Auth::user()->first_name}}
                             @endif
 
-                            @if($user->last_name==null) LastName
-                            @else {{$user->last_name}}
+                            @if(Auth::user()->last_name==null) LastName
+                            @else {{Auth::user()->last_name}}
                             @endif
                         </div>
-                        <div class="dropdown-user-details-email">{{$user->email}}</div>
+                        <div class="dropdown-user-details-email">{{Auth::user()->email}}</div>
                     </div>
                 </h6>
                 <div class="dropdown-divider"></div>

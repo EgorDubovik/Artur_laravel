@@ -23,12 +23,12 @@
             <div class="sidenav-footer-content">
                 <div class="sidenav-footer-subtitle">Logged in as:</div>
                 <div class="sidenav-footer-title">
-                    @if($user->first_name==null) FirstName
-                    @else {{$user->first_name}}
+                    @if(Auth::user()->first_name==null) FirstName
+                    @else {{Auth::user()->first_name}}
                     @endif
 
-                    @if($user->last_name==null) LastName
-                    @else {{$user->last_name}}
+                    @if(Auth::user()->last_name==null) LastName
+                    @else {{Auth::user()->last_name}}
                     @endif
                 </div>
             </div>

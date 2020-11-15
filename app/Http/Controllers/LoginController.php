@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Hash;
 class LoginController extends Controller
 {
     //
@@ -26,12 +27,15 @@ class LoginController extends Controller
         if(isset($request->event)){
             if($request->event == "login"){
                 $user = User::where([
-                    ["phone_number",$request->phone_number],
-                    ["password",$request->password]
+                    ["email",$request->email],
                 ])->first();
                 if($user){
-                    Auth::login($user);
-                    return redirect('dashboard');
+                    if(Hash::check($request->password,$user->password)){
+                        Auth::login($user);
+                        return redirect('dashboard');
+                    } else {
+                        return redirect("login");    
+                    }
                 } else {
                     return redirect("login")->with(["error"=>true,"code"=>2]);                    
                 }
