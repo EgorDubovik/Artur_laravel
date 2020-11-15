@@ -8,28 +8,28 @@ const paymentForm = new SqPaymentForm({
  inputClass: 'sq-input',
  // Customize the CSS for SqPaymentForm iframe elements
  inputStyles: [{
-     fontSize: '16px',
-     lineHeight: '24px',
-     padding: '16px',
-     placeholderColor: '#a0a0a0',
-     backgroundColor: 'transparent',
+   fontSize: '16px',
+   lineHeight: '24px',
+   padding: '16px',
+   placeholderColor: '#a0a0a0',
+   backgroundColor: 'transparent',
  }],
  // Initialize the credit card placeholders
  cardNumber: {
-     elementId: 'sq-card-number',
-     placeholder: 'Card Number'
+   elementId: 'sq-card-number',
+   placeholder: 'Card Number'
  },
  cvv: {
-     elementId: 'sq-cvv',
-     placeholder: 'CVV'
+   elementId: 'sq-cvv',
+   placeholder: 'CVV'
  },
  expirationDate: {
-     elementId: 'sq-expiration-date',
-     placeholder: 'MM/YY'
+   elementId: 'sq-expiration-date',
+   placeholder: 'MM/YY'
  },
  postalCode: {
-     elementId: 'sq-postal-code',
-     placeholder: 'Postal'
+   elementId: 'sq-postal-code',
+   placeholder: 'Postal'
  },
  // SqPaymentForm callback functions
  callbacks: {
@@ -38,19 +38,11 @@ const paymentForm = new SqPaymentForm({
      * Triggered when: SqPaymentForm completes a card nonce request
      */
      cardNonceResponseReceived: function (errors, nonce, cardData) {
-     if (errors) {
-         // Log errors from nonce generation to the browser developer console.
-         console.error('Encountered errors:');
-         errors.forEach(function (error) {
-             console.error('  ' + error.message);
-         });
-         alert('Encountered errors, check browser developer console for more details');
-          setPayButtonDisableState(false)
-          return;
-     }
-        alert(`The generated nonce is:\n${nonce}`);
-        setPayButtonDisableState(false);
-        //TODO: Replace alert with code in step 2.1
-     }
- }
-});
+      alert(`The generated nonce is:\n${nonce}`);
+    }
+  });
+
+
+function onGetCardNonce(event) {
+  paymentForm.requestCardNonce();
+}
