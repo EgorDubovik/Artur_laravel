@@ -39,8 +39,8 @@ fieldset {
   position: relative;
   width: 380px;
   margin: 0 auto;
-  top: 50%;
-  transform: translateY(-50%);
+ /* top: 50%;
+  transform: translateY(-50%);*/
 }
 
 .third {

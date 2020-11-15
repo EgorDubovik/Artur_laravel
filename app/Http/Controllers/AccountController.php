@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Log;
+use Nikolag\Square\Facades\Square;
+use Nikolag\Square\Models\Customer;
+
+
 class AccountController extends Controller
 {
     public function account(Request $request){
@@ -33,5 +37,18 @@ class AccountController extends Controller
     			
     		}
     	}
+    }
+
+    public function getPay(Request $request){
+        
+        // $transaction = Square::charge([
+        //     'amount' => (int)$request->amount, 
+        //     'source_id' => 'cnon:CBASEA_Q6xyHIBxwRNHJf5J-eo0',//$request->cardnonce,
+        //     'location_id' => env('SQUARE_LOCATION'),
+        //     'currency' => 'USD'
+        // ]);
+        
+        //dd($transaction);
+        return redirect('dashboard')
     }
 }
