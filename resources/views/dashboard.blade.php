@@ -56,6 +56,7 @@
 					</div>
 				</div>
 		  </div>
+		  <script type="text/javascript" src="{{ URL::asset('js/squareID.js')}}"></script>
 		  <script type="text/javascript" src="{{ URL::asset('js/squarejs.js')}}"></script>
 	 </div>
 </div>
