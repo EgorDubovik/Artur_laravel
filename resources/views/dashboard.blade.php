@@ -47,6 +47,7 @@
 					</div>
 					<div class="card-body">
 						<form method="post" id="pay-form" action="/getpayment">
+							@csrf
 							<div id="form-container">
 								<div id="sq-card-number"></div>
 								<div class="third" id="sq-expiration-date"></div>
