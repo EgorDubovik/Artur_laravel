@@ -43,7 +43,7 @@ class AccountController extends Controller
         //dd($request);
         $transaction = Square::charge([
             'amount' => (int)$request->amount,
-            'card_nonce' => $request->cardnonce,
+            'source_id' => $request->cardnonce,
             'location_id' =>'LC3M5K6VRB57B',// env('SQUARE_LOCATION'),
             'currency' => 'USD'
         ]);
