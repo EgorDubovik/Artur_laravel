@@ -37,10 +37,11 @@ const paymentForm = new SqPaymentForm({
      * callback function: cardNonceResponseReceived
      * Triggered when: SqPaymentForm completes a card nonce request
      */
-     cardNonceResponseReceived: function (errors, nonce, cardData) {
+    cardNonceResponseReceived: function (errors, nonce, cardData) {
       console.log(none);
     }
-  });
+  }
+});
 
 
 function onGetCardNonce(event) {
