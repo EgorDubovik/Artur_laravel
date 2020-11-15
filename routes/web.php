@@ -29,5 +29,6 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get("/account","AccountController@account");
 	Route::post("/account","AccountController@account");
 	Route::post("/getpayment","AccountController@getPay");
+	Route::get("/getpayment","AccountController@getPay");
 });
 
