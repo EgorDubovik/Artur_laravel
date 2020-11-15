@@ -38,7 +38,7 @@ const paymentForm = new SqPaymentForm({
      * Triggered when: SqPaymentForm completes a card nonce request
      */
      cardNonceResponseReceived: function (errors, nonce, cardData) {
-      alert(`The generated nonce is:\n${nonce}`);
+      console.log(none);
     }
   });
 
