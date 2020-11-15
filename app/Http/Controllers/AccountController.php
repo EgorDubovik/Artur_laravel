@@ -40,16 +40,15 @@ class AccountController extends Controller
     }
 
     public function getPay(Request $request){
-        dd($request);
-        $transaction = Square::charge([
-            'amount' => (int)$request->amount, 
-            'source_id' => 'fake-card-nonce-ok',//$request->cardnonce,
-            'location_id' => env('SQUARE_LOCATION'),
-            'currency' => 'USD'
-        ]);
-
-        return redirect('dashboard')->with($transaction);
         
-
+        // $transaction = Square::charge([
+        //     'amount' => (int)$request->amount, 
+        //     'source_id' => 'cnon:CBASEA_Q6xyHIBxwRNHJf5J-eo0',//$request->cardnonce,
+        //     'location_id' => env('SQUARE_LOCATION'),
+        //     'currency' => 'USD'
+        // ]);
+        
+        //dd($transaction);
+        return redirect('dashboard')
     }
 }
