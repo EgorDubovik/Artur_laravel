@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
-use Hash;
+//use Hash;
 class FirstUser extends Seeder
 {
     /**
