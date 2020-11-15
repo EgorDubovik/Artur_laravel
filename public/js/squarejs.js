@@ -41,6 +41,7 @@ const paymentForm = new SqPaymentForm({
     cardNonceResponseReceived: function (errors, nonce, cardData) {
       
       if(errors){
+        console.log(errors);
         return ;
       }
 
