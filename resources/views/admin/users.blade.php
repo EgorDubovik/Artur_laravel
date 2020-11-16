@@ -14,7 +14,7 @@
 						<tr>
 							<th>Name</th>							
 							<th>Start date</th>
-							<th>Price</th>
+							<th>Full amount</th>
 							<th>Status</th>
 							<th>Actions</th>
 						</tr>
@@ -23,7 +23,7 @@
 						<tr>
 							<th>Name</th>
 							<th>Start date</th>
-							<th>Price</th>
+							<th>Full amount</th>
 							<th>Status</th>
 							<th>Actions</th>
 						</tr>
