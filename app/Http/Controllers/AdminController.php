@@ -25,7 +25,7 @@ class AdminController extends Controller
 					'is_admin' => ($request->has("admin")) ? 1 : 0,
 				]);
 				if($user->save()){
-					$error = false;
+					$error = false;S
 				}
 				if(isset($request->amount)){
 					$payment = Payments::create([
@@ -44,7 +44,7 @@ class AdminController extends Controller
 
 	public function listUsers(Request $request){
 		
-		$users = User::where("id","<>",Auth::user()->id)->orderBy("id",'desc')->get();
+		$users = User::where([["id","<>",Auth::user()->id],''])->orderBy("id",'desc')->get();
 		
 		return view("admin.users")->with(["users"=>$users]);
 	}

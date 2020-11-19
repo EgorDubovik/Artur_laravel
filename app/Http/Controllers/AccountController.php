@@ -49,6 +49,6 @@ class AccountController extends Controller
         // ]);
         
         //dd($transaction);
-        return redirect('dashboard')
+        return redirect('dashboard');
     }
 }
