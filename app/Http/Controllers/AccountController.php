@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Log;
+use Hash;
 use Nikolag\Square\Facades\Square;
 use Nikolag\Square\Models\Customer;
 
@@ -15,8 +16,9 @@ class AccountController extends Controller
     public function account(Request $request){
 
     	$user = User::find(Auth::id());
-    	$this->eventcheck($request,$user);
-    	return view('account')->with(['user'=>$user]);
+    	$result = $this->eventcheck($request,$user);
+       
+    	return view('account')->with(['user'=>$user,'result'=>$result]);
     }
 
 
@@ -34,9 +36,19 @@ class AccountController extends Controller
     				$user->location = $request->location;
     			
     			$user->save();
-    			
-    		}
-    	}
+                return ['event'=>'update_info','result'=>true];
+    		} else if($request->event == "change_password"){
+                // Доделать вывод нормальной информации
+
+                if(Hash::check($request->old_password,$user->password)){
+                    if($request->new_password == $request->new_password2){
+                        $user->password = password_hash($request->new_password, PASSWORD_BCRYPT);
+                        $user->save();
+                        return ['event'=>'change_password','result'=>true];
+                    } else return ['event'=>'change_password','result'=>false];
+                } else return ['event'=>'change_password','result'=>false];
+            }
+    	} else return array();
     }
 
     public function getPay(Request $request){
