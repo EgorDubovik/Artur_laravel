@@ -7,6 +7,7 @@ use App\User;
 use Auth;
 use Log;
 use Hash;
+use App\Payments;
 use Nikolag\Square\Facades\Square;
 use Nikolag\Square\Models\Customer;
 
@@ -53,14 +54,20 @@ class AccountController extends Controller
 
     public function getPay(Request $request){
         
-        // $transaction = Square::charge([
-        //     'amount' => (int)$request->amount, 
-        //     'source_id' => 'cnon:CBASEA_Q6xyHIBxwRNHJf5J-eo0',//$request->cardnonce,
-        //     'location_id' => env('SQUARE_LOCATION'),
-        //     'currency' => 'USD'
-        // ]);
-        
-        //dd($transaction);
+        $transaction = Square::charge([
+            'amount' => (int)$request->amount, 
+            'source_id' => 'cnon:CBASEA_Q6xyHIBxwRNHJf5J-eo0',//$request->cardnonce,
+            'location_id' => env('SQUARE_LOCATION'),
+            'currency' => 'USD'
+        ]);
+        // Дополнительные проверки по стоимости и транзакциям нужны
+        if($transaction){
+            $payments = Payments::where([['user_id',Auth::user()->id],['status',Payments::PENDING]])->get();
+            foreach ($payments as $p) {
+                $p->status=Payments::PAID;
+                $p->save();
+            }
+        }
         return redirect('dashboard');
     }
 }

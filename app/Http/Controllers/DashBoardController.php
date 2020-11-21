@@ -14,7 +14,7 @@ class DashBoardController extends Controller
     public function dashboard(Request $request){
     	
 
-    	$payments = Payments::where('user_id',Auth::user()->id)->get();
+    	$payments = Payments::where([['user_id',Auth::user()->id],['status',Payments::PENDING]])->get();
     	$total = 0;
     	foreach ($payments as $payment) {
     		$total+=$payment->amount;
