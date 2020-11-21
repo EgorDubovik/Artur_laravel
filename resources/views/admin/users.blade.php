@@ -12,7 +12,8 @@
 				<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 						<tr>
-							<th>Name</th>							
+							<th>Name</th>
+							<th>Email</th>
 							<th>Start date</th>
 							<th>Full amount</th>
 							<th>Status</th>
@@ -22,6 +23,7 @@
 					<tfoot>
 						<tr>
 							<th>Name</th>
+							<th>Email</th>
 							<th>Start date</th>
 							<th>Full amount</th>
 							<th>Status</th>
@@ -32,6 +34,7 @@
 						@foreach($users as $auser)
 						<tr>
 							<td>{{$auser->first_name}} {{$auser->last_name}}</td>
+							<td>{{$auser->email}}</td>
 							<td>{{$auser->created_at}}</td>
 							<td>$0,0</td>
 							<td>
