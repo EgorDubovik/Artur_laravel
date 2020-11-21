@@ -79,7 +79,7 @@
 							<div class="third" id="sq-expiration-date"></div>
 							<div class="third" id="sq-cvv"></div>
 							<div class="third" id="sq-postal-code"></div>
-							<button id="sq-creditcard" class="button-credit-card" onclick="onGetCardNonce(event)">Pay total ${{$total}}.00</button>
+							<button  id="sq-creditcard" class="button-credit-card" onclick="onGetCardNonce(event);return false;">Pay total ${{$total}}.00</button>
 						</div>
 						<input type="hidden" id="amount" name="amount" value="{{$total*100}}">
 						<input type="hidden" id="cardnonce" value="def" name="cardnonce">
