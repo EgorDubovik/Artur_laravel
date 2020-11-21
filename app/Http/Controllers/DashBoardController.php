@@ -14,12 +14,13 @@ class DashBoardController extends Controller
     public function dashboard(Request $request){
     	
 
-    	$payments = Payments::where([['user_id',Auth::user()->id],['status',Payments::PENDING]])->get();
+    	$payments_peiding = Payments::where([['user_id',Auth::user()->id],['status',Payments::PENDING]])->get();
     	$total = 0;
-    	foreach ($payments as $payment) {
+    	foreach ($payments_peiding as $payment) {
     		$total+=$payment->amount;
     	}
+    	$payments_paid = Payments::where([['user_id',Auth::user()->id],['status',Payments::PAID]])->get();
 
-    	return view("dashboard")->with(['total'=>$total,'payments'=>$payments]);
+    	return view("dashboard")->with(['total'=>$total,'payments_peiding'=>$payments_peiding,'payments_paid'=>$payments_paid]);
     }
 }

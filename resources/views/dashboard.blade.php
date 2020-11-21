@@ -41,7 +41,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach($payments as $payment)
+								@foreach($payments_peiding as $payment)
 								<!-- Invoice item 1-->
 								<tr class="border-bottom">
 									<td>
@@ -97,55 +97,30 @@
 						<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
+									<th>Desctription</th>
+									<th>Date</th>									
 									<th>Status</th>
-									<th>Actions</th>
+									<th>Amount</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
+									<th>Desctription</th>
+									<th>Date</th>									
 									<th>Status</th>
-									<th>Actions</th>
+									<th>Amount</th>
 								</tr>
 							</tfoot>
 							<tbody>
+								
+								@foreach($payments_paid as $p)
 								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td>61</td>
-									<td>2011/04/25</td>
-									<td>$320,800</td>
-									<td><div class="badge badge-primary badge-pill">Full-time</div></td>
-									<td>
-										<button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="more-vertical"></i></button>
-										<button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
-									</td>
+									<td>Надо будет как называть плотежи, тоесть за что они будут платить</td>
+									<td>{{$p->updated_at}}</td>
+									<td>{{$p->status}}</td>
+									<td>${{$p->amount}}</td>
 								</tr>
-								<tr>
-									<td>Garrett Winters</td>
-									<td>Accountant</td>
-									<td>Tokyo</td>
-									<td>63</td>
-									<td>2011/07/25</td>
-									<td>$170,750</td>
-									<td><div class="badge badge-warning badge-pill">Pending</div></td>
-									<td>
-										<button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="more-vertical"></i></button>
-										<button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
-									</td>
-								</tr>
+								@endforeach
 							</tbody>
 						</table>
 					</div>

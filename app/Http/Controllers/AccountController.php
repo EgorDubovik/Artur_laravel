@@ -60,6 +60,7 @@ class AccountController extends Controller
             'location_id' => env('SQUARE_LOCATION'),
             'currency' => 'USD'
         ]);
+        
         // Дополнительные проверки по стоимости и транзакциям нужны
         if($transaction){
             $payments = Payments::where([['user_id',Auth::user()->id],['status',Payments::PENDING]])->get();
