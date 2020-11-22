@@ -73,6 +73,6 @@ const paymentForm = new SqPaymentForm({
 
 
 function onGetCardNonce(event) {
-  event.preventDefault();
+  //event.preventDefault();
   paymentForm.requestCardNonce();
 }

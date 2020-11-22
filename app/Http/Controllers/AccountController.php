@@ -55,6 +55,7 @@ class AccountController extends Controller
     public function getPay(Request $request){
         
         $transaction = false;
+        $isset_tr = false;
         if($request->amount>0){
             $transaction = Square::charge([
                 'amount' => (int)$request->amount, 
@@ -71,7 +72,8 @@ class AccountController extends Controller
                 $p->status=Payments::PAID;
                 $p->save();
             }
+            $isset_tr = true;
         }
-        return redirect('dashboard');
+        return redirect('dashboard')->with(['isset_tr'=>$isset_tr,'status'=>$transaction]);
     }
 }

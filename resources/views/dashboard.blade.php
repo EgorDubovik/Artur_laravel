@@ -23,8 +23,29 @@
 	</div>
 </header>
 <div class="container mt-n10">
+	
+	@if(session()->get('isset_tr')!==null && session()->get('isset_tr'))
+		@if(session()->get('status'))
+			<div class="row">
+				<div class="col-12 mb-4">
+					<div class="card h-100">
+						<div class="card-header">
+							<i class="fas fa-info-circle"></i>
+							Transaction status
+						</div>
+						<div class="card-body">
+							<div class="alert alert-success" role="alert">
+								This is a success alert—check it out!
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		@endif
+	@endif
+	@if(count($payments_peiding)>0)
 	<div class="row">
-		<div class="col-xxl-8 col-xl-12 mb-4">
+		<div class="col-lg-8 col-md-12 mb-4">
 			<div class="card h-100">
 				<div class="card-header">
 					<i class="fas fa-info-circle"></i>
@@ -65,7 +86,7 @@
 			</div>
 		</div>
 
-		<div class="col-xxl-4 col-xl-12 mb-4">
+		<div class="col-lg-4 col-md-12 mb-4">
 			<div class="card h-100">
 				<div class="card-header">
 					<i class="far fa-credit-card"></i>
@@ -79,7 +100,7 @@
 							<div class="third" id="sq-expiration-date"></div>
 							<div class="third" id="sq-cvv"></div>
 							<div class="third" id="sq-postal-code"></div>
-							<button  id="sq-creditcard" class="button-credit-card" onclick="onGetCardNonce(event);return false;">Pay total ${{$total}}.00</button>
+							<button  id="sq-creditcard" class="button-credit-card" onclick="onGetCardNonce(event);">Pay total ${{$total}}.00</button>
 						</div>
 						<input type="hidden" id="amount" name="amount" value="{{$total*100}}">
 						<input type="hidden" id="cardnonce" value="def" name="cardnonce">
@@ -89,6 +110,9 @@
 		</div>
 		<script type="text/javascript" src="{{ URL::asset('js/squareID.js')}}"></script>
 		<script type="text/javascript" src="{{ URL::asset('js/squarejs.js')}}"></script>
+	</div>
+	@endif
+	<div class="row">
 		<div class="col-12">
 			<div class="card mb-6">
 				<div class="card-header">Transactions</div>
