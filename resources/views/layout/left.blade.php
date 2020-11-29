@@ -12,11 +12,17 @@
                 @if(Auth::user()->is_admin)
                     <a class="nav-link" href="/admin/users">
                         <div class="nav-link-icon">
-                          <i class="fas fa-align-center"></i>
+                            <i class="far fa-address-card"></i>
                         </div>
                         Users
                     </a>
                 @endif
+                <a class="nav-link" target="_blank" href="https://just-prep.com">
+                    <div class="nav-link-icon">
+                      <i class="fas fa-tv"></i>
+                    </div>
+                    just-prep.com
+                </a>                
             </div>
         </div>
         <div class="sidenav-footer">

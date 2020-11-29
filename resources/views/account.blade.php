@@ -75,7 +75,7 @@
                             <!-- Form Group (phone number)-->
                             <div class="form-group col-md-6">
                                 <label class="small mb-1" for="inputPhone">Phone number</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="{{$user->phone_number}}" />
+                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" name="phone_number" value="{{$user->phone_number}}" />
                             </div>
                             
                         </div>

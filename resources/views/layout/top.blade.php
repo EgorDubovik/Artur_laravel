@@ -45,7 +45,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/account">
                     <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                    Account
+                    Settings
                 </a>
                 <a class="dropdown-item" href="/logout">
                     <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
