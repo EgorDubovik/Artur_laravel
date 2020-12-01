@@ -21,7 +21,7 @@
                     <div class="nav-link-icon">
                       <i class="fas fa-tv"></i>
                     </div>
-                    just-prep.com
+                    back to site
                 </a>                
             </div>
         </div>

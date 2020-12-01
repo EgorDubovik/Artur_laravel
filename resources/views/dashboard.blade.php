@@ -15,7 +15,7 @@
 				<div class="col-auto mt-4">
 					<h1 class="page-header-title">
 						<div class="page-header-icon"><i class="fas fa-align-center"></i></div>
-						Dashboard
+						Account
 					</h1>
 				</div>
 			</div>
