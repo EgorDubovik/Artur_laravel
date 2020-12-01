@@ -19,6 +19,7 @@ class FirstUser extends Seeder
             'first_name'=>'Egor',
             'last_name'=>'Dubovik',
             'is_admin'=>1,
+            'confirmed'=>1,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);

@@ -22,8 +22,9 @@ Route::get("/logout","LoginController@logOut");
 Route::group(['middleware' => ['auth']], function () {
 	Route::group(['middleware'=>['admin']],function(){
 		Route::get('/admin/users',"AdminController@listUsers");
-		Route::get("admin/addNewUser","AdminController@addNewUser");
-		Route::post("admin/addNewUser","AdminController@addNewUser");
+		Route::get("/admin/addNewUser","AdminController@addNewUser");
+		Route::post("/admin/addNewUser","AdminController@addNewUser");
+		Route::get("/admin/users/remove/{id}","AdminController@removeUser");
 	});
 	Route::get("/dashboard","DashBoardController@dashboard");
 	Route::get("/account","AccountController@account");

@@ -24,6 +24,7 @@ class AdminController extends Controller
 					'last_name'	=> $request->last_name,
 					'email' => $request->email,
 					'phone_number' => null,
+					'confirmed'=>1,
 					'password' => password_hash($request->password, PASSWORD_BCRYPT),
 					'is_admin' => ($request->has("admin")) ? 1 : 0,
 				]);
@@ -48,7 +49,7 @@ class AdminController extends Controller
 
 	public function listUsers(Request $request){
 		
-		$users = User::where([["id","<>",Auth::user()->id],['id','<>',1]])->orderBy("id",'desc')->get();
+		$users = User::where([["id","<>",Auth::user()->id],['id','<>',1],['confirmed',1]])->orderBy("id",'desc')->get();
 		
 		return view("admin.users")->with(["users"=>$users]);
 	}
@@ -82,6 +83,13 @@ class AdminController extends Controller
 		   	return false;
 		}
 
+	}
+
+	public function removeUser(Request $request,$id){
+		$user = User::find($id);
+		$user->confirmed = 0;
+		$user->save();
+		return redirect('admin/users');
 	}
 
 }

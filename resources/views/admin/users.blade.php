@@ -42,7 +42,7 @@
 							</td>
 							<td>
 								<button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="more-vertical"></i></button>
-								<button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
+								<a href="/admin/users/remove/{{$auser->id}}" onclick="if(confirm('Are you sure you want to deactivate it')) return true; else return false;" class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></a>
 							</td>
 						</tr>
 						@endforeach
