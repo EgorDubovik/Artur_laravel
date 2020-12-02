@@ -90,14 +90,7 @@
                         </script>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label class="small mb-1" for="inputPrice">Amount due</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-light">$</span>
-                                    </div>
-                                    <input type="text" id="inputPrice" class="form-control" placeholder="Enter Amount" name="amount">
-                                    
-                                </div>
+                                
                             </div>
                             <div class="form-group col-md-6">
                                 <div class="custom-control custom-checkbox" style="padding-top: 31px;padding-left: 100px">
@@ -116,7 +109,17 @@
             <div class="card mb-4">
                 <div class="card-header">Information</div>
                 <div class="card-body">
-                    Тут будет потом кокаянибуть дополнительная информация
+                    <form method="post">
+                        @csrf
+                        <label class="small mb-1" for="inputPrice">Amount due</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-light">$</span>
+                            </div>
+                            <input type="text" id="inputPrice" class="form-control" placeholder="Enter Amount" name="amount">
+                            
+                        </div>
+                    </form>
                 </div>
             </div>
 
