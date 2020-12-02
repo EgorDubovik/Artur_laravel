@@ -17,6 +17,7 @@ class User extends Authenticatable
         'email',
         'company_name',
         'location',
+        'confirmed',
         'is_admin',
         'created_at'
     ];
