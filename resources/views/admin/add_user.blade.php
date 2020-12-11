@@ -107,6 +107,49 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card" style="margin-bottom: 20px;">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Выставить счет сразу...
+                                    </a>
+                            </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#headingOne">
+                                <div class="card-body">
+
+                                    <script type="text/javascript">
+                                        var serives = [
+                                            @foreach($services as $service)
+                                            {
+                                                title: '{{$service->title}}',
+                                                pod_service:[
+                                                    @foreach($service->services as $pod_service)
+                                                        {
+                                                            title:'{{$pod_service->title}}',
+                                                            prefix:'{{$pod_service->prefix->prefix}}',
+                                                            price : {{$pod_service->price}}
+                                                        },
+                                                    @endforeach        
+                                                ]
+                                            },
+                                            @endforeach   
+                                        ]
+                                    </script>
+
+                                    <select>
+                                        <option>Select...</option>
+                                        @foreach($services as $service)
+                                        <optgroup label="{{$service->title}}">
+                                            @foreach($service->services as $pod_service)
+                                                <option data-prefix='{{$pod_service->prefix->prefix}}' data-price='{{$pod_service->price}}'>{{$pod_service->title}}</option>
+                                            @endforeach
+                                        </optgroup>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Save changes button-->
                         <button class="btn btn-primary" type="submit" type="button">Save User</button>
                     </form>
@@ -126,7 +169,11 @@
                             </div>
                             <input type="text" id="inputPrice" class="form-control" placeholder="Enter Amount" name="amount">
                             
+                            
+
                         </div>
+                       
+
                     </form>
                 </div>
             </div>

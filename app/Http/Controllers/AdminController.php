@@ -46,8 +46,9 @@ class AdminController extends Controller
 			}
 		}
 
+		$services = Service::whereNull('id_service')->get();
 
-		return view("admin.add_user")->with(['event'=>$event,'error'=>$error]);
+		return view("admin.add_user")->with(['event'=>$event,'error'=>$error,'services'=>$services]);
 	}
 
 	public function listUsers(Request $request){
