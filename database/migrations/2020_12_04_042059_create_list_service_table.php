@@ -17,7 +17,7 @@ class CreateListServiceTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->integer('id_prefix')->nullable();
-            $table->integer('price')->nullable();
+            $table->float('price')->nullable();
             $table->integer('id_service')->nullable();
             $table->timestamps();
         });

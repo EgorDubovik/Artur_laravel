@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use Auth;
 use App\Payments;
+use App\Service;
+use App\Prefix;
+
+use Auth;
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -13,7 +17,6 @@ class AdminController extends Controller
 {
     
 	public function addNewUser(Request $request){
-		//dd($request);
 		$event = false;
 		$error = true;
 		if(isset($request->event)){
