@@ -90,10 +90,18 @@
                         </script>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                
+                                <label class="small mb-1" for="text_description">Description</label>
+                                <textarea class="form-control" id="text_description" name="description"></textarea>
                             </div>
                             <div class="form-group col-md-6">
-                                <div class="custom-control custom-checkbox" style="padding-top: 31px;padding-left: 100px">
+                                
+                                <label class="small mb-1" for="text_shops">Shops</label>
+                                <textarea class="form-control" id="text_shops" name="shops"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group" style="padding-left: 20px;">
+                                <div class="custom-control custom-checkbox" >
                                     <input class="custom-control-input" id="customCheck2" type="checkbox" name="admin">
                                     <label class="custom-control-label" for="customCheck2">Super admin permissions</label>
                                 </div>
