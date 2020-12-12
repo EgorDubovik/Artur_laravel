@@ -28,6 +28,8 @@ class AdminController extends Controller
 					'email' => $request->email,
 					'phone_number' => null,
 					'confirmed'=>1,
+					'description'=>$request->description,
+					'shops'=>$request->shops,
 					'password' => password_hash($request->password, PASSWORD_BCRYPT),
 					'is_admin' => ($request->has("admin")) ? 1 : 0,
 				]);

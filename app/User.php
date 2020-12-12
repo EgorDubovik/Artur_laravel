@@ -19,6 +19,8 @@ class User extends Authenticatable
         'location',
         'confirmed',
         'is_admin',
-        'created_at'
+        'created_at',
+        'shops',
+        'description',
     ];
 }

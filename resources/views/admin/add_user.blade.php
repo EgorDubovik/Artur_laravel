@@ -115,7 +115,7 @@
                                     </a>
                             </h5>
                             </div>
-                            <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#headingOne">
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#headingOne">
                                 <div class="card-body">
 
                                     <script type="text/javascript">
@@ -136,23 +136,57 @@
                                             @endforeach   
                                         ]
                                     </script>
-
-                                    <select>
-                                        <option>Select...</option>
-                                        @foreach($services as $service)
-                                        <optgroup label="{{$service->title}}">
-                                            @foreach($service->services as $pod_service)
-                                                <option data-prefix='{{$pod_service->prefix->prefix}}' data-price='{{$pod_service->price}}'>{{$pod_service->title}}</option>
-                                            @endforeach
-                                        </optgroup>
-                                        @endforeach
-                                    </select>
+                                    <div class="conteiner_select" id="container_select">
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="add_line">
+                                                <a href="#" onclick="addSelect();return false;">Add line</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-2"><b>Total:</b></div>
+                                        <div class="col-2"><b>$0.00</b></div>
+                                        <div class="col-2"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Save changes button-->
                         <button class="btn btn-primary" type="submit" type="button">Save User</button>
                     </form>
+                    <script type="text/javascript">
+                        window.onload = function(e){
+                            addSelect();
+                        }
+
+                        function addSelect(){
+                            var div = '<div class="select-line row"><div class="col-6">';
+                            var s = "<select class='form-control' onchange='count_pr(this)'><option>Select...</option>";
+                            for(var i=0;i<serives.length;i++){
+                                s +="<optgroup label='"+serives[i].title+"'>";
+                                for(var j = 0; j<serives[i].pod_service.length;j++){
+                                    s+="<option data-price='"+serives[i].pod_service[j].price+"'>"+serives[i].pod_service[j].title+"</option>";
+                                }
+                                s += "</optgroup>";
+                            }
+                            s+="</select>";
+
+                            div +=s;
+                            div += '</div><div class="col-2">per <span class="prefix">...</span></div><div class="col-2"><span class="price">$0.00</span></div><div class="col-2"><a href="#" class="remove_service" onClick="removeLine(this);return false">x</a></div>';
+                            $('#container_select').append(div);
+                        }
+
+                        function removeLine(d) {
+                            $(d).parent().parent().remove();
+                        }
+
+                        function count_pr(d){
+                            var op = $(d).find("option:selected");
+                            console.log(op.attr("data-price"));
+                            $(d).parent().parent().find("span.price").html("$"+op.attr("data-price"));
+                        }
+                    </script>
                 </div>
             </div>
         </div>
