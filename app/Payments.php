@@ -16,4 +16,8 @@ class Payments extends Model
     	'user_id',
     	'updated_at',
     ];
+
+    function userServices(){
+        return $this->hasMany('App\UserServices','id_payment');
+    }
 }

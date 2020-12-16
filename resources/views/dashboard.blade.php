@@ -64,17 +64,36 @@
 							<tbody>
 								@foreach($payments_peiding as $payment)
 								<!-- Invoice item 1-->
+								@foreach($payment->userServices as $userService)
 								<tr class="border-bottom">
 									<td>
-										<div class="font-weight-bold">SB Admin Pro</div>
-										<div class="small text-muted d-none d-md-block">A professional UI toolkit for designing admin dashboards and web applications</div>
+										<!-- <div class="font-weight-bold">SB Admin Pro</div> -->
+										<div class="small text-muted d-none d-md-block" style="margin-left: 15px">
+											{{$userService->service->title}}
+										</div>
 									</td>
-									<td class="text-right font-weight-bold">12</td>
 									<td class="text-right font-weight-bold">
-										<div class="h5 mb-0 font-weight-700 text-green">${{$payment->amount}}</div>
+										per {{$userService->service->prefix->prefix}}
+									</td>
+									<td class="text-right font-weight-bold">
+										<div class="h5 mb-0 font-weight-200 text-green">${{$userService->service->price}}</div>
 									</td>
 								</tr>
 								@endforeach
+								
+								@endforeach
+								<tr>
+                                    <td class="text-right pb-0" colspan="2"></td>
+                                    <td class="text-right pb-0"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right pb-0" colspan="2"></td>
+                                    <td class="text-right pb-0"></td>
+                                </tr>
+								<tr>
+                                    <td class="text-right pb-0" colspan="2"><div class="text-uppercase h4 font-weight-700 text-muted">Total Amount Due:</div></td>
+                                    <td class="text-right pb-0"><div class="h4 mb-0 font-weight-700 text-green">${{$total}}</div></td>
+                                </tr>
 								<!-- Invoice item 2-->
 							</tbody>
 						</table>

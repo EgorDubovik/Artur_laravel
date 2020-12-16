@@ -7,7 +7,7 @@ use App\User;
 use App\Payments;
 use App\Service;
 use App\Prefix;
-
+use App\UserServices;
 use Auth;
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -19,9 +19,12 @@ class AdminController extends Controller
 	public function addNewUser(Request $request){
 		$event = false;
 		$error = true;
+
 		if(isset($request->event)){
 			$event = true;
+
 			if($request->event=="add_new_user"){
+
 				$user = User::create([
 					'first_name' => $request->first_name,
 					'last_name'	=> $request->last_name,
@@ -35,16 +38,30 @@ class AdminController extends Controller
 				]);
 				if($user->save()){
 					$error = false;
-					$this->sendEmail($user,$request->password);
+					
+					//$this->sendEmail($user,$request->password);
 				}
-				if(isset($request->amount)){
+
+				if(count($request->service)>0){
+					$amount = 0;
+					foreach ($request->service as $ser) {
+						$srv = Service::find($ser);
+						$amount += $srv->price;
+					}
 					$payment = Payments::create([
 						'user_id'=>$user->id,
-						'amount' => $request->amount,
+						'amount' => $amount,
 						'status' => Payments::PENDING,
 					]);
 
+					foreach ($request->service as $serv) {
+						UserServices::create([
+							'id_service'=>$serv,
+							'id_payment'=>$payment->id,
+						]);
+					}
 				}
+				
 			}
 		}
 

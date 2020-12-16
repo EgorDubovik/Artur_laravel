@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Payments;
+use App\UserServices;
 use Auth;
 
 class DashBoardController extends Controller
@@ -16,7 +17,8 @@ class DashBoardController extends Controller
 
     	$payments_peiding = Payments::where([['user_id',Auth::user()->id],['status',Payments::PENDING]])->get();
     	$total = 0;
-    	foreach ($payments_peiding as $payment) {
+        
+        foreach ($payments_peiding as $payment) {
     		$total+=$payment->amount;
     	}
     	$payments_paid = Payments::where([['user_id',Auth::user()->id],['status',Payments::PAID]])->get();

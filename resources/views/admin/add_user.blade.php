@@ -128,7 +128,8 @@
                                                         {
                                                             title:'{{$pod_service->title}}',
                                                             prefix:'{{$pod_service->prefix->prefix}}',
-                                                            price : {{$pod_service->price}}
+                                                            price : {{$pod_service->price}},
+                                                            nd : {{$pod_service->id}}
                                                         },
                                                     @endforeach        
                                                 ]
@@ -146,7 +147,7 @@
                                             </div>
                                         </div>
                                         <div class="col-2"><b>Total:</b></div>
-                                        <div class="col-2"><b>$0.00</b></div>
+                                        <div class="col-2"><b id="total_price">$0.00</b></div>
                                         <div class="col-2"></div>
                                     </div>
                                 </div>
@@ -162,11 +163,11 @@
 
                         function addSelect(){
                             var div = '<div class="select-line row"><div class="col-6">';
-                            var s = "<select class='form-control' onchange='count_pr(this)'><option>Select...</option>";
+                            var s = "<select name='service[]' class='form-control' onchange='count_pr(this)'><option>Select...</option>";
                             for(var i=0;i<serives.length;i++){
                                 s +="<optgroup label='"+serives[i].title+"'>";
                                 for(var j = 0; j<serives[i].pod_service.length;j++){
-                                    s+="<option data-price='"+serives[i].pod_service[j].price+"'>"+serives[i].pod_service[j].title+"</option>";
+                                    s+="<option value="+serives[i].pod_service[j].nd+" data-prefix='"+serives[i].pod_service[j].prefix+"' data-price='"+serives[i].pod_service[j].price+"'>"+serives[i].pod_service[j].title+"</option>";
                                 }
                                 s += "</optgroup>";
                             }
@@ -179,12 +180,23 @@
 
                         function removeLine(d) {
                             $(d).parent().parent().remove();
+                            count_total();
                         }
 
                         function count_pr(d){
                             var op = $(d).find("option:selected");
                             console.log(op.attr("data-price"));
                             $(d).parent().parent().find("span.price").html("$"+op.attr("data-price"));
+                            $(d).parent().parent().find("span.prefix").html(op.attr("data-prefix"));
+                            count_total();
+                        }
+
+                        function count_total(){
+                            total = 0;
+                            $('.conteiner_select option:selected').each(function(){
+                                total += parseFloat($(this).attr("data-price"));
+                            });
+                            $('#total_price').html('$'+total);
                         }
                     </script>
                 </div>
