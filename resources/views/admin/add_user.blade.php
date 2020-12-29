@@ -127,8 +127,8 @@
                                                     @foreach($service->services as $pod_service)
                                                         {
                                                             title:'{{$pod_service->title}}',
-                                                            prefix:'{{$pod_service->prefix->prefix}}',
-                                                            price : {{$pod_service->price}},
+                                                            prefix:'{{((isset($pod_service->prefix->prefix)) ? $pod_service->prefix->prefix : "")}}',
+                                                            price : {{((isset($pod_service->price)) ? $pod_service->price : 0)}},
                                                             nd : {{$pod_service->id}}
                                                         },
                                                     @endforeach        
