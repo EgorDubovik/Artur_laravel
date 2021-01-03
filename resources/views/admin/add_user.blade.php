@@ -163,10 +163,12 @@
                                                 ]
                                             </script>
                                         @endforeach   
-
-<!--                                         <div class="col-2"><b>Total:</b></div>
+                                    <div class="row">
+                                        <div class="col-6"></div>
+                                        <div class="col-2"><b>Total:</b></div>
                                         <div class="col-2"><b id="total_price">$0.00</b></div>
-                                        <div class="col-2"></div> -->
+                                        <div class="col-2"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -175,12 +177,12 @@
                     </form>
                     <script type="text/javascript">
                         window.onload = function(e){
-                            fillSelect();
+                            //fillSelect();
                         }
 
                         function string_return (podservices){
                             var div = '<div class="select-line row"><div class="col-6">';
-                            var s = "<select name='service[]' class='form-control' onchange='count_pr(this)'><option>Select...</option>";
+                            var s = "<select name='service[]' class='form-control select_serv' onchange='count_pr(this)'><option>Select...</option>";
                             for(var i=0;i<podservices.length;i++){
                                 var serv = podservices[i];
                                 if(serv.pod_service){
@@ -223,16 +225,26 @@
 
                         function count_pr(d){
                             var op = $(d).find("option:selected");
-                            console.log(op.attr("data-price"));
                             $(d).parent().parent().find("span.price").html("$"+op.attr("data-price"));
-                            $(d).parent().parent().find("span.count").html('<input style="width:60px;" type="text" class="form-control" value="1"/>');
+                            $(d).parent().parent().find("span.count").html('<input style="width:60px;" type="text" class="form-control count_local" onblur="count_local_total(this)" value="1"/>');
+                            count_total();
+                        }
+                        function count_local_total(d){
+                            let count = parseInt($(d).val());
+                            let parent = $(d).closest('.select-line');
+                            let price = parent.find("option:selected").attr("data-price");
+                            let local_total = count*price;
+                            parent.find("span.price").html("$"+local_total);
                             count_total();
                         }
 
                         function count_total(){
-                            total = 0;
+                            let total = 0;
+                            
                             $('.conteiner_select option:selected').each(function(){
-                                total += parseFloat($(this).attr("data-price"));
+                                let count = $(this).parents('.select-line').find('input.count_local').val();
+                                let local_total = parseFloat($(this).attr("data-price"))*count;
+                                total += local_total;
                             });
                             $('#total_price').html('$'+total);
                         }
