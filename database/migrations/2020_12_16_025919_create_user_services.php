@@ -18,6 +18,7 @@ class CreateUserServices extends Migration
             $table->timestamps();
             $table->integer("id_service");
             $table->integer("id_payment");
+            $table->integer("count");
         });
     }
 

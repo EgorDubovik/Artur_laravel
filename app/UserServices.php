@@ -9,7 +9,8 @@ class UserServices extends Model
     protected $table = "user_services";
     protected $fillable = [
     	'id_service',
-    	'id_payment'
+    	'id_payment',
+    	'count',
     ];
 
     function service(){

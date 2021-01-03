@@ -232,7 +232,7 @@
                         function count_pr(d){
                             var op = $(d).find("option:selected");
                             $(d).parent().parent().find("span.price").html("$"+op.attr("data-price"));
-                            $(d).parent().parent().find("span.count").html('<input style="width:60px;" type="text" class="form-control count_local" onblur="count_local_total(this)" value="1"/>');
+                            $(d).parent().parent().find("span.count").html('<input style="width:60px;" type="text" name="count[]" class="form-control count_local" onblur="count_local_total(this)" value="1"/>');
                             count_total();
                         }
                         function count_local_total(d){

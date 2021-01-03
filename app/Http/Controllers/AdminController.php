@@ -44,9 +44,9 @@ class AdminController extends Controller
 
 				if(count($request->service)>0){
 					$amount = 0;
-					foreach ($request->service as $ser) {
+					foreach ($request->service as $in => $ser) {
 						$srv = Service::find($ser);
-						$amount += $srv->price;
+						$amount += $srv->price*$request->count[$in];
 					}
 					$payment = Payments::create([
 						'user_id'=>$user->id,
@@ -54,10 +54,11 @@ class AdminController extends Controller
 						'status' => Payments::PENDING,
 					]);
 
-					foreach ($request->service as $serv) {
+					foreach ($request->service as $in => $serv) {
 						UserServices::create([
 							'id_service'=>$serv,
 							'id_payment'=>$payment->id,
+							'count'=>$request->count[$in],
 						]);
 					}
 				}
@@ -66,7 +67,7 @@ class AdminController extends Controller
 		}
 
 		$services = Service::whereNull('id_service')->get();
-		
+
 		return view("admin.add_user")->with(['event'=>$event,'error'=>$error,'services'=>$services]);
 	}
 
