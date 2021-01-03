@@ -19,7 +19,7 @@ class Service extends Model
     	return $this->belongsTo('App\Prefix','id_prefix');
     }
 
-    function services(){
+    function pod_services(){
     	return $this->hasMany('App\Service','id_service');
     }
 }
