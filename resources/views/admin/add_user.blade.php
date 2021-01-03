@@ -177,7 +177,13 @@
                     </form>
                     <script type="text/javascript">
                         window.onload = function(e){
-                            //fillSelect();
+                            $(document).keypress(
+                              function(event){
+                                if (event.which == '13') {
+                                  event.preventDefault();
+                                }
+                            });
+                            
                         }
 
                         function string_return (podservices){
