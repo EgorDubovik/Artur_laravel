@@ -22,4 +22,8 @@ class Service extends Model
     function pod_services(){
     	return $this->hasMany('App\Service','id_service');
     }
+
+    function parent(){
+    	return $this->hasOne('App\Service','id','id_service');
+    }
 }

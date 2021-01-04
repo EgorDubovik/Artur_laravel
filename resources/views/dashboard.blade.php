@@ -57,7 +57,8 @@
 							<thead class="border-bottom">
 								<tr class="small text-uppercase text-muted">
 									<th scope="col">Description</th>
-									<th class="text-right" scope="col">Sqfeet</th>
+									<th class="text-right" scope="col">Count</th>
+									<th class="text-right" scope="col">Price per one</th>
 									<th class="text-right" scope="col">Amount</th>
 								</tr>
 							</thead>
@@ -67,16 +68,19 @@
 								@foreach($payment->userServices as $userService)
 								<tr class="border-bottom">
 									<td>
-										<!-- <div class="font-weight-bold">SB Admin Pro</div> -->
+										<div class="font-weight-bold">{{$userService->service->parent->title}}</div>
 										<div class="small text-muted d-none d-md-block" style="margin-left: 15px">
 											{{$userService->service->title}}
 										</div>
 									</td>
 									<td class="text-right font-weight-bold">
-										per {{$userService->service->prefix->prefix}}
+										{{$userService->count}}
 									</td>
 									<td class="text-right font-weight-bold">
 										<div class="h5 mb-0 font-weight-200 text-green">${{$userService->service->price}}</div>
+									</td>
+									<td class="text-right font-weight-bold">
+										<div class="h5 mb-0 font-weight-200 text-green">${{($userService->service->price*$userService->count)}}</div>
 									</td>
 								</tr>
 								@endforeach
@@ -91,7 +95,7 @@
                                     <td class="text-right pb-0"></td>
                                 </tr>
 								<tr>
-                                    <td class="text-right pb-0" colspan="2"><div class="text-uppercase h4 font-weight-700 text-muted">Total Amount Due:</div></td>
+                                    <td class="text-right pb-0" colspan="3"><div class="text-uppercase h4 font-weight-700 text-muted">Total Amount Due:</div></td>
                                     <td class="text-right pb-0"><div class="h4 mb-0 font-weight-700 text-green">${{$total}}</div></td>
                                 </tr>
 								<!-- Invoice item 2-->
