@@ -118,8 +118,13 @@ class AdminController extends Controller
 
 	public function viewUserInfo(Request $request,$id){
 		$user = User::find($id);
-		
 		return view("admin.user")->with(["user"=>$user]);
+	}
+
+	public function makepayment(Request $request,$id){
+		$user = User::find($id);
+		$services = Service::whereNull('id_service')->get();
+		return view("admin.makepayment")->with(["user"=>$user,"services"=>$services]);
 	}
 
 }

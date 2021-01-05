@@ -64,7 +64,18 @@
 				</div>
 
 				<div class="col-6">
-					d
+					<div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" style="padding-left: 20px;">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Member since:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{$user->created_at}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 				</div>
 
 			</div>
@@ -73,7 +84,7 @@
 	<div class="card card-header-actions mb-4">
         <div class="card-header">
         	Billing History
-        	<a class="btn btn-sm btn-primary" href="#" style="color:#fff">Make new payment</a>
+        	<a class="btn btn-sm btn-primary" href="/admin/makepayment/{{$user->id}}" style="color:#fff">Make new payment</a>
         </div>
         <div class="card-body p-0">
             <!-- Billing history table-->
