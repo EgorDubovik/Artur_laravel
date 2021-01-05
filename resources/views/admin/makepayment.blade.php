@@ -11,6 +11,9 @@
 				</div>
 				<div class="card-body">
 					<form method="post">
+						@csrf
+						<input type="hidden" name="event" value="new_payment">
+						<input type="hidden" name="user_id" value="{{$user->id}}">
 						<!-- Begin make payment -->
 		                @include('layout/makepayment')
 		                <!-- end make payment -->
@@ -20,7 +23,11 @@
 			</div>
 		</div>
 		<div class="col-4">
-			Dop information
+			@if(isset($is_event) && $is_event)
+				<div class="alert alert-success" role="alert">
+				    Successful added
+				</div>
+			@endif
 		</div>
 	</div>
 </div>						
