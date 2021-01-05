@@ -116,4 +116,10 @@ class AdminController extends Controller
 		return redirect('admin/users');
 	}
 
+	public function viewUserInfo(Request $request,$id){
+		$user = User::find($id);
+		
+		return view("admin.user")->with(["user"=>$user]);
+	}
+
 }

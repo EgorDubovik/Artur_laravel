@@ -164,7 +164,7 @@
 								<tr>
 									<td>Надо будет как называть плотежи, тоесть за что они будут платить</td>
 									<td>{{$p->updated_at}}</td>
-									<td>{{$p->status}}</td>
+									<td><span class="badge badge-{{(($p->status=='PAID') ? 'success' : 'light')}}">{{$p->status}}<span></td>
 									<td>${{$p->amount}}</td>
 								</tr>
 								@endforeach

@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::get("/admin/addNewUser","AdminController@addNewUser");
 		Route::post("/admin/addNewUser","AdminController@addNewUser");
 		Route::get("/admin/users/remove/{id}","AdminController@removeUser");
+		Route::get("/admin/user/{id}","AdminController@viewUserInfo");
 	});
 	Route::get("/dashboard","DashBoardController@dashboard");
 	Route::get("/account","AccountController@account");

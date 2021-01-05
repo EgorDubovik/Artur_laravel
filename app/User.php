@@ -23,4 +23,8 @@ class User extends Authenticatable
         'shops',
         'description',
     ];
+
+    function payments(){
+        return $this->hasMany('App\Payments')->orderBy("created_at","desc");
+    }
 }

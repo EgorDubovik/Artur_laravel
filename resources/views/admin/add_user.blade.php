@@ -115,7 +115,7 @@
                                     </a>
                             </h5>
                             </div>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#headingOne">
+                            <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#headingOne">
                                 <div class="card-body">
 
                                     <script type="text/javascript">
@@ -262,21 +262,7 @@
             <div class="card mb-4">
                 <div class="card-header">Information</div>
                 <div class="card-body">
-                    <form method="post">
-                        @csrf
-                        <label class="small mb-1" for="inputPrice">Amount due</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-light">$</span>
-                            </div>
-                            <input type="text" id="inputPrice" class="form-control" placeholder="Enter Amount" name="amount">
-                            
-                            
-
-                        </div>
-                       
-
-                    </form>
+                    
                 </div>
             </div>
 
