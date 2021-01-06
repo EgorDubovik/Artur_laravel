@@ -36,7 +36,7 @@
 							<td><a href="/admin/user/{{$auser->id}}" style="color: #585858;font-weight: bold"> {{$auser->first_name}} {{$auser->last_name}}</a></td>
 							<td>{{$auser->email}}</td>
 							<td>{{$auser->created_at}}</td>
-							<td>$0,0</td>
+							<td>${{$auser->samary}}</td>
 							<td>
 								<div class="badge badge-primary badge-pill">Active</div>
 							</td>

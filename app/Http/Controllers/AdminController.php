@@ -74,6 +74,16 @@ class AdminController extends Controller
 	public function listUsers(Request $request){
 		
 		$users = User::where([["id","<>",Auth::user()->id],['id','<>',1],['confirmed',1]])->orderBy("id",'desc')->get();
+
+		foreach ($users as $user) {
+			$payments = Payments::where("user_id",$user->id)->get();
+
+			$amount = 0;
+			foreach ($payments as $payment) {
+				$amount+=$payment->amount;
+			}
+			$user->samary = $amount;
+		}
 		
 		return view("admin.users")->with(["users"=>$users]);
 	}
