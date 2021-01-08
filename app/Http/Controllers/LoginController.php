@@ -31,7 +31,8 @@ class LoginController extends Controller
                 ])->first();
                 if($user){
                     if(Hash::check($request->password,$user->password)){
-                        Auth::login($user);
+                        $rem = ($request->remember_me) ? true : false;
+                        Auth::login($user,$rem);
                         return redirect('dashboard');
                     } else {
                         return redirect("login");    

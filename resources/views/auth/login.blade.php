@@ -40,7 +40,7 @@
                                             <!-- Form Group (remember password checkbox)-->
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
+                                                    <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" name="remember_me" />
                                                     <label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
                                                 </div>
                                             </div>
