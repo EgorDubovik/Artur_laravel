@@ -171,4 +171,10 @@ class AdminController extends Controller
 		return view("admin.makepayment")->with(["user"=>$user,"services"=>$services,"is_event"=>$is_event]);
 	}
 
+	public function pricelist(Request $request){
+
+		$services = Service::whereNull('id_service')->get();
+		return view("admin.pricelist")->with(["services"=>$services]);
+	}
+
 }
