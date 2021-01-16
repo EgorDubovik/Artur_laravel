@@ -58,3 +58,7 @@ i.mr{
 .select-line{
 	margin-top: 10px;
 }
+
+table.mouseover tr.over td{
+	background: #eaeaea;
+}
