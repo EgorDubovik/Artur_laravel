@@ -177,4 +177,12 @@ class AdminController extends Controller
 		return view("admin.pricelist")->with(["services"=>$services]);
 	}
 
+
+	public function pricelistRemove(Request $request,$id){
+
+		Service::find($id)->delete();
+		
+		$services = Service::whereNull('id_service')->get();
+		return view("admin.pricelist")->with(["services"=>$services]);		
+	}
 }

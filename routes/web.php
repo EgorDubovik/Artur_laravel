@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::get("/admin/makepayment/{id}","AdminController@makepayment");
 		Route::post("/admin/makepayment/{id}","AdminController@makepayment");
 		Route::get("/admin/pricelist","AdminController@pricelist");
+		Route::get("/admin/pricelist/remove/{id}","AdminController@pricelistRemove");
 	});
 	Route::get("/dashboard","DashBoardController@dashboard");
 	Route::get("/account","AccountController@account");
