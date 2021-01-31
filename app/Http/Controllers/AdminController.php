@@ -24,25 +24,25 @@ class AdminController extends Controller
 			$event = true;
 
 			if($request->event=="add_new_user"){
-
-				$user = User::create([
-					'first_name' => $request->first_name,
-					'last_name'	=> $request->last_name,
-					'email' => $request->email,
-					'phone_number' => null,
-					'confirmed'=>1,
-					'description'=>$request->description,
-					'shops'=>$request->shops,
-					'password' => password_hash($request->password, PASSWORD_BCRYPT),
-					'is_admin' => ($request->has("admin")) ? 1 : 0,
-				]);
-				if($user->save()){
-					$error = false;
-					
-					//$this->sendEmail($user,$request->password);
+				if(!is_null($request->email)){
+					$user = User::create([
+						'first_name' => $request->first_name,
+						'last_name'	=> $request->last_name,
+						'email' => $request->email,
+						'phone_number' => null,
+						'confirmed'=>1,
+						'description'=>$request->description,
+						'shops'=>$request->shops,
+						'password' => password_hash($request->password, PASSWORD_BCRYPT),
+						'is_admin' => ($request->has("admin")) ? 1 : 0,
+					]);
+					if($user->save()){
+						$error = false;
+						
+						//$this->sendEmail($user,$request->password);
+					}
 				}
-
-				if(count($request->service)>0){
+				if(!is_null($request->service) && count($request->service)>0){
 					$amount = 0;
 					foreach ($request->service as $in => $ser) {
 						$srv = Service::find($ser);
