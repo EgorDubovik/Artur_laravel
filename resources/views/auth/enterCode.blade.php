@@ -25,7 +25,7 @@
                                         <!-- Login form-->
                                         <form method="post" action="enterCode">
                                           @csrf
-                                            <input type="hidden" name="phone_number" value="{{$phone_number}}">
+                                            <input type="hidden" name="phone_number" value="{{$email}}">
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Verification code</label>
@@ -59,15 +59,3 @@
         <script src="{{ URL::asset('js/scripts.js')}}"></script>
     </body>
 </html>
-
-
-<!--         <form method="post" action="enterCode">
-        	@csrf
-          <div class="form-group">
-            <label for="loginAdminPassword">Enter code</label>
-            <input type="hidden" name="phone_number" value="{{$phone_number}}">
-            <input class="form-control" type="text" name="code" placeholder="Enter code" value="{{$code}}">
-          </div>
-          <button type="submit" class="btn btn-primary btn-block" >Enter</button>
-        </form>
- -->

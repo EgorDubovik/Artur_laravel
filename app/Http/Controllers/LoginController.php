@@ -52,5 +52,13 @@ class LoginController extends Controller
     	Auth::logout();
     	return redirect("login");
     }
+
+    public function signup(Request $request){
+
+        return view('auth.signup');
+
+
+        //return view('auth.enterCode')->with(["email"=>"example@gmail.com","code"=>"1234"]);
+    }
     
 }
