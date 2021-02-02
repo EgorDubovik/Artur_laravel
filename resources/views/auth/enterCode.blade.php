@@ -28,7 +28,7 @@
                                             <input type="hidden" name="phone_number" value="{{$email}}">
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress">Verification code</label>
+                                                <label class="small mb-1" for="inputEmailAddress">Verification code for: {{Session::get('email')}}</label>
                                                 <input class="form-control py-4" id="inputEmailAddress" type="text" name="code" placeholder="Enter code" value="{{$code}}" />
                                             </div>
                                             <!-- Form Group (login box)-->

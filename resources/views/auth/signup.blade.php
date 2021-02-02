@@ -23,30 +23,38 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Create Account</h3></div>
                                     <div class="card-body">
+                                        @if($errors->any())
+                                            <ul style="margin-bottom: 20px;color: #ff6d5f">
+                                            @foreach($errors->all() as $error)
+                                                <li>{{$error}}</li>
+                                            @endforeach
+                                            </ul>
+                                        @endif
                                         <!-- Registration form-->
-                                        <form>
+                                        <form method="post">
                                              @csrf
+                                            <input type="hidden" name="event" value="signup">
                                             <!-- Form Row-->
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <!-- Form Group (first name)-->
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputFirstName">First Name</label>
-                                                        <input class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter first name">
+                                                        <input class="form-control py-4" name="first_name" id="inputFirstName" type="text" placeholder="Enter first name">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <!-- Form Group (last name)-->
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputLastName">Last Name</label>
-                                                        <input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name">
+                                                        <input class="form-control py-4" name="last_name" id="inputLastName" type="text" placeholder="Enter last name">
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- Form Group (email address)            -->
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address">
+                                                <input class="form-control py-4" name="email" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address">
                                             </div>
                                             <!-- Form Row    -->
                                             <div class="form-row">
@@ -54,23 +62,23 @@
                                                     <!-- Form Group (password)-->
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputPassword">Password</label>
-                                                        <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password">
+                                                        <input class="form-control py-4" name="pass1" id="inputPassword" type="password" placeholder="Enter password">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <!-- Form Group (confirm password)-->
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputConfirmPassword">Confirm Password</label>
-                                                        <input class="form-control py-4" id="inputConfirmPassword" type="password" placeholder="Confirm password">
+                                                        <input class="form-control py-4" name="pass2" id="inputConfirmPassword" type="password" placeholder="Confirm password">
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- Form Group (create account submit)-->
-                                            <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block" href="auth-login-basic.html">Create Account</a></div>
+                                            <div class="form-group mt-4 mb-0"><button type="submit" class="btn btn-primary btn-block">Create Account</button></div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="auth-login-basic.html">Have an account? Go to login</a></div>
+                                        <div class="small"><a href="/login">Have an account? Go to login</a></div>
                                     </div>
                                 </div>
                             </div>
