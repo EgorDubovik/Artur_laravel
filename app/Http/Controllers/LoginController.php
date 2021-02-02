@@ -79,18 +79,22 @@ class LoginController extends Controller
                     'pass2'=> 'required|same:pass1',
                 ],$messages);
 
-                // $user = User::create([
-                //     "first_name"=>$request->first_name,
-                //     "last_name"=>$request->last_name,
-                //     "email"=>$request->email,
-                //     "confirmed"=>0,
-                //     'password' => password_hash($request->pass1, PASSWORD_BCRYPT),
-                //     'is_admin' => 0,
-                // ]);
+                $user = User::create([
+                    "first_name"=>$request->first_name,
+                    "last_name"=>$request->last_name,
+                    "email"=>$request->email,
+                    "confirmed"=>0,
+                    'password' => password_hash($request->pass1, PASSWORD_BCRYPT),
+                    'is_admin' => 0,
+                ]);
 
                 if(true){
                     // Проверить на наличие по времени
                     $code = mt_rand(1000, 9999);
+                    $flushCodes = VerificationCode::where("user_email",$request->email)->get();
+                    foreach ($flushCodes as $fcode) {
+                        $fcode->delete();
+                    }
                     VerificationCode::create([
                         "user_email"=>$request->email,
                         "code"=>$code,
@@ -106,10 +110,27 @@ class LoginController extends Controller
     }
 
     public function enterCode(Request $request){
-        if(null!==Session::get("email"))
+        if(isset($request->code)){
+            $user = User::where(["email"=>$request->email])->first();
+            $dbcode = VerificationCode::where("user_email",$request->email)->first();
+            if($dbcode->code==$request->code){
+                $user->confirmed = 1;
+                $user->save();
+                $dbcode->delete();
+                Auth::login($user);
+                return redirect('dashboard');
+            } else {
+                return view("auth.enterCode")->with(["email"=>$request->email,"code"=>$request->code]);    
+            }
+        } else {
+            if(null!==Session::get("email"))
             return view("auth.enterCode")->with(["email"=>Session::get("email"),"code"=>Session::get("code")]);
-        else
-            return redirect("/signup");
+            else
+                return redirect("/signup");    
+        }
+
+
+        
     }
     
 }

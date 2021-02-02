@@ -23,12 +23,12 @@
                                     <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
                                         <!-- Login form-->
-                                        <form method="post" action="enterCode">
+                                        <form method="post">
                                           @csrf
-                                            <input type="hidden" name="phone_number" value="{{$email}}">
+                                            <input type="hidden" name="email" value="{{$email}}">
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress">Verification code for: {{Session::get('email')}}</label>
+                                                <label class="small mb-1" for="inputEmailAddress">Verification code for: {{$email}}</label>
                                                 <input class="form-control py-4" id="inputEmailAddress" type="text" name="code" placeholder="Enter code" value="{{$code}}" />
                                             </div>
                                             <!-- Form Group (login box)-->

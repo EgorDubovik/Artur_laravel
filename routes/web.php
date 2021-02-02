@@ -22,6 +22,7 @@ Route::get("/logout","LoginController@logOut");
 Route::get("/signup","LoginController@signup");
 Route::post("/signup","LoginController@signup");
 Route::get("/code","LoginController@enterCode")->name("code");
+Route::post("/code","LoginController@enterCode");
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::group(['middleware'=>['admin']],function(){
