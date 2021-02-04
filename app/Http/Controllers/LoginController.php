@@ -90,15 +90,9 @@ class LoginController extends Controller
 
                 if(true){
                     // Проверить на наличие по времени
-                    $code = mt_rand(1000, 9999);
-                    $flushCodes = VerificationCode::where("user_email",$request->email)->get();
-                    foreach ($flushCodes as $fcode) {
-                        $fcode->delete();
-                    }
-                    VerificationCode::create([
-                        "user_email"=>$request->email,
-                        "code"=>$code,
-                    ]);    
+                    
+                    $code = $this->createAndSendCode($request->email);
+
                     return redirect("/code")->with(["email"=>$request->email,"code"=>$code]);
                 } else {
                     return view('auth.signup')->withError("Something went wrong");
@@ -107,6 +101,24 @@ class LoginController extends Controller
             }
         }
         return view('auth.signup');
+    }
+
+    private function createAndSendCode($email){
+        $code = mt_rand(1000, 9999);
+        $flushCodes = VerificationCode::where("user_email",$email)->get();
+        foreach ($flushCodes as $fcode) {
+            $fcode->delete();
+        }
+        VerificationCode::create([
+            "user_email"=>$email,
+            "code"=>$code,
+        ]);   
+
+        // send code 
+        $text = "Email verification code: <b>".$code."</b><br>
+                If you received an account verification email in error, it's likely that another user accidentally entered your email while trying to recover their own email account. If you didn't initiate the request, you don't need to take any further action. You can simply disregard the verification email, and the account won't be verified.";
+
+        return $code;
     }
 
     public function enterCode(Request $request){
@@ -123,14 +135,22 @@ class LoginController extends Controller
                 return view("auth.enterCode")->with(["email"=>$request->email,"code"=>$request->code]);    
             }
         } else {
-            if(null!==Session::get("email"))
+            //if(null!==Session::get("email"))
             return view("auth.enterCode")->with(["email"=>Session::get("email"),"code"=>Session::get("code")]);
-            else
-                return redirect("/signup");    
+            // else
+            //     return redirect("/signup");    
+        }
+    }
+
+    public function resendcode(Request $request){
+
+        if(isset($request->email)){
+            $code = $this->createAndSendCode($request->email);
+            return redirect("/code")->with(["email"=>$request->email,"code"=>$code]);
+        } else {
+            return redirect("/signup");   
         }
 
-
-        
     }
     
 }
