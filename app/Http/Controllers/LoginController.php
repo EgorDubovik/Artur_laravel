@@ -65,6 +65,16 @@ class LoginController extends Controller
         if(isset($request->event)){
 
             if($request->event=="signup"){
+                if(isset($request->email)){
+                    $userCheck = User::where([
+                        ["email",$request->email],
+                        ["confirmed",0],
+                    ])->first();
+                    if($userCheck){
+                        $userCheck->delete();
+                    }
+                }
+
                 $messages = [
                     'same' => 'The passwords did not match',
                     'first_name.required' => 'The First name field is required.',
