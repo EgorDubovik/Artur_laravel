@@ -163,5 +163,9 @@ class LoginController extends Controller
         }
 
     }
+
+    public function resetpassword(Request $request){
+        return view("auth.resetpassword");
+    }
     
 }
