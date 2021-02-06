@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Hash;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use Illuminate\Support\Str;
 
 
 class LoginController extends Controller
@@ -165,6 +166,16 @@ class LoginController extends Controller
     }
 
     public function resetpassword(Request $request){
+        if(isset($request->event)){
+            if($request->event=="resetpassword"){
+                $user = User::find("email",$request->email);
+                if($user){
+                    // make secrert link
+                    $rand = Str::random(52);
+                    $link = "http://warhouse.loc/restpass/".$rand;
+                }
+            }
+        }
         return view("auth.resetpassword");
     }
     
