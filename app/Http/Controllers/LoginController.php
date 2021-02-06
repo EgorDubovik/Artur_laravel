@@ -34,6 +34,7 @@ class LoginController extends Controller
             if($request->event == "login"){
                 $user = User::where([
                     ["email",$request->email],
+                    ["confirmed",1],
                 ])->first();
                 if($user){
                     if(Hash::check($request->password,$user->password)){
