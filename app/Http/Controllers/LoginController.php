@@ -196,20 +196,31 @@ class LoginController extends Controller
         $issetEvent = false;
         $error = true;
 
+        $restcode = Resetpasswordcode::where(["code"=>$code])->first();
         if($request->has("event")){
+            $issetEvent = true;
             if($request->event=="enternewpass"){
-
-                //!!!!!!!!
-
+                if($restcode){
+                    $pass1 = $request->pass1;
+                    $pass2 = $request->pass2;
+                    if($pass1==$pass2){
+                        if(strlen($pass1)>=8){
+                            $user = User::find($restcode->user_id);
+                            $user->password = password_hash($pass1, PASSWORD_BCRYPT);
+                            $user->save();
+                            $restcode->delete();
+                            $error = false;
+                        }
+                    }
+                }
             }
         }
 
-        $restcode = Resetpasswordcode::where(["code"=>$code])->first();
         if($restcode){
 
-            return view("auth.enternewpassword")->with(["email"=>$restcode->user_id,"code"=>$code]);
+            return view("auth.enternewpassword")->with(["email"=>$restcode->user_id,"code"=>$code,"issetEvent"=>$issetEvent,"error"=>$error]);
         } else {
-            return view("auth.resetpassword")->with(["issetEvent"=>true,"error"=>true,"link"=>""]);
+            return view("auth.resetpassword")->with(["issetEvent"=>false,"error"=>false,"link"=>""]);
         }
     }
 }

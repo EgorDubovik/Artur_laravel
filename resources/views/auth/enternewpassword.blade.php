@@ -23,7 +23,14 @@
                                     <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Reset Password</h3></div>
                                     <div class="card-body">
                                         <!-- Login form-->
-                                        
+                                        @if(isset($issetEvent) && $issetEvent && !$error)
+                                            текст об успешном изменени пароля и ссылка на логин что бы попробовать войти
+                                        @else
+                                            @if(isset($issetEvent) && $issetEvent)
+                                                @if($error)
+                                                    Samething went wrong!
+                                                @endif
+                                            @endif
                                         <form method="post" action="/restpass/{{$code}}">
                                           @csrf
                                             <input type="hidden" name="event" value="enternewpass">
@@ -44,7 +51,7 @@
                                                 <button type="submit" class="btn btn-primary btn-block" > Reset</button>
                                             </div>
                                         </form>
-                                        
+                                        @endif
                                     </div>
                                    
                                 </div>
