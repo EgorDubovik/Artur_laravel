@@ -59,7 +59,12 @@ class AccountController extends Controller
         $transaction = false;
         $isset_tr = false;
         if($request->amount>0){
+<<<<<<< HEAD
             if($request->has("cardnonce"))
+=======
+
+            if($request->has("cardnonce") && $request->cardnonce!="def")
+>>>>>>> just_payments
                 $transaction = Square::charge([
                     'amount' => (int)$request->amount, 
                     'source_id' => $request->cardnonce,
