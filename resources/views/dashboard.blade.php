@@ -35,7 +35,7 @@
 						</div>
 						<div class="card-body">
 							<div class="alert alert-success" role="alert">
-								This is a success alert—check it out!
+								Successful payment
 							</div>
 						</div>
 					</div>
@@ -123,7 +123,7 @@
 							<div class="third" id="sq-expiration-date"></div>
 							<div class="third" id="sq-cvv"></div>
 							<div class="third" id="sq-postal-code"></div>
-							<button  id="sq-creditcard" class="button-credit-card" onclick="onGetCardNonce(event);">Pay total ${{$total}}.00</button>
+							<button  id="sq-creditcard" class="button-credit-card" onclick="onGetCardNonce(event);">Pay total ${{$total}}</button>
 						</div>
 						<input type="hidden" id="amount" name="amount" value="{{$total*100}}">
 						<input type="hidden" id="cardnonce" value="def" name="cardnonce">

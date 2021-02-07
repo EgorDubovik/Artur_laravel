@@ -12,17 +12,7 @@
             <div class="card mb-4">
                 <div class="card-header">Account Details</div>
                 <div class="card-body">
-                    @if(isset($event) && $event)
-                        @if($error)
-                            <div class="alert alert-danger" role="alert">
-                                Samething went wrong !!!
-                            </div> 
-                        @else 
-                            <div class="alert alert-success" role="alert">
-                                Save successful
-                            </div>
-                        @endif
-                    @endif
+                   
                     <form method="post">
                         @csrf
                         <input type="hidden" name="event" value="add_new_user">
@@ -134,7 +124,25 @@
             <div class="card mb-4">
                 <div class="card-header">Information</div>
                 <div class="card-body">
-                    
+                     @if(isset($event) && $event)
+                        @if($error)
+                            <div class="alert alert-danger" role="alert">
+                                Samething went wrong !!!
+                            </div> 
+                        @else 
+                            <div class="alert alert-success" role="alert">
+                                Save successful
+                            </div>
+                        @endif
+                    @endif
+
+                    @if($errors->any())
+                        <ul style="margin-bottom: 20px;color: #ff6d5f">
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                        </ul>
+                    @endif
                 </div>
             </div>
 

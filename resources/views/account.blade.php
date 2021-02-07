@@ -113,8 +113,8 @@
                                 <input class="form-control" id="inputnewPassword" name="new_password" type="password" placeholder="Enter your new password" />
                             </div>
                             <div class="form-row">
-                                <label class="small mb-1" for="inputnewPassword2">Confirme new password</label>
-                                <input class="form-control" id="inputnewPassword2" name="new_password2" type="password" placeholder="Confirme your new password" />
+                                <label class="small mb-1" for="inputnewPassword2">Confirm new password</label>
+                                <input class="form-control" id="inputnewPassword2" name="new_password2" type="password" placeholder="Confirm your new password" />
                                 
                             </div>
                         </div>
