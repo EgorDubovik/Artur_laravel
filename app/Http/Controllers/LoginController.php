@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\VerificationCode;
+use App\Resetpasswordcode;
 use Auth;
 use Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -166,17 +167,49 @@ class LoginController extends Controller
     }
 
     public function resetpassword(Request $request){
+        $issetEvent = false;
+        $error = true;
+        $link = "";
         if(isset($request->event)){
+            $issetEvent = true;
             if($request->event=="resetpassword"){
-                $user = User::find("email",$request->email);
+                $user = User::where(["email"=>$request->email])->first();
                 if($user){
                     // make secrert link
-                    $rand = Str::random(52);
-                    $link = "http://warhouse.loc/restpass/".$rand;
-                }
+                    $code = Str::random(52);
+                    $link = "http://warhouse.loc/restpass/".$code;
+
+                    Resetpasswordcode::updateOrCreate(
+                        ["user_id"=>$user->id],
+                        ["code"=>$code]
+                    );
+                    $error=false;
+
+                } 
             }
         }
-        return view("auth.resetpassword");
+        return view("auth.resetpassword")->with(["issetEvent"=>$issetEvent,"error"=>$error,"link"=>$link]);
     }
     
+    public function restpass(Request $request,$code)
+    {
+        $issetEvent = false;
+        $error = true;
+
+        if($request->has("event")){
+            if($request->event=="enternewpass"){
+
+                //!!!!!!!!
+
+            }
+        }
+
+        $restcode = Resetpasswordcode::where(["code"=>$code])->first();
+        if($restcode){
+
+            return view("auth.enternewpassword")->with(["email"=>$restcode->user_id,"code"=>$code]);
+        } else {
+            return view("auth.resetpassword")->with(["issetEvent"=>true,"error"=>true,"link"=>""]);
+        }
+    }
 }

@@ -26,6 +26,8 @@ Route::post("/code","LoginController@enterCode");
 Route::get("/resendcode","LoginController@resendcode");
 Route::get("/resetpassword","LoginController@resetpassword");
 Route::post("/resetpassword","LoginController@resetpassword");
+Route::get("/restpass/{code}","LoginController@restpass");
+Route::post("/restpass/{code}","LoginController@restpass");
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::group(['middleware'=>['admin']],function(){

@@ -23,20 +23,20 @@
                                     <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Reset Password</h3></div>
                                     <div class="card-body">
                                         <!-- Login form-->
-                                        @if(isset($issetEvent) && $issetEvent)
-                                            @if($error)
-                                                Samething went wrong!
-                                            @else 
-                                                <a href="{{$link}}">{{$link}}</a>
-                                            @endif
-                                        @else
-                                        <form method="post" action="/resetpassword">
+                                        
+                                        <form method="post" action="/restpass/{{$code}}">
                                           @csrf
-                                            <input type="hidden" name="event" value="resetpassword">
+                                            <input type="hidden" name="event" value="enternewpass">
+                                            <input type="hidden" name="pamk" value="{{$email}}">
+                                            <input type="hidden" name="code" value="{{$code}}">
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="text" name="email" placeholder="Enter email" />
+                                                <input class="form-control py-4" id="inputEmailAddress" type="password" name="pass1" placeholder="Enter new password" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="inputEmailAddress2">Email</label>
+                                                <input class="form-control py-4" id="inputEmailAddress2" type="password" name="pass2" placeholder="Confirm new password" />
                                             </div>
                                             <!-- Form Group (login box)-->
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
@@ -44,7 +44,7 @@
                                                 <button type="submit" class="btn btn-primary btn-block" > Reset</button>
                                             </div>
                                         </form>
-                                        @endif
+                                        
                                     </div>
                                    
                                 </div>
