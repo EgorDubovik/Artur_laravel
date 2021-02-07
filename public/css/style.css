@@ -36,3 +36,29 @@ i.mr{
 	color: #ccc;
 	text-decoration: none;
 }
+
+.remove_service{
+	width: 30px;
+    height: 30px;
+    display: block;
+    color: #ff6666;
+    text-align: center;
+    padding-top: 4px;
+}
+.remove_service:hover{
+	color: red;
+}
+.add_line{
+	padding-top: 10px;
+    padding-left: 6px;
+}
+.add_line a{
+	color: #229c26;
+}
+.select-line{
+	margin-top: 10px;
+}
+
+table.mouseover tr.over td{
+	background: #eaeaea;
+}

@@ -90,25 +90,43 @@
                         </script>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label class="small mb-1" for="inputPrice">Amount due</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-light">$</span>
-                                    </div>
-                                    <input type="text" id="inputPrice" class="form-control" placeholder="Enter Amount" name="amount">
-                                    
-                                </div>
+                                <label class="small mb-1" for="text_description">Description</label>
+                                <textarea class="form-control" id="text_description" name="description"></textarea>
                             </div>
                             <div class="form-group col-md-6">
-                                <div class="custom-control custom-checkbox" style="padding-top: 31px;padding-left: 100px">
+                                
+                                <label class="small mb-1" for="text_shops">Shops</label>
+                                <textarea class="form-control" id="text_shops" name="shops"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group" style="padding-left: 20px;">
+                                <div class="custom-control custom-checkbox" >
                                     <input class="custom-control-input" id="customCheck2" type="checkbox" name="admin">
                                     <label class="custom-control-label" for="customCheck2">Super admin permissions</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" style="margin-bottom: 20px;">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Выставить счет сразу...
+                                    </a>
+                            </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#headingOne">
+                                <div class="card-body">
+                                    <!-- Begin make payment -->
+                                    @include('layout/makepayment')
+                                    <!-- end make payment -->
                                 </div>
                             </div>
                         </div>
                         <!-- Save changes button-->
                         <button class="btn btn-primary" type="submit" type="button">Save User</button>
                     </form>
+                    
                 </div>
             </div>
         </div>
@@ -116,7 +134,7 @@
             <div class="card mb-4">
                 <div class="card-header">Information</div>
                 <div class="card-body">
-                    Тут будет потом кокаянибуть дополнительная информация
+                    
                 </div>
             </div>
 

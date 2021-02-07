@@ -27,6 +27,15 @@
             <div class="card mb-4">
                 <div class="card-header">Account Details</div>
                 <div class="card-body">
+                    @if(isset($result))
+                        @if(array_key_exists('update_info',$result))
+                            @if($result['result'])
+                                <div class="alert alert-success" role="alert">Save success!</div>
+                            @else
+                                <div class="alert alert-danger" role="alert">Same thing went wrong</div>
+                            @endif
+                        @endif
+                    @endif
                     <form method="post">
                         @csrf
                         <input type="hidden" name="event" value="update_info">
@@ -66,7 +75,7 @@
                             <!-- Form Group (phone number)-->
                             <div class="form-group col-md-6">
                                 <label class="small mb-1" for="inputPhone">Phone number</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="{{$user->phone_number}}" />
+                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" name="phone_number" value="{{$user->phone_number}}" />
                             </div>
                             
                         </div>
@@ -80,6 +89,15 @@
             <div class="card mb-4">
                 <div class="card-header">Change password</div>
                 <div class="card-body">
+                    @if(isset($result) && array_key_exists('event',$result))
+                        @if($result['event']=='change_password')
+                            @if($result['result'])
+                                <div class="alert alert-success" role="alert">Save success!</div>
+                            @else
+                                <div class="alert alert-danger" role="alert">Same thing went wrong</div>
+                            @endif
+                        @endif
+                    @endif
                     <form method="post">
                         @csrf
                         <input type="hidden" name="event" value="change_password">

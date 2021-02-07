@@ -20,15 +20,17 @@
                             <div class="col-lg-4">
                                 <!-- Basic login form-->
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Login</h3></div>
+                                    <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Enter Code</h3></div>
                                     <div class="card-body">
                                         <!-- Login form-->
-                                        <form method="post" action="enterCode">
+                                        <p style="text-align: center;">
+                                        We sent a verification code to your email address.<br>  </p>
+                                        <form method="post">
                                           @csrf
-                                            <input type="hidden" name="phone_number" value="{{$phone_number}}">
+                                            <input type="hidden" name="email" value="{{$email}}">
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress">Verification code</label>
+                                                <label class="small mb-1" for="inputEmailAddress">Verification code for: {{$email}}</label>
                                                 <input class="form-control py-4" id="inputEmailAddress" type="text" name="code" placeholder="Enter code" value="{{$code}}" />
                                             </div>
                                             <!-- Form Group (login box)-->
@@ -36,6 +38,8 @@
                                                 <button type="submit" class="btn btn-primary btn-block" > Login</button>
                                             </div>
                                         </form>
+                                        <br>
+                                        <p style="text-align: center;">Have not received? Check your spam folder or try <a href='/resendcode?email={{$email}}' >sending another</a></p>
                                     </div>
                                     
                                 </div>
@@ -59,15 +63,3 @@
         <script src="{{ URL::asset('js/scripts.js')}}"></script>
     </body>
 </html>
-
-
-<!--         <form method="post" action="enterCode">
-        	@csrf
-          <div class="form-group">
-            <label for="loginAdminPassword">Enter code</label>
-            <input type="hidden" name="phone_number" value="{{$phone_number}}">
-            <input class="form-control" type="text" name="code" placeholder="Enter code" value="{{$code}}">
-          </div>
-          <button type="submit" class="btn btn-primary btn-block" >Enter</button>
-        </form>
- -->

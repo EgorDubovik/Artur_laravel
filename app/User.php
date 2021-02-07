@@ -17,7 +17,14 @@ class User extends Authenticatable
         'email',
         'company_name',
         'location',
+        'confirmed',
         'is_admin',
-        'created_at'
+        'created_at',
+        'shops',
+        'description',
     ];
+
+    function payments(){
+        return $this->hasMany('App\Payments')->orderBy("created_at","desc");
+    }
 }

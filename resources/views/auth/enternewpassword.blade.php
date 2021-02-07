@@ -20,42 +20,33 @@
                             <div class="col-lg-4">
                                 <!-- Basic login form-->
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Login</h3></div>
+                                    <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Reset Password</h3></div>
                                     <div class="card-body">
                                         <!-- Login form-->
-                                        <form method="post" action="/actionLogin">
+                                        
+                                        <form method="post" action="/restpass/{{$code}}">
                                           @csrf
-                                            <input type="hidden" name="event" value="login">
+                                            <input type="hidden" name="event" value="enternewpass">
+                                            <input type="hidden" name="pamk" value="{{$email}}">
+                                            <input type="hidden" name="code" value="{{$code}}">
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="text" name="email" placeholder="Enter email" />
+                                                <input class="form-control py-4" id="inputEmailAddress" type="password" name="pass1" placeholder="Enter new password" />
                                             </div>
-                                            
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input type="password" class="form-control py-4" id="inputPassword" type="text" name="password" placeholder="Enter your password" />
-                                            </div>
-
-                                            <!-- Form Group (remember password checkbox)-->
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" name="remember_me" />
-                                                    <label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
-                                                </div>
+                                                <label class="small mb-1" for="inputEmailAddress2">Email</label>
+                                                <input class="form-control py-4" id="inputEmailAddress2" type="password" name="pass2" placeholder="Confirm new password" />
                                             </div>
                                             <!-- Form Group (login box)-->
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 
-                                                <button type="submit" class="btn btn-primary btn-block" > Login</button>
+                                                <button type="submit" class="btn btn-primary btn-block" > Reset</button>
                                             </div>
                                         </form>
+                                        
                                     </div>
-                                    <div class="card-footer text-center">
-                                        <div class="small"><a href="/signup">Need an account? Sign up!</a></div>
-
-                                        <div class="small" style="margin-top: 20px;"><a href="/resetpassword">Forgot Password?</a></div>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 
 <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-    <a class="navbar-brand" href="index.html">Warehouse admin</a>
+    <a class="navbar-brand" href="/">Warehouse admin</a>
     <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
    
     <ul class="navbar-nav align-items-center ml-auto">
@@ -45,7 +45,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/account">
                     <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                    Account
+                    Settings
                 </a>
                 <a class="dropdown-item" href="/logout">
                     <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
