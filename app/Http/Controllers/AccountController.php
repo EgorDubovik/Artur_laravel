@@ -59,6 +59,7 @@ class AccountController extends Controller
         $transaction = false;
         $isset_tr = false;
         if($request->amount>0){
+            dd($request->cardnonce);
             if($request->has("cardnonce"))
                 $transaction = Square::charge([
                     'amount' => (int)$request->amount, 
