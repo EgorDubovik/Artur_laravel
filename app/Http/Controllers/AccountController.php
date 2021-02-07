@@ -59,12 +59,13 @@ class AccountController extends Controller
         $transaction = false;
         $isset_tr = false;
         if($request->amount>0){
-            $transaction = Square::charge([
-                'amount' => (int)$request->amount, 
-                'source_id' => $request->cardnonce,
-                'location_id' => env('SQUARE_LOCATION'),
-                'currency' => 'USD'
-            ]);
+            if($request->hash("cardnonce"))
+                $transaction = Square::charge([
+                    'amount' => (int)$request->amount, 
+                    'source_id' => $request->cardnonce,
+                    'location_id' => env('SQUARE_LOCATION'),
+                    'currency' => 'USD'
+                ]);
         }
         
         // Дополнительные проверки по стоимости и транзакциям нужны
