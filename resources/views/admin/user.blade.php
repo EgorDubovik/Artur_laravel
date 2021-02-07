@@ -96,6 +96,7 @@
                             <th scope="col">Date</th>
                             <th scope="col">Amount</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -106,6 +107,9 @@
                             <td>{{$payment->created_at}}</td>
                             <td>${{$payment->amount}}</td>
                             <td><span class="badge badge-{{(($payment->status=='PAID') ? 'success' : 'light')}}">{{$payment->status}}</span></td>
+                            <td>
+                                <a href="/admin/user/removePayment/{{$user->id}}/{{$payment->id}}" onclick="if(confirm('Are you sure you want to deactivate it')) return true; else return false;" class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i>
+                            </td>
                         </tr>
                         
                         @endforeach

@@ -185,4 +185,19 @@ class AdminController extends Controller
 		$services = Service::whereNull('id_service')->get();
 		return view("admin.pricelist")->with(["services"=>$services]);		
 	}
+
+	public function removePayment(Request $request,$user_id,$payment_id){
+		$payment = Payments::find($payment_id);
+		
+		foreach ($payment->userServices as $service) {
+			$service->delete();
+		}
+
+		$payment->delete();
+
+		return redirect("admin/user/".$user_id);
+
+
+	}
+
 }
