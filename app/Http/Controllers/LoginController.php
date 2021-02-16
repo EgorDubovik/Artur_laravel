@@ -132,6 +132,25 @@ class LoginController extends Controller
         $text = "Email verification code: <b>".$code."</b><br>
                 If you received an account verification email in error, it's likely that another user accidentally entered your email while trying to recover their own email account. If you didn't initiate the request, you don't need to take any further action. You can simply disregard the verification email, and the account won't be verified.";
 
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();                                            
+        $mail->Host       = env('MAIL_HOST');
+        $mail->SMTPAuth   = true;                                   
+        $mail->Username   = env('MAIL_USERNAME');
+        $mail->Password   = env('MAIL_PASSWORD');                               
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
+        $mail->Port       = env('MAIL_PORT');                   
+        try {
+            $mail->setFrom('justprepcenter@gmail.com', 'JBS Group LLC');
+            $mail->addAddress($email);
+            $mail->isHTML(true);                                  
+            $mail->Subject = 'Sending from just-prep';
+            $mail->Body    = $text;
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
         return $code;
     }
 

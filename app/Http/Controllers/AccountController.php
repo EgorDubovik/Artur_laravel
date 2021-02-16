@@ -34,7 +34,7 @@ class AccountController extends Controller
                 // Доделать вывод нормальной информации
 
                 if(Hash::check($request->old_password,$user->password)){
-                    if($request->new_password == $request->new_password2 && strlen($request->new_password2)>=4){
+                    if($request->new_password == $request->new_password2 && strlen($request->new_password2)>=8){
                         $user->password = password_hash($request->new_password, PASSWORD_BCRYPT);
                         $user->save();
                         return ['event'=>'change_password','result'=>true];

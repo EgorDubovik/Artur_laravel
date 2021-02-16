@@ -30,16 +30,16 @@ Route::get("/restpass/{code}","LoginController@restpass");
 Route::post("/restpass/{code}","LoginController@restpass");
 
 Route::group(['middleware' => ['auth']], function () {
-	Route::group(['middleware'=>['admin']],function(){
-		Route::get('/admin/users',"AdminController@listUsers");
-		Route::get("/admin/addNewUser","AdminController@addNewUser");
-		Route::post("/admin/addNewUser","AdminController@addNewUser");
-		Route::get("/admin/users/remove/{id}","AdminController@removeUser");
-		Route::get("/admin/user/{id}","AdminController@viewUserInfo");
-		Route::get("/admin/makepayment/{id}","AdminController@makepayment");
-		Route::post("/admin/makepayment/{id}","AdminController@makepayment");
-		Route::get("/admin/pricelist","AdminController@pricelist");
-		Route::get("/admin/pricelist/remove/{id}","AdminController@pricelistRemove");
+	Route::group(['middleware'=>['admin'],'prefix'=>'admin'],function(){
+		Route::get('/users',"AdminController@listUsers");
+		Route::get('/addNewUser','AdminController@addNewUser');
+		Route::post('/addNewUser','AdminController@addNewUser');
+		Route::get('/users/remove/{id}','AdminController@removeUser');
+		Route::get('/user/{id}','AdminController@viewUserInfo');
+		Route::get('/makepayment/{id}','AdminController@makepayment');
+		Route::post('/makepayment/{id}','AdminController@makepayment');
+		Route::get('/pricelist','AdminController@pricelist');
+		Route::get('/pricelist/remove/{id}','AdminController@pricelistRemove');
 		Route::get("/admin/user/removePayment/{id}/{pid}","AdminController@removePayment");
 	});
 	Route::get("/dashboard","DashBoardController@dashboard");
