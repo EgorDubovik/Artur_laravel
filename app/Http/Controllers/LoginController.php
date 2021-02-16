@@ -13,6 +13,7 @@ use Hash;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use Illuminate\Support\Str;
+use Illuminate\Support\MessageBag;
 
 
 class LoginController extends Controller
