@@ -66,18 +66,28 @@
                             </div>
                         </div>
                         <!-- Form Group (email address)-->
-                        <div class="form-group">
-                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="{{$user->email}}" />
-                        </div>
-                        <!-- Form Row-->
                         <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="{{$user->email}}" />
+                            </div>
+                        
                             <!-- Form Group (phone number)-->
                             <div class="form-group col-md-6">
                                 <label class="small mb-1" for="inputPhone">Phone number</label>
                                 <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" name="phone_number" value="{{$user->phone_number}}" />
                             </div>
-                            
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="text_description">Description</label>
+                                <textarea class="form-control" id="text_description" name="description">{{$user->description}}</textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                
+                                <label class="small mb-1" for="text_shops">Shops</label>
+                                <textarea class="form-control" id="text_shops" name="shops">{{$user->shops}}</textarea>
+                            </div>
                         </div>
                         <!-- Save changes button-->
                         <button class="btn btn-primary" type="submit" type="button">Save changes</button>
