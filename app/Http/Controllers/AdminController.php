@@ -94,7 +94,7 @@ class AdminController extends Controller
 			foreach ($payments as $payment) {
 				$amount+=$payment->amount;
 			}
-			$user->samary = $amount;
+			$user->samary = number_format($amount/100,2);
 		}
 		
 		return view("admin.users")->with(["users"=>$users]);

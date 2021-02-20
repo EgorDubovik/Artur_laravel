@@ -105,7 +105,7 @@
                         <tr>
                             <td>#{{$payment->id}}</td>
                             <td>{{$payment->created_at}}</td>
-                            <td>${{$payment->amount}}</td>
+                            <td>${{number_format($payment->amount/100,2)}}</td>
                             <td><span class="badge badge-{{(($payment->status=='PAID') ? 'success' : 'light')}}">{{$payment->status}}</span></td>
                             <td>
                                 <a href="/admin/user/removePayment/{{$user->id}}/{{$payment->id}}" onclick="if(confirm('Are you sure you want to deactivate it')) return true; else return false;" class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i>

@@ -105,7 +105,8 @@
 
     function count_pr(d){
         var op = $(d).find("option:selected");
-        $(d).parent().parent().find("span.price").html("$"+op.attr("data-price"));
+
+        $(d).parent().parent().find("span.price").html("$"+(op.attr("data-price")/100).toFixed(2));
         $(d).parent().parent().find("span.count").html('<input style="width:60px;" type="text" name="count[]" class="form-control count_local" onblur="count_local_total(this)" value="1"/>');
         count_total();
     }
@@ -113,7 +114,7 @@
         let count = parseInt($(d).val());
         let parent = $(d).closest('.select-line');
         let price = parent.find("option:selected").attr("data-price");
-        let local_total = count*price;
+        let local_total = ((count*price)/100).toFixed(2);
         parent.find("span.price").html("$"+local_total);
         count_total();
     }
@@ -123,9 +124,10 @@
         
         $('.conteiner_select option:selected').each(function(){
             let count = $(this).parents('.select-line').find('input.count_local').val();
-            let local_total = parseFloat($(this).attr("data-price"))*count;
+            let local_total = $(this).attr("data-price")*count;
             total += local_total;
         });
-        $('#total_price').html('$'+total);
+        let ftotal = (total/100).toFixed(2);
+        $('#total_price').html('$'+ftotal);
     }
 </script>

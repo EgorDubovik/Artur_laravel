@@ -22,7 +22,11 @@ class DashBoardController extends Controller
     		$total+=$payment->amount;
     	}
     	$payments_paid = Payments::where([['user_id',Auth::user()->id],['status',Payments::PAID]])->get();
-
-    	return view("dashboard")->with(['total'=>$total,'payments_peiding'=>$payments_peiding,'payments_paid'=>$payments_paid]);
+        $return = [
+            'total'=>$total,
+            'payments_peiding'=>$payments_peiding,
+            'payments_paid'=>$payments_paid
+        ];
+    	return view("dashboard")->with($return);
     }
 }

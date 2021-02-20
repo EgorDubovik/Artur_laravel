@@ -77,10 +77,10 @@
 										{{$userService->count}}
 									</td>
 									<td class="text-right font-weight-bold">
-										<div class="h5 mb-0 font-weight-200 text-green">${{$userService->service->price}}</div>
+										<div class="h5 mb-0 font-weight-200 text-green">${{number_format($userService->service->price/100,2)}}</div>
 									</td>
 									<td class="text-right font-weight-bold">
-										<div class="h5 mb-0 font-weight-200 text-green">${{($userService->service->price*$userService->count)}}</div>
+										<div class="h5 mb-0 font-weight-200 text-green">${{number_format(($userService->service->price*$userService->count)/100,2)}}</div>
 									</td>
 								</tr>
 								@endforeach
@@ -96,7 +96,7 @@
                                 </tr>
 								<tr>
                                     <td class="text-right pb-0" colspan="3"><div class="text-uppercase h4 font-weight-700 text-muted">Total Amount Due:</div></td>
-                                    <td class="text-right pb-0"><div class="h4 mb-0 font-weight-700 text-green">${{$total}}</div></td>
+                                    <td class="text-right pb-0"><div class="h4 mb-0 font-weight-700 text-green">${{number_format($total/100,2)}}</div></td>
                                 </tr>
 								<!-- Invoice item 2-->
 							</tbody>
@@ -123,9 +123,9 @@
 							<div class="third" id="sq-expiration-date"></div>
 							<div class="third" id="sq-cvv"></div>
 							<div class="third" id="sq-postal-code"></div>
-							<button  id="sq-creditcard" class="button-credit-card" onclick="onGetCardNonce(event);">Pay total ${{$total}}</button>
+							<button  id="sq-creditcard" class="button-credit-card" onclick="onGetCardNonce(event);">Pay total ${{number_format($total/100,2)}}</button>
 						</div>
-						<input type="hidden" id="amount" name="amount" value="{{$total*100}}">
+						<input type="hidden" id="amount" name="amount" value="{{$total}}">
 						<input type="hidden" id="cardnonce" value="def" name="cardnonce">
 					</form>
 				</div>
@@ -165,7 +165,7 @@
 									<td>Надо будет как называть плотежи, тоесть за что они будут платить</td>
 									<td>{{$p->updated_at}}</td>
 									<td><span class="badge badge-{{(($p->status=='PAID') ? 'success' : 'light')}}">{{$p->status}}<span></td>
-									<td>${{$p->amount}}</td>
+									<td>${{number_format($p->amount/100,2)}}</td>
 								</tr>
 								@endforeach
 							</tbody>
