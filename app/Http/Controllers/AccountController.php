@@ -15,34 +15,34 @@ use Nikolag\Square\Models\Customer;
 class AccountController extends Controller
 {
     public function account(Request $request){
-
     	$user = Auth::user();
-    	$result = $this->eventcheck($request,$user);
-       
-    	return view('account')->with(['user'=>$user,'result'=>$result]);
+    	return view('account')->with('user',$user);
     }
 
-
-    private function eventcheck($request,$user){
-    	if(isset($request->event)){
-
-    		if($request->event=="update_info"){
-                $user->update($request->all());
-    			$user->save();
-                return ['event'=>'update_info','result'=>true];
-    		} else if($request->event == "change_password"){
-                // Доделать вывод нормальной информации
-
-                if(Hash::check($request->old_password,$user->password)){
-                    if($request->new_password == $request->new_password2 && strlen($request->new_password2)>=8){
-                        $user->password = password_hash($request->new_password, PASSWORD_BCRYPT);
-                        $user->save();
-                        return ['event'=>'change_password','result'=>true];
-                    } else return ['event'=>'change_password','result'=>false];
-                } else return ['event'=>'change_password','result'=>false];
-            }
-    	} else return array();
+    public function update_user_info(Request $request){
+        $user = Auth::user();
+        $user->update($request->all());
+        $user->save();
+        
+        return redirect()->route('account')->with('success_inf','Successful save');
     }
+
+    public function update_pass(Request $request){
+        $user = Auth::user();
+        $key = 'error_pass';
+        $mes = 'Successful save';
+        if(Hash::check($request->old_password,$user->password)){
+            if($request->new_password == $request->new_password2 && strlen($request->new_password2)>=8){
+                $user->password = password_hash($request->new_password, PASSWORD_BCRYPT);
+                $user->save();
+                $key = 'success_pass';
+            } else 
+                $mes = 'Passwords must match and be at least 8 characters long';
+        } else $mes = 'You entered the wrong old password';
+        return redirect()->route("account")->with($key,$mes);
+    }
+
+   
 
     public function getPay(Request $request){
         

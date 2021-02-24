@@ -27,18 +27,18 @@
             <div class="card mb-4">
                 <div class="card-header">Account Details</div>
                 <div class="card-body">
-                    @if(isset($result))
-                        @if(array_key_exists('update_info',$result))
-                            @if($result['result'])
-                                <div class="alert alert-success" role="alert">Save success!</div>
-                            @else
-                                <div class="alert alert-danger" role="alert">Same thing went wrong</div>
-                            @endif
-                        @endif
+                    @if(session()->has('success_inf'))
+                        <div class="alert alert-success" role="alert">{{session()->get('success_inf')}}</div>
                     @endif
-                    <form method="post">
+                    @if(session()->has('error_inf'))
+                        <div class="alert alert-danger" role="alert">Same thing went wrong</div>
+                    @endif
+
+
+                    <form method="post" action='/account/update'>
                         @csrf
-                        <input type="hidden" name="event" value="update_info">
+                        @method('put')
+                        <!-- <input type="hidden" name="event" value="update_info"> -->
                         <!-- Form Row-->
                         <div class="form-row">
                             <!-- Form Group (first name)-->
@@ -99,18 +99,17 @@
             <div class="card mb-4">
                 <div class="card-header">Change password</div>
                 <div class="card-body">
-                    @if(isset($result) && array_key_exists('event',$result))
-                        @if($result['event']=='change_password')
-                            @if($result['result'])
-                                <div class="alert alert-success" role="alert">Save success!</div>
-                            @else
-                                <div class="alert alert-danger" role="alert">Same thing went wrong</div>
-                            @endif
-                        @endif
+                   @if(session()->has('success_pass'))
+                        <div class="alert alert-success" role="alert">{{session()->get('success_pass')}}</div>
                     @endif
-                    <form method="post">
+                    @if(session()->has('error_pass'))
+                        <div class="alert alert-danger" role="alert">{{session()->get('error_pass')}}</div>
+                    @endif
+
+                    <form method="post" action="/account/update_pass">
                         @csrf
-                        <input type="hidden" name="event" value="change_password">
+                        @method('put')
+                        <!-- <input type="hidden" name="event" value="change_password"> -->
                         <div class="form-group">
                             <!-- Form Row-->
                             <div class="form-row">

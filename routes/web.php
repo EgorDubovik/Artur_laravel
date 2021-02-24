@@ -43,8 +43,9 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::get("/admin/user/removePayment/{id}/{pid}","AdminController@removePayment");
 	});
 	Route::get("/dashboard","DashBoardController@dashboard");
-	Route::get("/account","AccountController@account");
-	Route::post("/account","AccountController@account");
+	Route::get("/account","AccountController@account")->name("account");
+	Route::put("/account/update","AccountController@update_user_info");
+	Route::put("/account/update_pass","AccountController@update_pass");
 	Route::post("/getpayment","AccountController@getPay");
 });
 
