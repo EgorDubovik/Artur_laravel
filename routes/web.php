@@ -43,9 +43,12 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::get("/admin/user/removePayment/{id}/{pid}","AdminController@removePayment");
 	});
 	Route::get("/dashboard","DashBoardController@dashboard");
-	Route::get("/account","AccountController@account")->name("account");
-	Route::put("/account/update","AccountController@update_user_info");
-	Route::put("/account/update_pass","AccountController@update_pass");
+	Route::group(['prefix'=>'account'],function(){
+		Route::get("/","AccountController@account")->name("account");
+		Route::put("/update","AccountController@update_user_info");
+		Route::put("/update_pass","AccountController@update_pass");	
+	});
+	
 	Route::post("/getpayment","AccountController@getPay");
 });
 
