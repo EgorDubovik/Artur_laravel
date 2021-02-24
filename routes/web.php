@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::get('/users',"AdminController@listUsers");
 		Route::get('/addNewUser','AdminController@addNewUser');
 		Route::post('/addNewUser','AdminController@addNewUser');
-		Route::get('/users/remove/{id}','AdminController@removeUser');
+		Route::delete('/users/remove/{id}','AdminController@removeUser');
 		Route::get('/user/{id}','AdminController@viewUserInfo');
 		Route::get('/makepayment/{id}','AdminController@makepayment');
 		Route::post('/makepayment/{id}','AdminController@makepayment');

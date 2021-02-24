@@ -135,7 +135,7 @@ class AdminController extends Controller
 		$user = User::find($id);
 		$user->confirmed = 0;
 		$user->save();
-		return redirect('admin/users');
+		return redirect('admin/users')->with('success','Diactivate user saccessful');
 	}
 
 	public function viewUserInfo(Request $request,$id){
