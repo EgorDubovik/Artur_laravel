@@ -16,69 +16,71 @@ use PHPMailer\PHPMailer\Exception;
 class AdminController extends Controller
 {
     
-	public function addNewUser(Request $request){
-		$event = false;
-		$error = true;
+	public function addNewUserForm(Request $request)
+	{	
+		$services = Service::whereNull('id_service')->get();
+		return view("admin.add_user")->with(['services'=>$services]);
+	}
 
-		if(isset($request->event)){
-			$event = true;
-			if($request->event=="add_new_user"){
-				if(!is_null($request->email)){
-					$messages = [
-	                    'first_name.required' => 'The First name field is required.',
-	                    'last_name.required' => 'The Last name field is required.',
-	                    'password.required' => 'The Password field is required.',
-	                    
-	                ];
-	                $input = $request->validate([
-	                    'first_name' => 'required',
-	                    'last_name' => 'required',
-	                    'email' => 'required|email|unique:users,email',
-	                    'password' => 'required',
-	                ],$messages);
-					$user = User::create([
-						'first_name' => $request->first_name,
-						'last_name'	=> $request->last_name,
-						'email' => $request->email,
-						'phone_number' => null,
-						'confirmed'=>1,
-						'description'=>$request->description,
-						'shops'=>$request->shops,
-						'password' => password_hash($request->password, PASSWORD_BCRYPT),
-						'is_admin' => ($request->has("admin")) ? 1 : 0,
-					]);
-					if($user->save()){
-						$error = false;
-						$this->sendEmail($user,$request->password);
-					}
-				}
-				if(!is_null($request->service) && count($request->service)>0){
-					$amount = 0;
-					foreach ($request->service as $in => $ser) {
-						$srv = Service::find($ser);
-						$amount += $srv->price*$request->count[$in];
-					}
-					$payment = Payments::create([
-						'user_id'=>$user->id,
-						'amount' => $amount,
-						'status' => Payments::PENDING,
-					]);
+	public function addNewUserStore(Request $request)
+	{
+		$status = "errors";
+		$errorMes = "";
+		if(!is_null($request->email)){
+			$messages = [
+                'first_name.required' => 'The First name field is required.',
+                'last_name.required' => 'The Last name field is required.',
+                'password.required' => 'The Password field is required.',
+                
+            ];
+            $input = $request->validate([
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required',
+            ],$messages);
+			$user = User::create([
+				'first_name' => $request->first_name,
+				'last_name'	=> $request->last_name,
+				'email' => $request->email,
+				'phone_number' => null,
+				'confirmed'=>1,
+				'description'=>$request->description,
+				'shops'=>$request->shops,
+				'password' => password_hash($request->password, PASSWORD_BCRYPT),
+				'is_admin' => ($request->has("admin")) ? 1 : 0,
+			]);
+			if($user->save()){
+				$status = "success";
+				$errorMes = "New user save successfull";
+				$this->sendEmail($user,$request->password);
+			} else {
+				$errorMes = "Somthing went wrong. Please trye again later";
+			}
+		}
+		if(!is_null($request->service) && count($request->service)>0){
+			$amount = 0;
+			foreach ($request->service as $in => $ser) {
+				$srv = Service::find($ser);
+				$amount += $srv->price*$request->count[$in];
+			}
+			$payment = Payments::create([
+				'user_id'=>$user->id,
+				'amount' => $amount,
+				'status' => Payments::PENDING,
+			]);
 
-					foreach ($request->service as $in => $serv) {
-						UserServices::create([
-							'id_service'=>$serv,
-							'id_payment'=>$payment->id,
-							'count'=>$request->count[$in],
-						]);
-					}
-				}
-				
+			foreach ($request->service as $in => $serv) {
+				UserServices::create([
+					'id_service'=>$serv,
+					'id_payment'=>$payment->id,
+					'count'=>$request->count[$in],
+				]);
 			}
 		}
 
-		$services = Service::whereNull('id_service')->get();
+		return route('new.user.form')->with($status,$errorMes);
 
-		return view("admin.add_user")->with(['event'=>$event,'error'=>$error,'services'=>$services]);
 	}
 
 	public function listUsers(Request $request){
@@ -180,7 +182,7 @@ class AdminController extends Controller
 		$services = Service::whereNull('id_service')->get();
 		return view("admin.makepayment")->with(["user"=>$user,"services"=>$services,"is_event"=>$is_event]);
 	}
-	
+
 	public function removePayment(Request $request,$user_id,$payment_id)
 	{
 		$payment = Payments::find($payment_id);

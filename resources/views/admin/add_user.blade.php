@@ -124,16 +124,15 @@
             <div class="card mb-4">
                 <div class="card-header">Information</div>
                 <div class="card-body">
-                     @if(isset($event) && $event)
-                        @if($error)
-                            <div class="alert alert-danger" role="alert">
-                                Samething went wrong !!!
-                            </div> 
-                        @else 
-                            <div class="alert alert-success" role="alert">
-                                Save successful
-                            </div>
-                        @endif
+                     @if(session()->has('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{session()->get('success')}}
+                        </div> 
+                    @endif
+                    @if(session()->has('errors')) 
+                        <div class="alert alert-danger" role="alert">
+                            {{session()->get('errors')}}
+                        </div>
                     @endif
 
                     @if($errors->any())

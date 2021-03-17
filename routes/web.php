@@ -32,8 +32,8 @@ Route::post("/restpass/{code}","LoginController@restpass");
 Route::group(['middleware' => ['auth']], function () {
 	Route::group(['middleware'=>['admin'],'prefix'=>'admin'],function(){
 		Route::get('/users',"Admin\AdminController@listUsers");
-		Route::get('/addNewUser','Admin\AdminController@addNewUser');
-		Route::post('/addNewUser','Admin\AdminController@addNewUser');
+		Route::get('/addNewUser','Admin\AdminController@addNewUserForm')->name('new.user.form');
+		Route::post('/addNewUser','Admin\AdminController@addNewUserStore')->name('new.user.store');
 		Route::delete('/users/remove/{id}','Admin\AdminController@removeUser');
 		Route::get('/user/{id}','Admin\AdminController@viewUserInfo');
 		Route::get('/makepayment/{id}','Admin\AdminController@makepayment');
