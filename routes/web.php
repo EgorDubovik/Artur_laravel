@@ -31,16 +31,16 @@ Route::post("/restpass/{code}","LoginController@restpass");
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::group(['middleware'=>['admin'],'prefix'=>'admin'],function(){
-		Route::get('/users',"AdminController@listUsers");
-		Route::get('/addNewUser','AdminController@addNewUser');
-		Route::post('/addNewUser','AdminController@addNewUser');
-		Route::delete('/users/remove/{id}','AdminController@removeUser');
-		Route::get('/user/{id}','AdminController@viewUserInfo');
-		Route::get('/makepayment/{id}','AdminController@makepayment');
-		Route::post('/makepayment/{id}','AdminController@makepayment');
-		Route::get('/pricelist','AdminController@pricelist');
-		Route::get('/pricelist/remove/{id}','AdminController@pricelistRemove');
-		Route::get("/admin/user/removePayment/{id}/{pid}","AdminController@removePayment");
+		Route::get('/users',"Admin\AdminController@listUsers");
+		Route::get('/addNewUser','Admin\AdminController@addNewUser');
+		Route::post('/addNewUser','Admin\AdminController@addNewUser');
+		Route::delete('/users/remove/{id}','Admin\AdminController@removeUser');
+		Route::get('/user/{id}','Admin\AdminController@viewUserInfo');
+		Route::get('/makepayment/{id}','Admin\AdminController@makepayment');
+		Route::post('/makepayment/{id}','Admin\AdminController@makepayment');
+		Route::get('/pricelist','Admin\PriceListController@pricelist');
+		Route::get('/pricelist/remove/{id}','Admin\PriceListController@pricelistRemove');
+		Route::get("/admin/user/removePayment/{id}/{pid}","Admin\AdminController@removePayment");
 	});
 	Route::get("/dashboard","DashBoardController@dashboard");
 	Route::group(['prefix'=>'account'],function(){

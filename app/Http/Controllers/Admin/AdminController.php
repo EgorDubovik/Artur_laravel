@@ -22,7 +22,6 @@ class AdminController extends Controller
 
 		if(isset($request->event)){
 			$event = true;
-
 			if($request->event=="add_new_user"){
 				if(!is_null($request->email)){
 					$messages = [
@@ -50,8 +49,7 @@ class AdminController extends Controller
 					]);
 					if($user->save()){
 						$error = false;
-						
-						//$this->sendEmail($user,$request->password);
+						$this->sendEmail($user,$request->password);
 					}
 				}
 				if(!is_null($request->service) && count($request->service)>0){
@@ -182,34 +180,15 @@ class AdminController extends Controller
 		$services = Service::whereNull('id_service')->get();
 		return view("admin.makepayment")->with(["user"=>$user,"services"=>$services,"is_event"=>$is_event]);
 	}
-
-	public function pricelist(Request $request){
-
-		$services = Service::whereNull('id_service')->get();
-		return view("admin.pricelist")->with(["services"=>$services]);
-	}
-
-
-	public function pricelistRemove(Request $request,$id){
-
-		Service::find($id)->delete();
-		
-		$services = Service::whereNull('id_service')->get();
-		return view("admin.pricelist")->with(["services"=>$services]);		
-	}
-
-	public function removePayment(Request $request,$user_id,$payment_id){
+	
+	public function removePayment(Request $request,$user_id,$payment_id)
+	{
 		$payment = Payments::find($payment_id);
-		
 		foreach ($payment->userServices as $service) {
 			$service->delete();
 		}
-
 		$payment->delete();
-
 		return redirect("admin/user/".$user_id);
-
-
 	}
 
 }
