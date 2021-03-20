@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\User;
 use App\Payments;
 use App\Service;
@@ -24,7 +25,7 @@ class AdminController extends Controller
 
 	public function addNewUserStore(Request $request)
 	{
-		$status = "errors";
+		$status = "error";
 		$errorMes = "";
 		if(!is_null($request->email)){
 			$messages = [
@@ -79,7 +80,7 @@ class AdminController extends Controller
 			}
 		}
 
-		return route('new.user.form')->with($status,$errorMes);
+		return redirect()->route('new.user.form')->with([$status=>$errorMes]);
 
 	}
 

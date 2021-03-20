@@ -129,9 +129,9 @@
                             {{session()->get('success')}}
                         </div> 
                     @endif
-                    @if(session()->has('errors')) 
+                    @if(session()->has('error')) 
                         <div class="alert alert-danger" role="alert">
-                            {{session()->get('errors')}}
+                            {{session()->get('error')}}
                         </div>
                     @endif
 
