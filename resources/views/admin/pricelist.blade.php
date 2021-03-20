@@ -39,7 +39,7 @@
                                         $dop_service)
                                         <tr>
                                             <td><span style="margin-left: 40px;"> {{$dop_service->title}}</span></td>
-                                            <td>{{$dop_service->price}}</td>
+                                            <td>{{number_format($dop_service->price/100,2)}}</td>
                                             <td>
                                                 <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i class="fas fa-edit"></i></button>
                                                 <a href="/admin/pricelist/remove/{{$dop_service->id}}" onclick="if(confirm('Are you sure you want to deactivate it')) return true; else return false;" class="btn btn-datatable btn-icon btn-transparent-dark"><i class="fas fa-trash-alt"></i></a>
