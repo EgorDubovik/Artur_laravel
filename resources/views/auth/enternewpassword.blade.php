@@ -24,7 +24,7 @@
                                     <div class="card-body">
                                         <!-- Login form-->
                                         @if(isset($issetEvent) && $issetEvent && !$error)
-                                            текст об успешном изменени пароля и ссылка на логин что бы попробовать войти
+                                            текст об успешном изменени пароля и ссылка на <a href='/login'>логин</a> что бы попробовать войти
                                         @else
                                             @if(isset($issetEvent) && $issetEvent)
                                                 @if($error)
@@ -38,11 +38,11 @@
                                             <input type="hidden" name="code" value="{{$code}}">
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="password" name="pass1" placeholder="Enter new password" />
+                                                <label class="small mb-1" for="inputEmailAddress">Enter your new password</label>
+                                                <input class="form-control py-4" id="inputEmailAddress" type="password" name="pass1" placeholder="New password" />
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress2">Email</label>
+                                                <label class="small mb-1" for="inputEmailAddress2">Confirm your new password</label>
                                                 <input class="form-control py-4" id="inputEmailAddress2" type="password" name="pass2" placeholder="Confirm new password" />
                                             </div>
                                             <!-- Form Group (login box)-->
