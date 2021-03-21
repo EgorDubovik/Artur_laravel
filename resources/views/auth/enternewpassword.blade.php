@@ -28,7 +28,7 @@
                                         @else
                                             @if(isset($issetEvent) && $issetEvent)
                                                 @if($error)
-                                                    Samething went wrong!
+                                                    <div class="alert alert-danger" role="alert">Samething went wrong!</div>
                                                 @endif
                                             @endif
                                         <form method="post" action="/restpass/{{$code}}">

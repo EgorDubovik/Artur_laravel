@@ -20,17 +20,19 @@
                             <div class="col-lg-4">
                                 <!-- Basic login form-->
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Reset Password</h3></div>
+                                    <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Reset Password<a href="/login" style="font-size: 16px;margin-left: 30px;">Go back</a></h3>
+
+                                    </div>
                                     <div class="card-body">
                                         <!-- Login form-->
-                                        @if(isset($issetEvent) && $issetEvent)
-                                            @if($error)
-                                                Samething went wrong!
-                                            @else 
-                                                <a href="{{$link}}">{{$link}}</a>
-                                            @endif
+                                        @if(session()->has('success'))
+                                            Текст о том что на почту отправлено писмо ссылкйо по которой он должен пройти...
+                                            <div><a href="{{session()->get('link')}}">{{session()->get('link')}}</a></div>
                                         @else
-                                        <form method="post" action="/resetpassword">
+                                            @if(session()->has('error'))
+                                                <div class="alert alert-danger" role="alert">{{session()->get('error')}}</div>
+                                            @endif
+                                        <form method="post" action="/sendlink">
                                           @csrf
                                             <input type="hidden" name="event" value="resetpassword">
                                             <!-- Form Group (email address)-->
@@ -45,6 +47,7 @@
                                             </div>
                                         </form>
                                         @endif
+
                                     </div>
                                    
                                 </div>

@@ -16,18 +16,18 @@ Route::get('/', function(){
 	//return view("coming");
 });
 
-Route::get('/login',"LoginController@login")->name("login");
-Route::post('/actionLogin',"LoginController@actionLogin");
-Route::get("/logout","LoginController@logOut");
-Route::get("/signup","LoginController@signup");
-Route::post("/signup","LoginController@signup");
-Route::get("/code","LoginController@enterCode")->name("code");
-Route::post("/code","LoginController@enterCode");
-Route::get("/resendcode","LoginController@resendcode");
-Route::get("/resetpassword","LoginController@resetpassword");
-Route::post("/resetpassword","LoginController@resetpassword");
-Route::get("/restpass/{code}","LoginController@restpass");
-Route::post("/restpass/{code}","LoginController@restpass");
+Route::get('/login',"Auth\LoginController@login")->name("login");
+Route::post('/actionLogin',"Auth\LoginController@actionLogin");
+Route::get("/logout","Auth\LoginController@logOut");
+Route::get("/signup","Auth\LoginController@signup");
+Route::post("/signup","Auth\LoginController@signup");
+Route::get("/code","Auth\LoginController@enterCode")->name("code");
+Route::post("/code","Auth\LoginController@enterCode");
+Route::get("/resendcode","Auth\LoginController@resendcode");
+Route::get("/forgotpassword","Auth\LoginController@forgotpassword")->name('forgotpassword');
+Route::post("/sendlink","Auth\LoginController@sendlink");
+Route::get("/resetpass/{code}","Auth\LoginController@resetpass");
+Route::post("/resetpass/{code}","Auth\LoginController@resetpass");
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::group(['middleware'=>['admin'],'prefix'=>'admin'],function(){

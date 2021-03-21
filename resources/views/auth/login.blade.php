@@ -29,7 +29,7 @@
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="text" name="email" placeholder="Enter email" />
+                                                <input class="form-control py-4" id="inputEmailAddress" type="text" name="email" placeholder="Enter email" value="{{old('email')}}" />
                                             </div>
                                             
                                             <div class="form-group">
@@ -54,7 +54,7 @@
                                     <div class="card-footer text-center">
                                         <div class="small"><a href="/signup">Need an account? Sign up!</a></div>
 
-                                        <div class="small" style="margin-top: 20px;"><a href="/resetpassword">Forgot Password?</a></div>
+                                        <div class="small" style="margin-top: 20px;"><a href="/forgotpassword">Forgot Password?</a></div>
                                     </div>
                                 </div>
                             </div>
