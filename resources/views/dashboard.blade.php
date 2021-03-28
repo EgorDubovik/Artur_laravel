@@ -24,25 +24,7 @@
 </header>
 <div class="container mt-n10">
 	
-	@if(session()->get('isset_tr')!==null && session()->get('isset_tr'))
-		@if(session()->get('status'))
-			<div class="row">
-				<div class="col-12 mb-4">
-					<div class="card h-100">
-						<div class="card-header">
-							<i class="fas fa-info-circle"></i>
-							Transaction status
-						</div>
-						<div class="card-body">
-							<div class="alert alert-success" role="alert">
-								Successful payment
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		@endif
-	@endif
+	
 	@if(count($payments_peiding)>0)
 	<div class="row">
 		<div class="col-lg-8 col-md-12 mb-4">
@@ -65,25 +47,25 @@
 							<tbody>
 								@foreach($payments_peiding as $payment)
 								<!-- Invoice item 1-->
-								@foreach($payment->userServices as $userService)
-								<tr class="border-bottom">
-									<td>
-										<div class="font-weight-bold">{{$userService->service->parent->title}}</div>
-										<div class="small text-muted d-none d-md-block" style="margin-left: 15px">
-											{{$userService->service->title}}
-										</div>
-									</td>
-									<td class="text-right font-weight-bold">
-										{{$userService->count}}
-									</td>
-									<td class="text-right font-weight-bold">
-										<div class="h5 mb-0 font-weight-200 text-green">${{number_format($userService->service->price/100,2)}}</div>
-									</td>
-									<td class="text-right font-weight-bold">
-										<div class="h5 mb-0 font-weight-200 text-green">${{number_format(($userService->service->price*$userService->count)/100,2)}}</div>
-									</td>
-								</tr>
-								@endforeach
+									@foreach($payment->userServices as $userService)
+									<tr class="border-bottom">
+										<td>
+											<div class="font-weight-bold">{{$userService->service->parent->title}}</div>
+											<div class="small text-muted d-none d-md-block" style="margin-left: 15px">
+												{{$userService->service->title}}
+											</div>
+										</td>
+										<td class="text-right font-weight-bold">
+											{{$userService->count}}
+										</td>
+										<td class="text-right font-weight-bold">
+											<div class="h5 mb-0 font-weight-200 text-green">${{number_format($userService->service->price/100,2)}}</div>
+										</td>
+										<td class="text-right font-weight-bold">
+											<div class="h5 mb-0 font-weight-200 text-green">${{number_format(($userService->service->price*$userService->count)/100,2)}}</div>
+										</td>
+									</tr>
+									@endforeach
 								
 								@endforeach
 								<tr>
@@ -116,6 +98,9 @@
 					Make a payments
 				</div>
 				<div class="card-body">
+
+					@include('request-status/transaction_status')
+					
 					<form method="post" id="pay-form" action="/getpayment">
 						@csrf
 						<div id="form-container">
@@ -140,6 +125,7 @@
 			<div class="card mb-6">
 				<div class="card-header">Transactions</div>
 				<div class="card-body">
+					@if(count($payments_paid)>0)
 					<div class="datatable">
 						<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 							<thead>
@@ -171,6 +157,11 @@
 							</tbody>
 						</table>
 					</div>
+					@else
+
+						<div>No data available in table</div>
+
+					@endif
 				</div>
 			</div>
 		</div>

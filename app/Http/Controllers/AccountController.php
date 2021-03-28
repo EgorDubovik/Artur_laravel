@@ -47,7 +47,7 @@ class AccountController extends Controller
     public function getPay(Request $request){
         
         $transaction = false;
-        $isset_tr = false;
+        
         if($request->amount>0){
             if($request->has("cardnonce") && $request->cardnonce!="def")
                 $transaction = Square::charge([
@@ -66,8 +66,8 @@ class AccountController extends Controller
                 $p->status=Payments::PAID;
                 $p->save();
             }
-            $isset_tr = true;
+            return redirect('dashboard')->with("transaction_success",true);
         }
-        return redirect('dashboard')->with(['isset_tr'=>$isset_tr,'status'=>$transaction]);
+        return redirect('dashboard')->with("transaction_error",true);
     }
 }
