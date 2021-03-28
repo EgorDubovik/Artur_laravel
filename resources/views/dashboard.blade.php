@@ -100,7 +100,7 @@
 				<div class="card-body">
 
 					@include('request-status/transaction_status')
-					
+
 					<form method="post" id="pay-form" action="/getpayment">
 						@csrf
 						<div id="form-container">
@@ -130,7 +130,7 @@
 						<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 							<thead>
 								<tr>
-									<th>Desctription</th>
+									<th>Transaction ID</th>
 									<th>Date</th>									
 									<th>Status</th>
 									<th>Amount</th>
@@ -138,7 +138,7 @@
 							</thead>
 							<tfoot>
 								<tr>
-									<th>Desctription</th>
+									<th>Transaction ID</th>
 									<th>Date</th>									
 									<th>Status</th>
 									<th>Amount</th>
@@ -148,7 +148,7 @@
 								
 								@foreach($payments_paid as $p)
 								<tr>
-									<td>Надо будет как называть плотежи, тоесть за что они будут платить</td>
+									<td><a href="#" style="font-weight: bold;"> #{{$p->id}}</a></td>
 									<td>{{$p->updated_at}}</td>
 									<td><span class="badge badge-{{(($p->status=='PAID') ? 'success' : 'light')}}">{{$p->status}}<span></td>
 									<td>${{number_format($p->amount/100,2)}}</td>

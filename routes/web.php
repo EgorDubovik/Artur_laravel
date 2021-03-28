@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::get("/admin/user/removePayment/{id}/{pid}","Admin\AdminController@removePayment");
 	});
 	Route::get("/dashboard","DashBoardController@dashboard");
+	Route::get("/transaction/{id}","TransactionViewController@index");
 	Route::group(['prefix'=>'account'],function(){
 		Route::get("/","AccountController@account")->name("account");
 		Route::put("/update","AccountController@update_user_info");
