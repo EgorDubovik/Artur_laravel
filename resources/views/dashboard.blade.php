@@ -47,24 +47,36 @@
 							<tbody>
 								@foreach($payments_peiding as $payment)
 								<!-- Invoice item 1-->
-									@foreach($payment->userServices as $userService)
+									@foreach($payment as $parentService)
 									<tr class="border-bottom">
 										<td>
-											<div class="font-weight-bold">{{$userService->service->parent->title}}</div>
-											<div class="small text-muted d-none d-md-block" style="margin-left: 15px">
-												{{$userService->service->title}}
-											</div>
+											<div class="font-weight-bold">{{$parentService['parentTitle']}}</div>
 										</td>
 										<td class="text-right font-weight-bold">
-											{{$userService->count}}
 										</td>
 										<td class="text-right font-weight-bold">
-											<div class="h5 mb-0 font-weight-200 text-green">${{number_format($userService->service->price/100,2)}}</div>
 										</td>
 										<td class="text-right font-weight-bold">
-											<div class="h5 mb-0 font-weight-200 text-green">${{number_format(($userService->service->price*$userService->count)/100,2)}}</div>
 										</td>
 									</tr>
+										@foreach($parentService['services'] as $userService)
+										<tr class="border-bottom">
+											<td>
+												<div class="small text-muted d-none d-md-block" style="margin-left: 15px">
+													{{$userService->service->title}}
+												</div>
+											</td>
+											<td class="text-right font-weight-bold">
+												{{$userService->count}}
+											</td>
+											<td class="text-right font-weight-bold">
+												<div class="h5 mb-0 font-weight-200 text-green">${{number_format($userService->service->price/100,2)}}</div>
+											</td>
+											<td class="text-right font-weight-bold">
+												<div class="h5 mb-0 font-weight-200 text-green">${{number_format(($userService->service->price*$userService->count)/100,2)}}</div>
+											</td>
+										</tr>
+										@endforeach
 									@endforeach
 								
 								@endforeach
