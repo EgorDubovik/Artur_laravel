@@ -103,7 +103,7 @@
                     	@foreach($user->payments as $payment)
 
                         <tr>
-                            <td>#{{$payment->id}}</td>
+                            <td><a href="/transaction/{{$payment->id}}"> #{{$payment->id}}</a></td>
                             <td>{{$payment->created_at}}</td>
                             <td>${{number_format($payment->amount/100,2)}}</td>
                             <td><span class="badge badge-{{(($payment->status=='PAID') ? 'success' : 'light')}}">{{$payment->status}}</span></td>

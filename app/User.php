@@ -27,4 +27,8 @@ class User extends Authenticatable
     function payments(){
         return $this->hasMany('App\Payments')->orderBy("created_at","desc");
     }
+
+    function is_admin(){
+        return $this->is_admin;
+    }
 }

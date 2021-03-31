@@ -160,7 +160,7 @@
 								
 								@foreach($payments_paid as $p)
 								<tr>
-									<td><a href="#" style="font-weight: bold;"> #{{$p->id}}</a></td>
+									<td><a href="/transaction/{{$p->id}}" style="font-weight: bold;"> #{{$p->id}}</a></td>
 									<td>{{$p->updated_at}}</td>
 									<td><span class="badge badge-{{(($p->status=='PAID') ? 'success' : 'light')}}">{{$p->status}}<span></td>
 									<td>${{number_format($p->amount/100,2)}}</td>
