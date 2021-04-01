@@ -27,6 +27,7 @@ class TransactionViewController extends Controller
                 $data[$userServices->service->parent->id]['services'][] = $userServices;
             }
             $return = [
+                'transaction_inf' => $payment,
                 'total'=>$payment->amount,
                 'payment'=>$data,
             ];

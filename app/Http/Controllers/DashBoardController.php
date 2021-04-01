@@ -34,7 +34,7 @@ class DashBoardController extends Controller
         foreach ($payments_peiding as $payment) {
     		$total+=$payment->amount;
     	}
-    	$payments_paid = Payments::where([['user_id',Auth::user()->id],['status',Payments::PAID]])->get();
+    	$payments_paid = Payments::where([['user_id',Auth::user()->id],['status',Payments::PAID]])->orderBy('created_at','DESC')->get();
         $return = [
             'total'=>$total,
             'payments_peiding'=>$payments_data,

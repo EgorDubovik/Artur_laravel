@@ -46,18 +46,22 @@ class AccountController extends Controller
 
     public function getPay(Request $request){
         
-        $transaction = false;
-        
-        if($request->amount>0){
-            if($request->has("cardnonce") && $request->cardnonce!="def")
-                $transaction = Square::charge([
-                    'amount' => (int)$request->amount, 
-                    'source_id' => $request->cardnonce,
-                    'location_id' => env('SQUARE_LOCATION'),
-                    'currency' => 'USD'
-                ]);
+        if(env('SQUARE_SANDBOX')){
+            $transaction = true;
+        } 
+        else 
+        {
+            $transaction = false;
+            if($request->amount>0){
+                if($request->has("cardnonce") && $request->cardnonce!="def")
+                    $transaction = Square::charge([
+                        'amount' => (int)$request->amount, 
+                        'source_id' => $request->cardnonce,
+                        'location_id' => env('SQUARE_LOCATION'),
+                        'currency' => 'USD'
+                    ]);
+            }
         }
-        
         // Дополнительные проверки по стоимости и транзакциям нужны
         if($transaction){
 

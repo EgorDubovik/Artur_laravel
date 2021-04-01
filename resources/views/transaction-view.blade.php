@@ -12,7 +12,17 @@
             <div class="card mb-4">
                 <div class="card-header">Transaction information</div>
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row" style="padding: 5px 20px;">
+                            Transaction time: <b style="margin-left: 20px;">{{$transaction_inf->created_at}}</b>
+                            </div>
+                            <div class="row" style="padding: 5px 20px;">
+                            Transaction status: <b style="margin-left: 20px;"><span class="badge badge-{{(($transaction_inf->status=='PAID') ? 'success' : 'light')}}">{{$transaction_inf->status}}<span></b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive" style="margin-top: 30px;">
                         <table class="table table-borderless mb-0">
                             <thead class="border-bottom">
                                 <tr class="small text-uppercase text-muted">
