@@ -28,7 +28,7 @@
                                 @foreach($service->pod_services as $pod_service)
                                     <tr class="border-bottom" data-id="{{$pod_service->id}}">
                                         <td><span style="margin-left: 20px">{{$pod_service->title}}</td>
-                                        <td>{{$pod_service->price}}</td>
+                                        <td>{{number_format($pod_service->price/100,2)}}</td>
                                         <td>
                                             <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i class="fas fa-edit"></i></button>
                                             <a href="/admin/pricelist/remove/{{$pod_service->id}}" onclick="if(confirm('Are you sure you want to deactivate it')) return true; else return false;" class="btn btn-datatable btn-icon btn-transparent-dark"><i class="fas fa-trash-alt"></i></a>
