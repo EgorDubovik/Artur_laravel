@@ -62,3 +62,13 @@ i.mr{
 table.mouseover tr.over td{
 	background: #eaeaea;
 }
+
+.btn-secondary.gray{
+	background: #ccc;
+	border-color: #b9b9b9;
+	color: #524c4c;
+}
+.btn-secondary.gray:hover{
+	background: #565656;
+	color: #fff;
+}
