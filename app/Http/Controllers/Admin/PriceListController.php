@@ -28,6 +28,6 @@ class PriceListController extends Controller
 		$service->update($request->all());
 		$service->save();
 
-		return redirect()->route('price.list')->with('successful','Changes saved');;
+		return redirect()->route('price.list')->with('successful','Changes saved');
 	}
 }

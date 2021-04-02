@@ -42,4 +42,36 @@ class DashBoardController extends Controller
         ];
     	return view("dashboard")->with($return);
     }
+
+    public function getPay(Request $request){
+        
+        if(env('SQUARE_SANDBOX')){
+            $transaction = true;
+        } 
+        else 
+        {
+            $transaction = false;
+            if($request->amount>0){
+                if($request->has("cardnonce") && $request->cardnonce!="def")
+                    $transaction = Square::charge([
+                        'amount' => (int)$request->amount, 
+                        'source_id' => $request->cardnonce,
+                        'location_id' => env('SQUARE_LOCATION'),
+                        'currency' => 'USD'
+                    ]);
+            }
+        }
+        // Дополнительные проверки по стоимости и транзакциям нужны
+        if($transaction){
+
+            $payments = Payments::where([['user_id',Auth::user()->id],['status',Payments::PENDING]])->get();
+            foreach ($payments as $p) {
+                $p->status=Payments::PAID;
+                $p->save();
+            }
+            return redirect('dashboard')->with("transaction_success",true);
+        }
+        return redirect('dashboard')->with("transaction_error",true);
+    }
+
 }
