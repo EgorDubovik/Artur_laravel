@@ -39,7 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::get('/makepayment/{id}','Admin\AdminController@makepayment');
 		Route::post('/makepayment/{id}','Admin\AdminController@makepayment');
 		Route::get('/pricelist','Admin\PriceListController@pricelist')->name('price.list');
-		Route::get('/pricelist/remove/{id}','Admin\PriceListController@pricelistRemove');
+		Route::get('/pricelist/remove/{id}','Admin\PriceListController@remove');
+		Route::post('/pricelist/edit','Admin\PriceListController@edit');
 		Route::get("/admin/user/removePayment/{id}/{pid}","Admin\AdminController@removePayment");
 	});
 	Route::get("/dashboard","DashBoardController@dashboard");

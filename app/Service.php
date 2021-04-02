@@ -15,6 +15,10 @@ class Service extends Model
     	'id_service',
     ];
 
+    function hasChild(){
+        return (is_null($this->price)) ? 1 : 0;
+    }
+
     function prefix(){
     	return $this->belongsTo('App\Prefix','id_prefix');
     }

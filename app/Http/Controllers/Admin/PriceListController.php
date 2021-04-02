@@ -15,7 +15,7 @@ class PriceListController extends Controller
 	}
 
 
-	public function pricelistRemove(Request $request,$id)
+	public function remove(Request $request,$id)
 	{
 		Service::find($id)->delete();
 		$services = Service::whereNull('id_service')->get();
@@ -23,4 +23,11 @@ class PriceListController extends Controller
 		return redirect()->route('price.list');		
 	}
 
+	public function edit(Request $request){
+		$service = Service::find($request->serviceId);
+		$service->update($request->all());
+		$service->save();
+
+		return redirect()->route('price.list')->with('successful','Changes saved');;
+	}
 }
