@@ -31,7 +31,7 @@ class AdminController extends Controller
 						if($srv)
 							$amount += $srv->price*$request->count[$in];
 					}
-					
+
 					$payment = Payments::create([
 						'user_id'=>$request->user_id,
 						'amount' => $amount,
@@ -56,14 +56,11 @@ class AdminController extends Controller
 		return view("admin.makepayment")->with(["user"=>$user,"services"=>$services,"is_event"=>$is_event]);
 	}
 
-	public function removePayment(Request $request,$user_id,$payment_id)
+	public function removePayment(Request $request,$paymentId)
 	{
-		$payment = Payments::find($payment_id);
-		foreach ($payment->userServices as $service) {
-			$service->delete();
-		}
-		$payment->delete();
-		return redirect("admin/user/".$user_id);
+		Payments::find($paymentId)->delete();
+		UserServices::where('id_payment',$paymentId)->delete();
+		return redirect()->back()->with('successful','Deleted successful');
 	}
 
 }

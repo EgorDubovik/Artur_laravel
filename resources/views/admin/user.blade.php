@@ -87,6 +87,7 @@
         	<a class="btn btn-sm btn-primary" href="/admin/makepayment/{{$user->id}}" style="color:#fff">Make new payment</a>
         </div>
         <div class="card-body p-0">
+            
             <!-- Billing history table-->
             <div class="table-responsive table-billing-history">
                 <table class="table mb-0">
@@ -108,7 +109,7 @@
                             <td>${{number_format($payment->amount/100,2)}}</td>
                             <td><span class="badge badge-{{(($payment->status=='PAID') ? 'success' : 'light')}}">{{$payment->status}}</span></td>
                             <td>
-                                <a href="/admin/user/removePayment/{{$user->id}}/{{$payment->id}}" onclick="if(confirm('Are you sure you want to deactivate it')) return true; else return false;" class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i>
+                                <a href="/admin/removePayment/{{$payment->id}}" onclick="if(confirm('Are you sure you want to deactivate it')) return true; else return false;" class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i>
                             </td>
                         </tr>
                         
