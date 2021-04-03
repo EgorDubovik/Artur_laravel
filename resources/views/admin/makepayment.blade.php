@@ -10,9 +10,8 @@
 					Make new payment for <a href="/admin/user/{{$user->id}}" style="color: #404040">{{$user->first_name}} {{$user->last_name}}</a>
 				</div>
 				<div class="card-body">
-					<form method="post">
+					<form method="post" action="/admin/save">
 						@csrf
-						<input type="hidden" name="event" value="new_payment">
 						<input type="hidden" name="user_id" value="{{$user->id}}">
 						<!-- Begin make payment -->
 		                @include('layout/makepayment')
@@ -23,11 +22,16 @@
 			</div>
 		</div>
 		<div class="col-4">
-			@if(isset($is_event) && $is_event)
+			@if(session()->has('successful'))
 				<div class="alert alert-success" role="alert">
-				    Successful added
+				    {{session()->get('successful')}}
 				</div>
 			@endif
+			@if(session()->has('error'))
+				<div class="alert alert-danger" role="alert">
+				    {{session()->get('error')}}
+				</div>
+			@endif;
 		</div>
 	</div>
 </div>						

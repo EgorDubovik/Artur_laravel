@@ -23,21 +23,24 @@ class UserController extends Controller
 		return view("admin.add_user")->with(['services'=>$services]);
 	}
 
-	public function viewAllUsers(Request $request){
+	public function viewAllUsers(Request $request)
+	{
 		
 		$users = User::where([["id","<>",Auth::user()->id],['id','<>',1],['confirmed',1]])->orderBy("id",'desc')->get();
-		
+
 		return view("admin.users")->with(["users"=>$users]);
 	}
 
-	public function diactivateUser(Request $request,$id){
+	public function diactivateUser(Request $request,$id)
+	{
 		$user = User::find($id);
 		$user->confirmed = 0;
 		$user->save();
 		return redirect('admin/users')->with('success','Diactivate user saccessful');
 	}
 
-	public function viewUserInfo(Request $request,$id){
+	public function viewUserInfo(Request $request,$id)
+	{
 		$user = User::find($id);
 		return view("admin.user")->with(["user"=>$user]);
 	}
@@ -80,7 +83,7 @@ class UserController extends Controller
 		}
 		if(!is_null($request->service) && count($request->service)>0){
 			$amount = 0;
-			foreach ($request->service as $in => $ser) {
+			foreach ($request->services as $in => $ser) {
 				$srv = Service::find($ser);
 				$amount += $srv->price*$request->count[$in];
 			}

@@ -62,7 +62,7 @@
 
     function string_return (podservices){
         var div = '<div class="select-line row"><div class="col-6">';
-        var s = "<select name='service[]' class='form-control select_serv' onchange='count_pr(this)'><option>Select...</option>";
+        var s = "<select name='services[]' class='form-control select_serv' onchange='count_pr(this)'><option>Select...</option>";
         for(var i=0;i<podservices.length;i++){
             var serv = podservices[i];
             if(serv.pod_service){

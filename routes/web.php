@@ -31,26 +31,34 @@ Route::post("/resetpass/{code}","Auth\LoginController@resetpass");
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::group(['middleware'=>['admin'],'prefix'=>'admin'],function(){
+
+		//Users
 		Route::get('/users',"Admin\UserController@viewAllUsers");
 		Route::get('/addNewUser','Admin\UserController@viewForm')->name('new.user.form');
 		Route::post('/addNewUser','Admin\UserController@store')->name('new.user.store');
 		Route::delete('/users/remove/{id}','Admin\UserController@diactivateUser');
 		Route::get('/user/{id}','Admin\UserController@viewUserInfo');
-		Route::get('/makepayment/{id}','Admin\AdminController@makePayment');
-		Route::post('/makepayment/{id}','Admin\AdminController@makePayment');
+
+		//Payments
+		Route::get('/makepayment/{id}','Admin\PaymentController@index')->name('payment.form');
+		Route::get("/removePayment/{paymentId}","Admin\PaymentController@removePayment");
+		Route::post('/save','Admin\PaymentController@saveNewPayment');
+
+		//PriceList
 		Route::get('/pricelist','Admin\PriceListController@pricelist')->name('price.list');
 		Route::get('/pricelist/remove/{id}','Admin\PriceListController@remove');
 		Route::post('/pricelist/edit','Admin\PriceListController@edit');
-		Route::get("/removePayment/{paymentId}","Admin\AdminController@removePayment");
+		
 	});
 	Route::get("/dashboard","DashBoardController@dashboard");
 	Route::get("/transaction/{id}","TransactionViewController@index");
+	Route::post("/getpayment","DashBoardController@getPay");
 	Route::group(['prefix'=>'account'],function(){
 		Route::get("/","AccountSettingsController@account")->name("account");
 		Route::put("/update","AccountSettingsController@updateUserInformation");
 		Route::put("/update_pass","AccountSettingsController@updatePpass");	
 	});
 	
-	Route::post("/getpayment","DashBoardController@getPay");
+	
 });
 
