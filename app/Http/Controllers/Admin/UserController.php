@@ -26,16 +26,6 @@ class UserController extends Controller
 	public function viewAllUsers(Request $request){
 		
 		$users = User::where([["id","<>",Auth::user()->id],['id','<>',1],['confirmed',1]])->orderBy("id",'desc')->get();
-
-		foreach ($users as $user) {
-			$payments = Payments::where("user_id",$user->id)->get();
-
-			$amount = 0;
-			foreach ($payments as $payment) {
-				$amount+=$payment->amount;
-			}
-			$user->samary = number_format($amount/100,2);
-		}
 		
 		return view("admin.users")->with(["users"=>$users]);
 	}

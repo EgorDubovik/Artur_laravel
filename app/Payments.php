@@ -17,11 +17,10 @@ class Payments extends Model
     	'updated_at',
     ];
 
-    function serviceParents(){
-        return $this->hasMany('App\UserServices','id_payment'); //wherePivotIn('',[])
-    }
-
     function userServices(){
         return $this->hasMany('App\UserServices','id_payment');
     }
+
+    
+
 }
