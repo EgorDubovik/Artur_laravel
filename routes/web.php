@@ -10,53 +10,59 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\DashBoardController;
+use App\Http\Controllers\TransactionViewController;
+use App\Http\Controllers\AccountSettingsController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\PriceListController;
 
 Route::get('/', function(){
 	return redirect("login");
-	//return view("coming");
 });
 
-Route::get('/login',"Auth\LoginController@login")->name("login");
-Route::post('/actionLogin',"Auth\LoginController@actionLogin");
-Route::get("/logout","Auth\LoginController@logOut");
-Route::get("/signup","Auth\LoginController@signup");
-Route::post("/signup","Auth\LoginController@signup");
-Route::get("/code","Auth\LoginController@enterCode")->name("code");
-Route::post("/code","Auth\LoginController@enterCode");
-Route::get("/resendcode","Auth\LoginController@resendcode");
-Route::get("/forgotpassword","Auth\LoginController@forgotpassword")->name('forgotpassword');
-Route::post("/sendlink","Auth\LoginController@sendlink");
-Route::get("/resetpass/{code}","Auth\LoginController@resetpass");
-Route::post("/resetpass/{code}","Auth\LoginController@resetpass");
+Route::get('/login',[LoginController::class,'login'])->name("login");
+Route::post('/actionLogin',[LoginController::class,'actionLogin']);
+Route::get("/logout",[LoginController::class,'logOut']);
+Route::get("/signup",[LoginController::class,'signup']);
+Route::post("/signup",[LoginController::class,'signup']);
+Route::get("/code",[LoginController::class,'enterCode'])->name("code");
+Route::post("/code",[LoginController::class,'enterCode']);
+Route::get("/resendcode",[LoginController::class,'resendcode']);
+Route::get("/forgotpassword",[LoginController::class,'forgotpassword'])->name('forgotpassword');
+Route::post("/sendlink",[LoginController::class,'sendlink']);
+Route::get("/resetpass/{code}",[LoginController::class,'resetpass']);
+Route::post("/resetpass/{code}",[LoginController::class,'resetpass']);
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::group(['middleware'=>['admin'],'prefix'=>'admin'],function(){
 
 		//Users
-		Route::get('/users',"Admin\UserController@viewAllUsers");
-		Route::get('/addNewUser','Admin\UserController@viewForm')->name('new.user.form');
-		Route::post('/addNewUser','Admin\UserController@store')->name('new.user.store');
-		Route::delete('/users/remove/{id}','Admin\UserController@diactivateUser');
-		Route::get('/user/{id}','Admin\UserController@viewUserInfo');
+		Route::get('/users',[UserController::class,'viewAllUsers']);
+		Route::get('/addNewUser',[UserController::class,'viewForm'])->name('new.user.form');
+		Route::post('/addNewUser',[UserController::class,'store'])->name('new.user.store');
+		Route::delete('/users/remove/{id}',[UserController::class,'diactivateUser']);
+		Route::get('/user/{id}',[UserController::class,'viewUserInfo']);
 
 		//Payments
-		Route::get('/makepayment/{id}','Admin\PaymentController@index')->name('payment.form');
-		Route::get("/removePayment/{paymentId}","Admin\PaymentController@removePayment");
-		Route::post('/save','Admin\PaymentController@saveNewPayment');
+		Route::get('/makepayment/{id}',[PaymentController::class,'index'])->name('payment.form');
+		Route::get("/removePayment/{paymentId}",[PaymentController::class,'removePayment']);
+		Route::post('/save',[PaymentController::class,'saveNewPayment']);
 
 		//PriceList
-		Route::get('/pricelist','Admin\PriceListController@pricelist')->name('price.list');
-		Route::get('/pricelist/remove/{id}','Admin\PriceListController@remove');
-		Route::post('/pricelist/edit','Admin\PriceListController@edit');
+		Route::get('/pricelist',[PriceListController::class,'pricelist'])->name('price.list');
+		Route::get('/pricelist/remove/{id}',[PriceListController::class,'remove']);
+		Route::post('/pricelist/edit',[PriceListController::class,'edit']);
 		
 	});
-	Route::get("/dashboard","DashBoardController@dashboard");
-	Route::get("/transaction/{id}","TransactionViewController@index");
-	Route::post("/getpayment","DashBoardController@getPay");
+	Route::get("/dashboard",[DashBoardController::class,'dashboard']);
+	Route::get("/transaction/{id}",[TransactionViewController::class,'index']);
+	Route::post("/getpayment",[DashBoardController::class,'getPay']);
 	Route::group(['prefix'=>'account'],function(){
-		Route::get("/","AccountSettingsController@account")->name("account");
-		Route::put("/update","AccountSettingsController@updateUserInformation");
-		Route::put("/update_pass","AccountSettingsController@updatePpass");	
+		Route::get("/",[AccountSettingsController::class,'account'])->name("account");
+		Route::put("/update",[AccountSettingsController::class,'updateUserInformation']);
+		Route::put("/update_pass",[AccountSettingsController::class,'updatePpass']);	
 	});
 	
 	
