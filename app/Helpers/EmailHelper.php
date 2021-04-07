@@ -23,9 +23,14 @@ class EmailHelper
 		return self::sendEmail($temp,$user->email);
 	}
 
+	public static function sendVerificationCode($email,$code){
+		$text = "Email verification code: <b>".$code."</b><br>
+                If you received an account verification email in error, it's likely that another user accidentally entered your email while trying to recover their own email account. If you didn't initiate the request, you don't need to take any further action. You can simply disregard the verification email, and the account won't be verified.";
+        return self::sendEmail($text,$email);
+	}
+
 
 	public static function sendEmail($temp,$address){
-
 		$mail = new PHPMailer(true);
 		$mail->isSMTP();                                            
 		$mail->Host       = env('MAIL_HOST');

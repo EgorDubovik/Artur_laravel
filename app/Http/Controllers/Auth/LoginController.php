@@ -14,7 +14,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\MessageBag;
-
+use EmailHelper;
 
 class LoginController extends Controller
 {
@@ -103,7 +103,7 @@ class LoginController extends Controller
                     
                     $code = $this->createAndSendCode($request->email);
 
-                    return redirect("/code")->with(["email"=>$request->email,"code"=>$code]);
+                    return redirect("/code")->with(["email"=>$request->email]);
                 } else {
                     return view('auth.signup')->withError("Something went wrong");
                 }
@@ -125,29 +125,8 @@ class LoginController extends Controller
         ]);   
 
         // send code 
-        $text = "Email verification code: <b>".$code."</b><br>
-                If you received an account verification email in error, it's likely that another user accidentally entered your email while trying to recover their own email account. If you didn't initiate the request, you don't need to take any further action. You can simply disregard the verification email, and the account won't be verified.";
-
-        $mail = new PHPMailer(true);
-        $mail->isSMTP();                                            
-        $mail->Host       = env('MAIL_HOST');
-        $mail->SMTPAuth   = true;                                   
-        $mail->Username   = env('MAIL_USERNAME');
-        $mail->Password   = env('MAIL_PASSWORD');                               
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
-        $mail->Port       = env('MAIL_PORT');                   
-        try {
-            $mail->setFrom('justprepcenter@gmail.com', 'JBS Group LLC');
-            $mail->addAddress($email);
-            $mail->isHTML(true);                                  
-            $mail->Subject = 'Sending from just-prep';
-            $mail->Body    = $text;
-            $mail->send();
-            return true;
-        } catch (Exception $e) {
-            return false;
-        }
-        return $code;
+        return EmailHelper::sendVerificationCode($email,$code);
+        
     }
 
     public function enterCode(Request $request){
@@ -161,11 +140,11 @@ class LoginController extends Controller
                 Auth::login($user);
                 return redirect('dashboard');
             } else {
-                return view("auth.enterCode")->with(["email"=>$request->email,"code"=>$request->code]);    
+                return view("auth.enterCode")->with(["email"=>$request->email]);    
             }
         } else {
             //if(null!==Session::get("email"))
-            return view("auth.enterCode")->with(["email"=>Session::get("email"),"code"=>Session::get("code")]);
+            return view("auth.enterCode")->with(["email"=>Session::get("email")]);
             // else
             //     return redirect("/signup");    
         }
@@ -174,8 +153,8 @@ class LoginController extends Controller
     public function resendcode(Request $request){
 
         if(isset($request->email)){
-            $code = $this->createAndSendCode($request->email);
-            return redirect("/code")->with(["email"=>$request->email,"code"=>$code]);
+            $this->createAndSendCode($request->email);
+            return redirect("/code")->with(["email"=>$request->email]);
         } else {
             return redirect("/signup");   
         }

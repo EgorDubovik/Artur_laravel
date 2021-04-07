@@ -76,7 +76,7 @@ class UserController extends Controller
 			if($user->save()){
 				$status = "success";
 				$errorMes = "New user save successfull";
-				EmailHelper::sendEmail($user,$request->password);
+				EmailHelper::sendNewUserInformation($user,$request->password);
 			} else {
 				$errorMes = "Somthing went wrong. Please trye again later";
 			}

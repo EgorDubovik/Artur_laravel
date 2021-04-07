@@ -31,7 +31,7 @@
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Verification code for: {{$email}}</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="text" name="code" placeholder="Enter code" value="{{$code}}" />
+                                                <input class="form-control py-4" id="inputEmailAddress" type="text" name="code" placeholder="Enter code" value="" />
                                             </div>
                                             <!-- Form Group (login box)-->
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
