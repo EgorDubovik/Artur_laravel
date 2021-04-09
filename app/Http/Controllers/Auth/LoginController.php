@@ -100,7 +100,7 @@ class LoginController extends Controller
         if($user){
             // make secrert link
             $code = Str::random(52);
-            $link = Request::server ("SERVER_NAME")."/resetpass/".$code;
+            $link = $_SERVER['SERVER_NAME']."/resetpass/".$code;
 
             Resetpasswordcode::updateOrCreate(
                 ["user_id"=>$user->id],

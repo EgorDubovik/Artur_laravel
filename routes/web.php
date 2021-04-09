@@ -20,7 +20,6 @@ use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\PriceListController;
 
 Route::get('/', function(){
-	dd(Request::server ("SERVER_NAME").' '.Request::server ("HTTP_HOST"));
 	return redirect("login");
 });
 
