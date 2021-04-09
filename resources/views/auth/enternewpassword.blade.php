@@ -24,7 +24,7 @@
                                     <div class="card-body">
                                         <!-- Login form-->
                                         @if(isset($issetEvent) && $issetEvent && !$error)
-                                            текст об успешном изменени пароля и ссылка на <a href='/login'>логин</a> что бы попробовать войти
+                                            Password reseted successfully. Follow the link to <a href='/login'>log in</a>.
                                         @else
                                             @if(isset($issetEvent) && $issetEvent)
                                                 @if($error)
