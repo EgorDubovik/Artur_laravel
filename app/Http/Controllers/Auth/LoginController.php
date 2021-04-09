@@ -31,23 +31,26 @@ class LoginController extends Controller
 
 
     public function actionLogin(Request $request){
-        if(isset($request->event)){
-            if($request->event == "login"){
-                $user = User::where([
-                    ["email",$request->email],
-                    ["confirmed",1],
-                ])->first();
-                if($user){
-                    if(Hash::check($request->password,$user->password)){
-                        $rem = ($request->remember_me) ? true : false;
-                        Auth::login($user,$rem);
-                        return redirect('dashboard');
-                    } 
-                }
-            }
-        }
+       
+        $request->validate([
+            'email' => 'required|email:rfc,dns',
+            'password' => 'required'
+        ],[
+            'password.request'=>"The Password field is required."
+        ]);
 
-        return redirect("login")->withInput();
+        $user = User::where([
+            ["email",$request->email],
+            ["confirmed",1],
+        ])->first();
+        if($user){
+            if(Hash::check($request->password,$user->password)){
+                $rem = ($request->remember_me) ? true : false;
+                Auth::login($user,$rem);
+                return redirect('dashboard');
+            } 
+        }
+        return redirect("login")->withInput()->with('error','Incorrect login or password');
     }
 
     public function logOut(Request $request){
@@ -103,7 +106,7 @@ class LoginController extends Controller
                 ["user_id"=>$user->id],
                 ["code"=>$code]
             );
-            // send email
+            EmailHelper::sendLinkRestartPassword($user->email,$link);
             return redirect()->route('forgotpassword')->with(['success'=>'success','link'=>$link]);
         } else {
             return redirect()->route('forgotpassword')->with(['error'=>'Something went wrong, please try again']);

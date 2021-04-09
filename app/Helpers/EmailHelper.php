@@ -28,6 +28,10 @@ class EmailHelper
                 If you received an account verification email in error, it's likely that another user accidentally entered your email while trying to recover their own email account. If you didn't initiate the request, you don't need to take any further action. You can simply disregard the verification email, and the account won't be verified.";
         return self::sendEmail($text,$email);
 	}
+	public static function sendLinkRestartPassword($email,$link){
+		$text = "We have received a request to reset tje password for the just-prep account associated with ".$email." <br><br>You can reset your password by clicking the link below:<br><br><a href='".$link."'>".$link."</a>";
+        return self::sendEmail($text,$email);
+	}
 
 
 	public static function sendEmail($temp,$address){

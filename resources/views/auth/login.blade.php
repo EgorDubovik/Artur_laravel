@@ -22,10 +22,22 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
+                                        @if($errors->any())
+                                            <ul style="margin-bottom: 20px;color: #ff6d5f">
+                                            @foreach($errors->all() as $error)
+                                                <li>{{$error}}</li>
+                                            @endforeach
+                                            </ul>
+                                        @endif
+                                        @if(session()->has('error'))
+                                            <ul style="margin-bottom: 20px;color: #ff6d5f">
+                                                <li>{{session()->get('error')}}</li>
+                                            </ul>
+
+                                        @endif
                                         <!-- Login form-->
                                         <form method="post" action="/actionLogin">
                                           @csrf
-                                            <input type="hidden" name="event" value="login">
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>

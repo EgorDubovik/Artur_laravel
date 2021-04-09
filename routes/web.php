@@ -33,8 +33,8 @@ Route::post("/code",[LoginController::class,'enterCode']);
 Route::get("/resendcode",[LoginController::class,'resendcode']);
 Route::get("/forgotpassword",[LoginController::class,'forgotpassword'])->name('forgotpassword');
 Route::post("/sendlink",[LoginController::class,'sendlink']);
-Route::get("/resetpass/{code}",[LoginController::class,'resetpass']);
-Route::post("/resetpass/{code}",[LoginController::class,'resetpass']);
+Route::get("/resetpass/{code}",[LoginController::class,'restpass']);
+Route::post("/restpass/{code}",[LoginController::class,'restpass']);
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::group(['middleware'=>['admin'],'prefix'=>'admin'],function(){

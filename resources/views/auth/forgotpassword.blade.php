@@ -26,8 +26,7 @@
                                     <div class="card-body">
                                         <!-- Login form-->
                                         @if(session()->has('success'))
-                                            Текст о том что на почту отправлено писмо ссылкйо по которой он должен пройти...
-                                            <div><a href="{{session()->get('link')}}">{{session()->get('link')}}</a></div>
+                                            We sent a link to reset your password at your email address
                                         @else
                                             @if(session()->has('error'))
                                                 <div class="alert alert-danger" role="alert">{{session()->get('error')}}</div>
