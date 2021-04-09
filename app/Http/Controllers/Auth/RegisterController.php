@@ -7,66 +7,59 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use App\VerificationCode;
+use EmailHelper;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
 
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
+    public function view(){
+        return view('auth.signup');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function create(Request $request)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        $messages = [
+            'same' => 'The passwords did not match',
+            'first_name.required' => 'The First name field is required.',
+            'last_name.required' => 'The Last name field is required.',
+            'pass1.required' => 'The Password field is required.',
+            'pass2.required' => 'The Confirm Password field is required.',
+        ];
+        $input = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email:rfc,dns|unique:users,email',
+            'pass1' => 'required',
+            'pass2'=> 'required|same:pass1',
+        ],$messages);
+
+        $user = User::create([
+            "first_name"=>$request->first_name,
+            "last_name"=>$request->last_name,
+            "email"=>$request->email,
+            "confirmed"=>0,
+            'password' => password_hash($request->pass1, PASSWORD_BCRYPT),
+            'is_admin' => 0,
         ]);
+        $code = $this->createAndSendCode($request->email);
+        return redirect("/code")->with(["email"=>$request->email]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+    private function createAndSendCode($email){
+        $code = mt_rand(1000, 9999);
+        $flushCodes = VerificationCode::where("user_email",$email)->get();
+        foreach ($flushCodes as $fcode) {
+            $fcode->delete();
+        }
+        VerificationCode::create([
+            "user_email"=>$email,
+            "code"=>$code,
+        ]);   
+
+        // send code 
+        return EmailHelper::sendVerificationCode($email,$code);
+        
     }
 }

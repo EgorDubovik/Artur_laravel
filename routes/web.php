@@ -14,6 +14,7 @@ use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\TransactionViewController;
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\PriceListController;
@@ -25,8 +26,8 @@ Route::get('/', function(){
 Route::get('/login',[LoginController::class,'login'])->name("login");
 Route::post('/actionLogin',[LoginController::class,'actionLogin']);
 Route::get("/logout",[LoginController::class,'logOut']);
-Route::get("/signup",[LoginController::class,'signup']);
-Route::post("/signup",[LoginController::class,'signup']);
+Route::get("/signup",[RegisterController::class,'view']);
+Route::post("/signup",[RegisterController::class,'create']);
 Route::get("/code",[LoginController::class,'enterCode'])->name("code");
 Route::post("/code",[LoginController::class,'enterCode']);
 Route::get("/resendcode",[LoginController::class,'resendcode']);

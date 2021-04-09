@@ -10,8 +10,6 @@ use Auth;
 use Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Hash;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 use Illuminate\Support\Str;
 use Illuminate\Support\MessageBag;
 use EmailHelper;
@@ -52,81 +50,9 @@ class LoginController extends Controller
         return redirect("login")->withInput();
     }
 
-    
-
     public function logOut(Request $request){
     	Auth::logout();
     	return redirect("login");
-    }
-
-    public function signup(Request $request){
-
-        if(isset($request->event)){
-
-            if($request->event=="signup"){
-                if(isset($request->email)){
-                    $userCheck = User::where([
-                        ["email",$request->email],
-                        ["confirmed",0],
-                    ])->first();
-                    if($userCheck){
-                        $userCheck->delete();
-                    }
-                }
-
-                $messages = [
-                    'same' => 'The passwords did not match',
-                    'first_name.required' => 'The First name field is required.',
-                    'last_name.required' => 'The Last name field is required.',
-                    'pass1.required' => 'The Password field is required.',
-                    'pass2.required' => 'The Confirm Password field is required.',
-                ];
-                $input = $request->validate([
-                    'first_name' => 'required',
-                    'last_name' => 'required',
-                    'email' => 'required|email|unique:users,email',
-                    'pass1' => 'required',
-                    'pass2'=> 'required|same:pass1',
-                ],$messages);
-
-                $user = User::create([
-                    "first_name"=>$request->first_name,
-                    "last_name"=>$request->last_name,
-                    "email"=>$request->email,
-                    "confirmed"=>0,
-                    'password' => password_hash($request->pass1, PASSWORD_BCRYPT),
-                    'is_admin' => 0,
-                ]);
-
-                if(true){
-                    // Проверить на наличие по времени
-                    
-                    $code = $this->createAndSendCode($request->email);
-
-                    return redirect("/code")->with(["email"=>$request->email]);
-                } else {
-                    return view('auth.signup')->withError("Something went wrong");
-                }
-
-            }
-        }
-        return view('auth.signup');
-    }
-
-    private function createAndSendCode($email){
-        $code = mt_rand(1000, 9999);
-        $flushCodes = VerificationCode::where("user_email",$email)->get();
-        foreach ($flushCodes as $fcode) {
-            $fcode->delete();
-        }
-        VerificationCode::create([
-            "user_email"=>$email,
-            "code"=>$code,
-        ]);   
-
-        // send code 
-        return EmailHelper::sendVerificationCode($email,$code);
-        
     }
 
     public function enterCode(Request $request){

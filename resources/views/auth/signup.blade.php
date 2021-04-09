@@ -31,30 +31,29 @@
                                             </ul>
                                         @endif
                                         <!-- Registration form-->
-                                        <form method="post">
+                                        <form method="post" action="signup">
                                              @csrf
-                                            <input type="hidden" name="event" value="signup">
                                             <!-- Form Row-->
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <!-- Form Group (first name)-->
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputFirstName">First Name</label>
-                                                        <input class="form-control py-4" name="first_name" id="inputFirstName" type="text" placeholder="Enter first name">
+                                                        <input class="form-control py-4" name="first_name" id="inputFirstName" type="text" value="{{old('first_name')}}" placeholder="Enter first name">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <!-- Form Group (last name)-->
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputLastName">Last Name</label>
-                                                        <input class="form-control py-4" name="last_name" id="inputLastName" type="text" placeholder="Enter last name">
+                                                        <input class="form-control py-4" name="last_name" id="inputLastName" type="text" value="{{old('last_name')}}" placeholder="Enter last name">
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- Form Group (email address)            -->
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" name="email" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address">
+                                                <input class="form-control py-4" name="email" id="inputEmailAddress" type="email" aria-describedby="emailHelp" value="{{old('email')}}" placeholder="Enter email address">
                                             </div>
                                             <!-- Form Row    -->
                                             <div class="form-row">
