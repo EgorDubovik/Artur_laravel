@@ -63,7 +63,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::group(['prefix'=>'account'],function(){
 		Route::get("/",[AccountSettingsController::class,'account'])->name("account");
 		Route::put("/update",[AccountSettingsController::class,'updateUserInformation']);
-		Route::put("/update_pass",[AccountSettingsController::class,'updatePpass']);	
+		Route::put("/update_pass",[AccountSettingsController::class,'updatePass']);	
 	});
 	
 	
