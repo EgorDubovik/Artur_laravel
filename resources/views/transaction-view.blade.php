@@ -8,7 +8,8 @@
    
     <div class="row">
     	<div class="col-xl-12">
-            <!-- Account details card-->
+            <!-- Transaction details card-->
+            @if($transaction_inf)
             <div class="card mb-4">
                 <div class="card-header">Transaction information</div>
                 <div class="card-body">
@@ -87,6 +88,9 @@
                     
                 </div>
             </div>
+            @else
+                No transavtion found
+            @endif
         </div>
     </div>
 </div>
