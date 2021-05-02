@@ -18,6 +18,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\PriceListController;
+use App\Http\Controllers\Admin\UserTableController;
 
 Route::get('/', function(){
 	return redirect("login");
@@ -55,7 +56,9 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::get('/pricelist',[PriceListController::class,'pricelist'])->name('price.list');
 		Route::get('/pricelist/remove/{id}',[PriceListController::class,'remove']);
 		Route::post('/pricelist/edit',[PriceListController::class,'edit']);
-		
+			
+		// UserTable
+		Route::get('/user/table/{id}',[UserTableController::class,'view']);		
 	});
 	Route::get("/dashboard",[DashBoardController::class,'dashboard']);
 	Route::get("/transaction/{id}",[TransactionViewController::class,'index']);
@@ -65,6 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::put("/update",[AccountSettingsController::class,'updateUserInformation']);
 		Route::put("/update_pass",[AccountSettingsController::class,'updatePass']);	
 	});
+
 	
 	
 });

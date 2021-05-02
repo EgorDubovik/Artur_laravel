@@ -24,17 +24,7 @@
 							<th>Actions</th>
 						</tr>
 					</thead>
-					<tfoot>
-						<tr>
-							<th>Id</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Start date</th>
-							<th>Full amount</th>
-							<th>Status</th>
-							<th>Actions</th>
-						</tr>
-					</tfoot>
+					
 					<tbody>
 						@foreach($users as $auser)
 						<tr>
@@ -47,17 +37,23 @@
 								<div class="badge badge-primary badge-pill">Active</div>
 							</td>
 							<td>
-								<!-- <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="more-vertical"></i></button>
- -->
-								<form method="post"  action="/admin/users/remove/{{$auser->id}}" onsubmit="if(confirm('Are you sure you want to deactivate it')) return true; else return false;">
-									@csrf
-									@method("DELETE")
-									<button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
-										<i data-feather="trash-2"></i>
-									</button>
-								</form>
-								
+								<div class="row">
+									<div class="col-2">
+										<form method="post"  action="/admin/users/remove/{{$auser->id}}" onsubmit="if(confirm('Are you sure you want to deactivate it')) return true; else return false;">
+											@csrf
+											@method("DELETE")
+											<button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
+												<i class="far fa-trash-alt"></i>
+											</button>
 
+										</form>
+									</div>
+									<div class="col-2">
+										<a href="/admin/user/table/{{$auser->id}}" class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
+											<i class="fas fa-table"></i>
+										</a>
+									</div>
+								</div>
 
 							</td>
 						</tr>
