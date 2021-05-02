@@ -17,6 +17,7 @@ class CreateProductTableField extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title');
+            $table->boolean('is_writeable')->default(0);
             $table->unsignedBigInteger('table_id');
 
             $table->foreign('table_id')

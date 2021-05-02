@@ -13,7 +13,7 @@ class Product extends Model
 
     protected $fillable = [
     	'user_id'
-    ]
+    ];
 
 
     function field(){

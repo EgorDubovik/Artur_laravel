@@ -58,7 +58,8 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::post('/pricelist/edit',[PriceListController::class,'edit']);
 			
 		// UserTable
-		Route::get('/user/table/{id}',[UserTableController::class,'view']);		
+		Route::get('/user/table/{id}',[UserTableController::class,'view']);	
+		Route::get('/create/table/{id}',[UserTableController::class,'createTableView']);	
 	});
 	Route::get("/dashboard",[DashBoardController::class,'dashboard']);
 	Route::get("/transaction/{id}",[TransactionViewController::class,'index']);

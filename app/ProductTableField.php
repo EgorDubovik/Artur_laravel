@@ -13,7 +13,7 @@ class ProductTableField extends Model
     protected $fillable = [
     	'table_id',
     	'title'
-    ]
+    ];
 
 
 }
