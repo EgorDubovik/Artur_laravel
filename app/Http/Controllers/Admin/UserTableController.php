@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Product;
+use App\ProductTableField;
 
 
 class UserTableController extends Controller
@@ -30,5 +31,39 @@ class UserTableController extends Controller
     		->with([
     			'user'=>$user
     		]);
+    }
+
+    public function store(Request $request){
+
+    	foreach ($request->fields as $key => $field) {
+    		if(empty($field))
+    			unset($request->fields[$key]);
+    	}
+
+    	$validator = $request->validate([
+    		'user_id'=>'required',
+    		'fields'=>'required'
+    	],[
+    		'user_id.required'=>'The user id is required',
+    		'fields.required'=>'More fields needed',
+    	]);
+
+    	
+
+    	// $new_table = Product::create([
+    	// 	'user_id'=>$request->user_id
+    	// ]);
+
+    	// foreach ($request->fields as $key => $field) {
+    	// 	ProductTableField::create([
+    	// 		'table_id'=>$new_table->id,
+    	// 		'title'=>$field,
+    	// 		'is_writeable'=>$request->is_writeable[$key],
+    	// 	]);
+    	// }
+
+
+
+    	return redirect('/admin/user/table/'.$request->user_id)->with('success','New table for user created successfull');
     }
 }
