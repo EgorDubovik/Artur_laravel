@@ -34,11 +34,18 @@ class UserTableController extends Controller
     }
 
     public function store(Request $request){
-
+    	$fields = null;
+    	$is_writeable = null;
     	foreach ($request->fields as $key => $field) {
-    		if(empty($field))
-    			unset($request->fields[$key]);
+    		if(!is_null($field)){
+    			$fields[] = $field;
+    			$is_writeable[] = $request->is_writeable[$key];
+    		}
     	}
+
+    	dd($request->is_writeable);
+    	$request->merge(['fields'=>$fields]);
+    	$request->merge(['is_writeable'=>$is_writeable]);
 
     	$validator = $request->validate([
     		'user_id'=>'required',
