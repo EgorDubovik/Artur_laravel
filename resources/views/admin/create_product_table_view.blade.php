@@ -72,13 +72,14 @@
 </div>						
 <script type="text/javascript">
 	function addNewField(){
-		let line = '<div class="form-row align-items-center">'+
+		let count = $('.input-line').length;
+		let line = '<div class="form-row align-items-center input-line">'+
 							'<div class="form-group col-md-8">'+
 								'<input type="text" name="fields[]" class="form-control" placeholder="Название столбца">'+
 							'</div>'+
 							'<div class="form-group col-md-4">'+
 								'<div class="form-check ">'+
-							      '<input class="form-check-input" type="checkbox" name="is_writeable[]">'+
+							      '<input class="form-check-input" type="checkbox" name="is_writeable[]" value="'+count+'">'+
 							      '<label class="form-check-label">'+
 							        'Is writeble'+
 							      '</label>'+

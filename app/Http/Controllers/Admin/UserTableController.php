@@ -39,11 +39,13 @@ class UserTableController extends Controller
     	foreach ($request->fields as $key => $field) {
     		if(!is_null($field)){
     			$fields[] = $field;
-    			$is_writeable[] = $request->is_writeable[$key];
+    			if(!is_null($request->is_writeable) && in_array($key, $request->is_writeable))
+    				$is_writeable[] = 1;
+    			else 
+    				$is_writeable[] = 0;
     		}
     	}
-
-    	dd($request->is_writeable);
+    	
     	$request->merge(['fields'=>$fields]);
     	$request->merge(['is_writeable'=>$is_writeable]);
 
