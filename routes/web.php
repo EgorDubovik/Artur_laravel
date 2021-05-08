@@ -60,7 +60,8 @@ Route::group(['middleware' => ['auth']], function () {
 		// UserTable
 		Route::get('/user/table/{id}',[UserTableController::class,'view']);	
 		Route::get('/create/table/{id}',[UserTableController::class,'createTableView']);	
-		Route::post('/store/table',[UserTableController::class,'store']);	
+		Route::post('/store/table',[UserTableController::class,'store']);
+		Route::post('/table/add/line/{table_id}',[UserTableController::class,'addLine']);
 	});
 	Route::get("/dashboard",[DashBoardController::class,'dashboard']);
 	Route::get("/transaction/{id}",[TransactionViewController::class,'index']);

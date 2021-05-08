@@ -15,6 +15,7 @@ class UserTableController extends Controller
     {
 
     	$table = Product::where('user_id',$user_id)->first();
+    	
     	$user = User::find($user_id);
     	return view('admin.product_table_view')
     		->with([
@@ -59,20 +60,25 @@ class UserTableController extends Controller
 
     	
 
-    	// $new_table = Product::create([
-    	// 	'user_id'=>$request->user_id
-    	// ]);
+    	$new_table = Product::create([
+    		'user_id'=>$request->user_id
+    	]);
 
-    	// foreach ($request->fields as $key => $field) {
-    	// 	ProductTableField::create([
-    	// 		'table_id'=>$new_table->id,
-    	// 		'title'=>$field,
-    	// 		'is_writeable'=>$request->is_writeable[$key],
-    	// 	]);
-    	// }
+    	foreach ($request->fields as $key => $field) {
+    		ProductTableField::create([
+    			'table_id'=>$new_table->id,
+    			'title'=>$field,
+    			'is_writeable'=>$request->is_writeable[$key],
+    		]);
+    	}
 
 
 
     	return redirect('/admin/user/table/'.$request->user_id)->with('success','New table for user created successfull');
+    }
+
+    public function addLine(Request $request,$table_id)
+    {
+    	return response()->json(['status'=>true]);
     }
 }

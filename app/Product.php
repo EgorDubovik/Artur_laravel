@@ -16,7 +16,7 @@ class Product extends Model
     ];
 
 
-    function field(){
-    	return $this->hasMany('App\ProductTableField');
+    function fields(){
+    	return $this->hasMany('App\ProductTableField','table_id');
     }
 }
