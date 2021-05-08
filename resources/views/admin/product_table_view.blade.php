@@ -26,6 +26,17 @@
 								</tr>
 							</thead>
 							<tbody>
+
+								@foreach($table->lines as $line)
+									<tr>
+									@foreach($table->fields as $field)
+										<td>{{$line->cells->firstWhere('field_id',$field->id)->title}}</td>
+									@endforeach
+									<td><a href="#">r{{$line->id}}</a></td>
+									</tr>
+								@endforeach
+									
+
 								<tr class="last_line">
 									@foreach($table->fields as $field)
 									<td></td>
@@ -61,7 +72,7 @@
 			}
 		}).
 		done(function(response){
-			console.log(response.status);
+			console.log(response);
 			$('#dataTable .last_line').before(line);
 		}).fail(function(){
 			alert('fail');
