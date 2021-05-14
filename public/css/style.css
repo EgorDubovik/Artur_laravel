@@ -72,3 +72,25 @@ table.mouseover tr.over td{
 	background: #565656;
 	color: #fff;
 }
+.userTable td{
+	background: #fff4f4;
+}
+.userTable td.is_writeable{
+	background: #fff;
+}
+.userTable td.is_writeable.td-select{
+	padding: 2px 4px;
+}
+.userTable.admin td{
+	background: #fff;
+	cursor: text;
+}
+input.form-input{
+	padding: 8px;
+	border-radius: 5px;
+   border: 1px solid #ccc;
+   outline: none;
+}
+input.form-input:focus{
+	border:1px solid #5c9cea;
+}

@@ -91,7 +91,7 @@ class UserTableController extends Controller
 				$product_table_cell = ProductTableCell::create([
 					'line_id' => $product_table_line->id,
 					'field_id' => $field->id,
-					'title' => 'test',
+					'title' => '',
 				]);
 			}
 
