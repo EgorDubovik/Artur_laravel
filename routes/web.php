@@ -72,6 +72,9 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::put("/update_pass",[AccountSettingsController::class,'updatePass']);	
 	});
 
+	//UserTable
+	Route::post("/table/cell/edit",[UserTableController::class,'editCell']);
+
 	
 	
 });

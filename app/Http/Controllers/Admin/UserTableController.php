@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 use App\User;
 use App\Product;
 use App\ProductTableField;
@@ -99,5 +100,25 @@ class UserTableController extends Controller
 		} else {
 			return abort(404);
 		}
+	}
+
+	public function editCell(Request $request){
+		
+		$product_table_line = ProductTableLine::find($request->line_id);
+
+		if($product_table_line->table->user_id==Auth::user()->id || Auth::user()->is_admin){
+			$product_table_cell = ProductTableCell::where([
+				'line_id'=>$request->line_id,
+				'field_id'=>$request->field_id,
+			])->first();
+			
+			$product_table_cell->title = $request->title;
+			$product_table_cell->save();	
+			return response()->json(['status'=>true]);
+		}
+
+		return response()->json(['status'=>false,'messange'=>"permission denied"]);
+
+		
 	}
 }

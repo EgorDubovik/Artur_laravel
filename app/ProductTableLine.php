@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Product;
 class ProductTableLine extends Model
 {
     use HasFactory;
@@ -16,5 +16,9 @@ class ProductTableLine extends Model
 
     function cells(){
     	return $this->hasMany('App\ProductTableCell','line_id');
+    }
+
+    function table(){
+    	return $this->belongsTo(Product::class);
     }
 }

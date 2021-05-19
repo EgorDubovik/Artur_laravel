@@ -84,6 +84,7 @@ table.mouseover tr.over td{
 .userTable.admin td{
 	background: #fff;
 	cursor: text;
+	position: relative;
 }
 input.form-input{
 	padding: 8px;
@@ -93,4 +94,13 @@ input.form-input{
 }
 input.form-input:focus{
 	border:1px solid #5c9cea;
+}
+.span-edit{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	right:0px;
+	padding: 12px;
+
 }

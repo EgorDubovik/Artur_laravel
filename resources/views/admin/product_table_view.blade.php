@@ -92,14 +92,15 @@
 			 	$(this).addClass('is_writeable');
 			 	var text = $(this).html();
 
-			 	$(this).html('<span onclick="edit(this)">'+text+'</span>');
+			 	$(this).html('<div class="span-edit" onclick="edit(this)">'+text+'</div>');
 			}
 		})
 
 	});
-
+	var old_text;
 	function edit(d){
 		var text = $(d).text();
+		old_text = text;
 		var parent = $(d).parent();
 		parent.addClass('td-select');
 		parent.html(
@@ -110,10 +111,30 @@
 
 	function blurc(d) {
 		
-		//save to server
 		var v = $(d).val();
+		if(v!=old_text){
+			var parent = $(d).parent();
+			var line_id = parent.attr('data-r');
+			var field_id = parent.attr('data-f');
+			console.log(line_id,field_id);
+			$.ajax({
+				url:"/table/cell/edit",
+				type: 'POST',
+				data : {
+					_token : '{{csrf_token()}}',
+					line_id : line_id,
+					field_id : field_id,
+					title : v,
+				}
+			}).
+			done(function(response){
+				console.log(response);
+			}).fail(function(){
+				alert('fail');
+			});
+		}
 		$(d).parent().removeClass("td-select");
-		$(d).parent().html('<span onclick="edit(this)">'+v+'</span>');
+		$(d).parent().html('<div class="span-edit" onclick="edit(this)">'+v+'</div>');
 	}
 		
 </script>
