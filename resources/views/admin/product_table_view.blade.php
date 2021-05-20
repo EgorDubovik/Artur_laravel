@@ -34,7 +34,7 @@
 									@foreach($table->fields as $field)
 										<td data-w="{{$field->is_writeable}}" data-r="{{$line->id}}" data-f="{{$field->id}}" class="inf-field">{{$line->cells->firstWhere('field_id',$field->id)->title}}</td>
 									@endforeach
-									<td><a href="#">r{{$line->id}}</a></td>
+									<td><a onclick="if(confirm('Are you sure you want to deactivate it')) return true; else return false;" href="/admin/remove/line/{{$line->id}}">r{{$line->id}}</a></td>
 									</tr>
 								@endforeach
 									

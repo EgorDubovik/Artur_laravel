@@ -118,7 +118,12 @@ class UserTableController extends Controller
 		}
 
 		return response()->json(['status'=>false,'messange'=>"permission denied"]);
+	}
 
-		
+	public function removeLine(Request $request, $line_id)
+	{
+		$product_table_line = ProductTableLine::find($line_id);
+		$product_table_line->delete();
+		return back();
 	}
 }
