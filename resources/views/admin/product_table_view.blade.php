@@ -58,11 +58,12 @@
 		</div>
 	</div>	
 </div>
+@if($table)
 <script type="text/javascript">
 	function addLine(count){
 		let line = '<tr>';
 		for (var i = count - 1; i >= 0; i--) {
-			line+='<td></td>';
+			line+='<td><div class="span-edit" onclick="edit(this)"></div></td>';
 		}
 		line+='<td><a href=#>r</a></td>';
 		line+='</tr>';
@@ -138,4 +139,5 @@
 	}
 		
 </script>
+@endif
 @stop

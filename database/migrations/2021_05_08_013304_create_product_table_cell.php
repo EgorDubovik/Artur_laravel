@@ -16,9 +16,15 @@ class CreateProductTableCell extends Migration
         Schema::create('product_table_cell', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('line_id');
+            $table->unsignedBigInteger('line_id');
             $table->integer('field_id');
             $table->string('title');
+
+            $table->foreign('line_id')
+                ->references('id')
+                ->on('product_table_lines')
+                ->onDelete('cascade');
+
         });
     }
 

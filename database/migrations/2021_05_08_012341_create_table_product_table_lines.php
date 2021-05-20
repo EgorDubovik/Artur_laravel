@@ -16,7 +16,12 @@ class CreateTableProductTableLines extends Migration
         Schema::create('product_table_lines', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('table_id');
+            $table->unsignedBigInteger('table_id');
+
+            $table->foreign('table_id')
+                ->references('id')
+                ->on('product_table')
+                ->onDelete('cascade');
         });
     }
 
