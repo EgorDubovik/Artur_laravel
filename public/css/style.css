@@ -91,6 +91,7 @@ input.form-input{
 	border-radius: 5px;
    border: 1px solid #ccc;
    outline: none;
+   width: 100%;
 }
 input.form-input:focus{
 	border:1px solid #5c9cea;

@@ -20,7 +20,7 @@
 							<thead>
 								<tr>
 									@foreach($table->fields as $field)
-									<th>{{$field->title}} 
+									<th data-f="{{$field->id}}">{{$field->title}} 
 										@if($field->is_writeable) <i style="margin-left: 10px;" class="far fa-edit" data-toggle="tooltip" data-placement="top" title="Это поле может редактировать пользователь"></i> @endif										
 									</th>
 									@endforeach
@@ -34,7 +34,7 @@
 									@foreach($table->fields as $field)
 										<td data-w="{{$field->is_writeable}}" data-r="{{$line->id}}" data-f="{{$field->id}}" class="inf-field">{{$line->cells->firstWhere('field_id',$field->id)->title}}</td>
 									@endforeach
-									<td><a onclick="if(confirm('Are you sure you want to deactivate it')) return true; else return false;" href="/admin/remove/line/{{$line->id}}">r{{$line->id}}</a></td>
+									<td><a style="color: #f73d57" onclick="if(confirm('Are you sure you want to deactivate it')) return true; else return false;" href="/admin/remove/line/{{$line->id}}"><i class="far fa-trash-alt"></i></a></td>
 									</tr>
 								@endforeach
 									
@@ -62,11 +62,8 @@
 <script type="text/javascript">
 	function addLine(count){
 		let line = '<tr>';
-		for (var i = count - 1; i >= 0; i--) {
-			line+='<td><div class="span-edit" onclick="edit(this)"></div></td>';
-		}
-		line+='<td><a href=#>r</a></td>';
-		line+='</tr>';
+		
+		
 		$.ajax({
 			url:"/admin/table/add/line/{{$table->id}}",
 			type: 'POST',
@@ -76,6 +73,12 @@
 		}).
 		done(function(response){
 			console.log(response);
+			for (var i = 0; i <= count-1; i++) {
+				var f_id = $('.userTable th').eq(i).attr('data-f');
+				line+='<td data-f="'+f_id+'" data-r="'+response.line_id+'"><div class="span-edit" onclick="edit(this)"></div></td>';
+			}
+			line+='<td><a style="color: #f73d57" onclick="if(confirm(\'Are you sure you want to deactivate it\')) return true; else return false;" href="/admin/remove/line/'+response.line_id+'"><i class="far fa-trash-alt"></i></a></td>';
+			line+='</tr>';
 			$('#dataTable .last_line').before(line);
 		}).fail(function(){
 			alert('fail');
