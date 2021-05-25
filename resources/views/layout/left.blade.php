@@ -8,7 +8,14 @@
                     </div>
                     Dashboard
                 </a>
-
+                @if(!Auth::user()->is_admin)
+                    <a class="nav-link" href="/table">
+                        <div class="nav-link-icon">
+                            <i class="fas fa-table"></i>
+                        </div>
+                        Work tables
+                    </a>
+                @endif
                 @if(Auth::user()->is_admin)
                     <a class="nav-link" href="/admin/users">
                         <div class="nav-link-icon">

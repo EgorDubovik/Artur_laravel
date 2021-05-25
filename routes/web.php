@@ -75,7 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 	//UserTable
 	Route::post("/table/cell/edit",[UserTableController::class,'editCell']);
-
+	Route::get("/table",[App\Http\Controllers\UserTableController::class,"view"]);
 	
 	
 });
