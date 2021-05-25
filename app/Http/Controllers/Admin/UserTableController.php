@@ -111,10 +111,12 @@ class UserTableController extends Controller
 				'line_id'=>$request->line_id,
 				'field_id'=>$request->field_id,
 			])->first();
-			
-			$product_table_cell->title = $request->title;
-			$product_table_cell->save();	
-			return response()->json(['status'=>true]);
+			if(Auth::user()->is_admin || $product_table_cell->field->is_writeable)
+			{
+				$product_table_cell->title = $request->title;
+				$product_table_cell->save();	
+				return response()->json(['status'=>true]);
+			}
 		}
 
 		return response()->json(['status'=>false,'messange'=>"permission denied"]);

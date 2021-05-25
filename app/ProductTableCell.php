@@ -24,4 +24,8 @@ class ProductTableCell extends Model
     function line(){
     	return $this->belongsTo(ProductTableLine::class);
     }
+
+    function field(){
+        return $this->belongsTo(ProductTableField::class);   
+    }
 }

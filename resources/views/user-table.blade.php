@@ -40,7 +40,7 @@
 									@foreach($table->fields as $field)
 									<td></td>
 									@endforeach
-									<td><a href="#" onclick="addLine({{count($table->fields)}});return false;">add</a></td>
+									<td></td>
 								</tr>
 							</tbody>
 						</table>
@@ -54,30 +54,7 @@
 </div>
 @if($table)
 <script type="text/javascript">
-	function addLine(count){
-		let line = '<tr>';
-		
-		
-		$.ajax({
-			url:"/admin/table/add/line/{{$table->id}}",
-			type: 'POST',
-			data : {
-				_token : '{{csrf_token()}}',
-			}
-		}).
-		done(function(response){
-			console.log(response);
-			for (var i = 0; i <= count-1; i++) {
-				var f_id = $('.userTable th').eq(i).attr('data-f');
-				line+='<td data-f="'+f_id+'" data-r="'+response.line_id+'"><div class="span-edit" onclick="edit(this)"></div></td>';
-			}
-			line+='<td><a style="color: #f73d57" onclick="if(confirm(\'Are you sure you want to deactivate it\')) return true; else return false;" href="/admin/remove/line/'+response.line_id+'"><i class="far fa-trash-alt"></i></a></td>';
-			line+='</tr>';
-			$('#dataTable .last_line').before(line);
-		}).fail(function(){
-			alert('fail');
-		});
-	}
+	
 
 </script>					
 <script type="text/javascript">
@@ -127,6 +104,9 @@
 			}).
 			done(function(response){
 				console.log(response);
+				if(!response.status){
+					alert(response.messange);
+				}
 			}).fail(function(){
 				alert('fail');
 			});
