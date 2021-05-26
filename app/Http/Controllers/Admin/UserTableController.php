@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\User;
-use App\Product;
-use App\ProductTableField;
-use App\ProductTableLine;
-use App\ProductTableCell;
+use App\WorkTable;
+use App\WorkTableField;
+use App\WorkTableLine;
+use App\WorkTableCell;
 
 
 class UserTableController extends Controller
@@ -17,7 +17,7 @@ class UserTableController extends Controller
 	 public function view(Request $request,$user_id)
 	 {
 
-		 $table = Product::where('user_id',$user_id)->first();
+		 $table = WorkTable::where('user_id',$user_id)->first();
 
 		 $user = User::find($user_id);
 		 return view('admin.product_table_view')
@@ -63,13 +63,13 @@ class UserTableController extends Controller
 
 
 
-		$new_table = Product::create([
+		$new_table = WorkTable::create([
 			'user_id'=>$request->user_id
 		]);
 
 		foreach ($request->fields as $key => $field)
 		{
-			ProductTableField::create([
+			WorkTableField::create([
 				'table_id'=>$new_table->id,
 				'title'=>$field,
 				'is_writeable'=>$request->is_writeable[$key],
@@ -80,16 +80,16 @@ class UserTableController extends Controller
 
 	public function addLine(Request $request,$table_id)
 	{
-		$product_table = Product::find($table_id);
+		$product_table = WorkTable::find($table_id);
 		if($product_table)
 		{
-			$product_table_line = ProductTableLine::create([
+			$product_table_line = WorkTableLine::create([
 				'table_id'=>$table_id,
 			]);
 
 			foreach ($product_table->fields as $key => $field)
 			{
-				$product_table_cell = ProductTableCell::create([
+				$product_table_cell = WorkTableCell::create([
 					'line_id' => $product_table_line->id,
 					'field_id' => $field->id,
 					'title' => '',
@@ -104,10 +104,10 @@ class UserTableController extends Controller
 
 	public function editCell(Request $request){
 		
-		$product_table_line = ProductTableLine::find($request->line_id);
+		$product_table_line = WorkTableLine::find($request->line_id);
 
 		if($product_table_line->table->user_id==Auth::user()->id || Auth::user()->is_admin){
-			$product_table_cell = ProductTableCell::where([
+			$product_table_cell = WorkTableCell::where([
 				'line_id'=>$request->line_id,
 				'field_id'=>$request->field_id,
 			])->first();
@@ -124,7 +124,7 @@ class UserTableController extends Controller
 
 	public function removeLine(Request $request, $line_id)
 	{
-		$product_table_line = ProductTableLine::find($line_id);
+		$product_table_line = WorkTableLine::find($line_id);
 		$product_table_line->delete();
 		return back();
 	}

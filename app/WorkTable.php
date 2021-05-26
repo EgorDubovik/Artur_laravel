@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class WorkTable extends Model
 {
     use HasFactory;
 
@@ -17,10 +17,10 @@ class Product extends Model
 
 
     function fields(){
-    	return $this->hasMany('App\ProductTableField','table_id');
+    	return $this->hasMany('App\WorkTableField','table_id');
     }
 
     function lines(){
-    	return $this->hasMany('App\ProductTableLine','table_id');
+    	return $this->hasMany('App\WorkTableLine','table_id');
     }
 }

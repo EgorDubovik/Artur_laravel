@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Auth;
 use App\User;
-use App\Product;
-use App\ProductTableField;
-use App\ProductTableLine;
-use App\ProductTableCell;
-class ProductTableCell extends Model
+use App\WorkTable;
+use App\WorkTableField;
+use App\WorkTableLine;
+use App\WorkTableCell;
+class WorkTableCell extends Model
 {
     use HasFactory;
     protected $table = 'product_table_cell';
@@ -22,10 +22,10 @@ class ProductTableCell extends Model
     ];
 
     function line(){
-    	return $this->belongsTo(ProductTableLine::class);
+    	return $this->belongsTo(WorkTableLine::class);
     }
 
     function field(){
-        return $this->belongsTo(ProductTableField::class);   
+        return $this->belongsTo(WorkTableField::class);   
     }
 }
