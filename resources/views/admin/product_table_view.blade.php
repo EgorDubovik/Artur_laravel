@@ -7,6 +7,9 @@
 		<div class="card-header">
 			<div style="color:#616161">
 				Таблица для пользователя: <a href="/admin/user/{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</a>
+				@if($table)
+				<a href="/admin/remove/table/{{$table->id}}" onclick="if(confirm('Are you sure you want to remove it?')) return true; else return false;" style="margin-left: 20px;font-size: 12px;color: #b71606">remove this table</a>
+				@endif
 			</div>
 		</div>
 		<div class="card-body">

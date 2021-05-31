@@ -128,4 +128,11 @@ class UserTableController extends Controller
 		$product_table_line->delete();
 		return back();
 	}
+
+	public function removeTable(Request $request, $table_id)
+	{
+		$workTable = WorkTable::find($table_id);
+		$workTable->delete();
+		return back();
+	}
 }

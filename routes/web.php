@@ -63,6 +63,7 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::post('/store/table',[UserTableController::class,'store']);
 		Route::post('/table/add/line/{table_id}',[UserTableController::class,'addLine']);
 		Route::get('/remove/line/{id}',[UserTableController::class,'removeLine']);
+		Route::get('/remove/table/{id}',[UserTableController::class,'removeTable']);
 	});
 	Route::get("/dashboard",[DashBoardController::class,'dashboard']);
 	Route::get("/transaction/{id}",[TransactionViewController::class,'index']);

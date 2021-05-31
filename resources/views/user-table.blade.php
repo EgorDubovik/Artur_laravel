@@ -21,7 +21,7 @@
 									<th data-f="{{$field->id}}">{{$field->title}} 									
 									</th>
 									@endforeach
-									<th width="50px">Action</th>
+									
 								</tr>
 							</thead>
 							<tbody>
@@ -31,17 +31,9 @@
 									@foreach($table->fields as $field)
 										<td data-w="{{$field->is_writeable}}" data-r="{{$line->id}}" data-f="{{$field->id}}" class="inf-field">{{$line->cells->firstWhere('field_id',$field->id)->title}}</td>
 									@endforeach
-									<td><a style="color: #f73d57" onclick="if(confirm('Are you sure you want to deactivate it')) return true; else return false;" href="/admin/remove/line/{{$line->id}}"><i class="far fa-trash-alt"></i></a></td>
 									</tr>
 								@endforeach
 									
-
-								<tr class="last_line">
-									@foreach($table->fields as $field)
-									<td></td>
-									@endforeach
-									<td></td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
