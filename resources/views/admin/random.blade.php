@@ -27,11 +27,12 @@
 						</thead>
 						<tbody>
 							@foreach($links as $link)
-							<tr>
-								<td>{{$link->title}}</td>
-								<td>{{$link->chance}}%</td>
+							<tr data-id = '{{$link->id}}'>
+								<td data-tag='title' data-data = '{{$link->title}}'>{{$link->title}}</td>
+								<td data-tag='chance' data-data = '{{$link->chance}}'>{{$link->chance}}%</td>
 								<td>{{$link->count_use}}</td>
-								<td><button class="btn btn-datatable btn-icon btn-transparent-dark mr-2" data-toggle="modal" data-target="#changeModel"><i class="fas fa-edit"></i></button></td>
+								<td><button class="btn btn-datatable btn-icon btn-transparent-dark mr-2" data-toggle="modal" data-target="#changeModel"><i class="fas fa-edit"></i></button>
+									<a href="/admin/random/remove/{{$link->id}}" onclick="if(confirm('Are you sure you want to remove it')) return true; else return false;" class="btn btn-datatable btn-icon btn-transparent-dark"><i class="fas fa-trash-alt"></i></td>
 							</tr>
 							@endforeach
 						</tbody>
@@ -85,7 +86,7 @@
 				</button>
 			</div>
 			<form action="/admin/random/edit" id="edit_link" method="post">
-				<input type="hidden" name="id" value="">
+				<input type="hidden" name="link_id" value="">
 				<div class="modal-body">
 					@csrf
 					<div class="form-row">
@@ -109,20 +110,17 @@
 </div>
 <script type="text/javascript">
 	function model_init(){
-		$('#exampleModal').on('show.bs.modal', function (event) {
+		$('#changeModel').on('show.bs.modal', function (event) {
+			console.log('show');
 			var form = $("#edit_link");
 	  		var button = $(event.relatedTarget);
 	  		var parent = button.parent().parent();
-	  		var serviceId = parent.attr("data-id");
-	  		var hasChild = parseInt(parent.attr("data-child"));
-	  		var price_tag = parent.find('[data-tag="price"]');
+	  		var linkId = parent.attr("data-id");
 	  		var title_tag = parent.find('[data-tag="title"]');
+	  		var chance_tag = parent.find('[data-tag="chance"]');
 	  		form.find('input[name="title"]').val(title_tag.attr('data-data'));
-	  		form.find('input[name="serviceId"]').val(serviceId);
-	  		if(!hasChild){
-	  			form.find("#price").show();
-	  			form.find('input[name="price"]').val(price_tag.attr("data-data"));
-	  		}
+	  		form.find('input[name="chance"]').val(chance_tag.attr('data-data'));
+	  		form.find('input[name="link_id"]').val(linkId);
 	  	});	
 	}
 </script>

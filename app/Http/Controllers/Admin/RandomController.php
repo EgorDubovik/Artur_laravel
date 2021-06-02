@@ -30,4 +30,20 @@ class RandomController extends Controller
 
         return back()->with('successful','Save successful');
     }
+
+    public function edit(Request $request)	
+    {
+    	$input = $request->validate([
+                'title' => 'required',
+                'chance' => 'required',
+                'link_id' => 'required',
+        ]);
+
+        $rand = Random::find($request->link_id);
+        $rand->title = $request->title;
+        $rand->chance = $request->chance;
+        $rand->save();
+
+        return back()->with('successful','Edit successful');
+    }
 }

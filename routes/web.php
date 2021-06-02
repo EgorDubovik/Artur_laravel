@@ -95,6 +95,7 @@ Route::group(['middleware' => ['auth']], function () {
 		// Random
 		Route::get('/random/links',[RandomController::class,'view']);
 		Route::post('/random/add',[RandomController::class,'add']);
+		Route::post('/random/edit',[RandomController::class,'edit']);
 	});
 	Route::get("/dashboard",[DashBoardController::class,'dashboard']);
 	Route::get("/transaction/{id}",[TransactionViewController::class,'index']);
