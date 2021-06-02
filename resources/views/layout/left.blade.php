@@ -32,6 +32,14 @@
                         Price list
                     </a>
                 @endif
+                @if(Auth::user()->is_admin)
+                    <a class="nav-link" href="/admin/random/links">
+                        <div class="nav-link-icon">
+                            <i class="fab fa-buffer"></i>
+                        </div>
+                        Price list
+                    </a>
+                @endif
                 <a class="nav-link" target="_blank" href="https://just-prep.com">
                     <div class="nav-link-icon">
                       <i class="fas fa-tv"></i>

@@ -22,7 +22,7 @@
 								<th>Title</th>
 								<th width="10%">Chance</th>
 								<th width="10%">Count to use</th>
-								<th width="20">Action</th>
+								<th width="100">Action</th>
 							</tr>
 						</thead>
 						<tbody>

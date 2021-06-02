@@ -46,4 +46,12 @@ class RandomController extends Controller
 
         return back()->with('successful','Edit successful');
     }
+
+    public function remove(Request $request, $id)
+    {
+    	$rand = Random::find($id);
+    	$rand->delete();
+
+    	return back()->with('successful','Remove successful');
+    }
 }
