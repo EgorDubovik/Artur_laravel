@@ -23,6 +23,33 @@ use App\Http\Controllers\Admin\UserTableController;
 Route::get('/', function(){
 	return redirect("login");
 });
+Route::get("/random",function(Request $request){
+	$links = [
+		['link1',40,0],
+		['link2',60,0],
+		
+		
+	];
+	$array_ver = [0];
+	foreach ($links as $key => $link) {
+		$array_ver[]=$array_ver[count($array_ver)-1]+$link[1];
+	}
+	for($i=0;$i<=100;$i++)
+	{
+		$random_number = rand(0,$array_ver[count($array_ver)-1]);
+		for ($j=1; $j < count($array_ver); $j++) { 
+			if($random_number>$array_ver[$j-1] && $random_number<=$array_ver[$j])
+			{
+				$links[$j-1][2]++;
+			}
+		}
+	}
+
+	echo "<per>";
+	print_r($links);
+	echo "</per>";
+});
+
 
 Route::get('/login',[LoginController::class,'login'])->name("login");
 Route::post('/actionLogin',[LoginController::class,'actionLogin']);
@@ -64,6 +91,9 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::post('/table/add/line/{table_id}',[UserTableController::class,'addLine']);
 		Route::get('/remove/line/{id}',[UserTableController::class,'removeLine']);
 		Route::get('/remove/table/{id}',[UserTableController::class,'removeTable']);
+		// Random
+		Route::get('/random/links',[RandomController::class,'view']);
+		Route::post('/random/add',[RandomController::class,'add']);
 	});
 	Route::get("/dashboard",[DashBoardController::class,'dashboard']);
 	Route::get("/transaction/{id}",[TransactionViewController::class,'index']);
