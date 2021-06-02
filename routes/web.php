@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\PriceListController;
 use App\Http\Controllers\Admin\UserTableController;
+use App\Http\Controllers\Admin\RandomController;
 
 Route::get('/', function(){
 	return redirect("login");
