@@ -35,9 +35,9 @@
                 @if(Auth::user()->is_admin)
                     <a class="nav-link" href="/admin/random/links">
                         <div class="nav-link-icon">
-                            <i class="fab fa-buffer"></i>
+                            <i class="fas fa-link"></i>
                         </div>
-                        Price list
+                        Link list
                     </a>
                 @endif
                 <a class="nav-link" target="_blank" href="https://just-prep.com">
