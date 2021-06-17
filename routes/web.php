@@ -69,10 +69,12 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::get('/remove/line/{id}',[UserTableController::class,'removeLine']);
 		Route::get('/remove/table/{id}',[UserTableController::class,'removeTable']);
 		// Random
-		Route::get('/random/links',[RandomController::class,'view']);
-		Route::post('/random/add',[RandomController::class,'add']);
-		Route::post('/random/edit',[RandomController::class,'edit']);
-		Route::get('/random/remove/{id}',[RandomController::class,'remove']);
+		Route::group(['prefix'=>'random'],function(){
+			Route::get('/links',[RandomController::class,'view']);
+			Route::post('/add',[RandomController::class,'add']);
+			Route::post('/edit',[RandomController::class,'edit']);
+			Route::get('/remove/{id}',[RandomController::class,'remove']);
+		});
 	});
 	Route::get("/dashboard",[DashBoardController::class,'dashboard']);
 	Route::get("/transaction/{id}",[TransactionViewController::class,'index']);
