@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Redirect;
 use Auth;
 use App\Random;
 class RandomController extends Controller
@@ -53,5 +54,29 @@ class RandomController extends Controller
     	$rand->delete();
 
     	return back()->with('successful','Remove successful');
+    }
+
+
+    public function random(Request $request){
+
+    	$links = Random::all();
+
+		$array_ver = [0];
+		foreach ($links as $key => $link) {
+			$array_ver[]=$array_ver[count($array_ver)-1]+$link->chance;
+		}
+		
+		$random_number = rand(0,$array_ver[count($array_ver)-1]);
+		for ($j=1; $j < count($array_ver); $j++) { 
+			if($random_number>$array_ver[$j-1] && $random_number<=$array_ver[$j])
+			{
+				$col = $links->get($j-1);
+				$col->count_use = $col->count_use+1;
+				$col->save();
+				return Redirect::to($col->title);
+			}
+		}
+
+		
     }
 }
