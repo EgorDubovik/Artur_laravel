@@ -24,32 +24,8 @@ use App\Http\Controllers\Admin\RandomController;
 Route::get('/', function(){
 	return redirect("login");
 });
-Route::get("/random",function(Request $request){
-	$links = [
-		['link1',40,0],
-		['link2',60,0],
-		
-		
-	];
-	$array_ver = [0];
-	foreach ($links as $key => $link) {
-		$array_ver[]=$array_ver[count($array_ver)-1]+$link[1];
-	}
-	for($i=0;$i<=100;$i++)
-	{
-		$random_number = rand(0,$array_ver[count($array_ver)-1]);
-		for ($j=1; $j < count($array_ver); $j++) { 
-			if($random_number>$array_ver[$j-1] && $random_number<=$array_ver[$j])
-			{
-				$links[$j-1][2]++;
-			}
-		}
-	}
 
-	echo "<per>";
-	print_r($links);
-	echo "</per>";
-});
+Route::get("/random",[RandomController::class,'random']);
 
 
 Route::get('/login',[LoginController::class,'login'])->name("login");
