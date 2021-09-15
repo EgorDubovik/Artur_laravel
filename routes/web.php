@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\PriceListController;
 use App\Http\Controllers\Admin\UserTableController;
 use App\Http\Controllers\Admin\RandomController;
+use App\Http\Controllers\Admin\GalleryController;
 
 Route::get('/', function(){
 	return redirect("login");
@@ -77,7 +78,7 @@ Route::group(['middleware' => ['auth']], function () {
 		});
 
 		// Gallery
-		Route::get('/gallery',[GalerryController::class,'view']);
+		Route::get('/gallery',[GalleryController::class,'view']);
 	});
 	Route::get("/dashboard",[DashBoardController::class,'dashboard']);
 	Route::get("/transaction/{id}",[TransactionViewController::class,'index']);
