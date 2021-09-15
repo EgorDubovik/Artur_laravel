@@ -33,6 +33,14 @@
                     </a>
                 @endif
                 @if(Auth::user()->is_admin)
+                    <a class="nav-link" href="/admin/gallery">
+                        <div class="nav-link-icon">
+                            <i class="far fa-image"></i>
+                        </div>
+                        Gallery
+                    </a>
+                @endif
+                @if(Auth::user()->is_admin)
                     <a class="nav-link" href="/admin/random/links">
                         <div class="nav-link-icon">
                             <i class="fas fa-link"></i>

@@ -75,6 +75,9 @@ Route::group(['middleware' => ['auth']], function () {
 			Route::post('/edit',[RandomController::class,'edit']);
 			Route::get('/remove/{id}',[RandomController::class,'remove']);
 		});
+
+		// Gallery
+		Route::get('/gallery',[GalerryController::class,'view']);
 	});
 	Route::get("/dashboard",[DashBoardController::class,'dashboard']);
 	Route::get("/transaction/{id}",[TransactionViewController::class,'index']);
