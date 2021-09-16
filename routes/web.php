@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 		// Gallery
 		Route::get('/gallery',[GalleryController::class,'view']);
+		Route::post('/gallery/upload',[GalleryController::class,'upload'])->name('uploadImage');
 	});
 	Route::get("/dashboard",[DashBoardController::class,'dashboard']);
 	Route::get("/transaction/{id}",[TransactionViewController::class,'index']);

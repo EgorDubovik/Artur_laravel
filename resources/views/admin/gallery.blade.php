@@ -12,7 +12,17 @@
             <div class="card mb-4">
                 <div class="card-header">Account Details</div>
                 <div class="card-body">
-                
+                    <form action="{{route('uploadImage')}}" method="post" enctype="multipart/form-data" class="form-inline">
+                        @csrf
+                        <div class="form-group col-md-8">
+                            <input type="file" name="file" class="form-control-file" id="chooseFile">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <button  type="submit" name="submit" class="btn btn-primary btn-block">
+                            Upload Files
+                        </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
