@@ -12,7 +12,9 @@ class GalleryController extends Controller
 
 
     public function view(Request $request){
-    	return view('admin.gallery');
+    	$images = Gallery::all();
+    	return view('admin.gallery')
+    		->with('images',$images);
     }
 
     public function upload(Request $request){

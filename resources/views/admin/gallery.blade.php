@@ -10,8 +10,9 @@
     	<div class="col-xl-8">
             <!-- Account details card-->
             <div class="card mb-4">
-                <div class="card-header">Account Details</div>
+                <div class="card-header">Upload image</div>
                 <div class="card-body">
+                    
                     <form action="{{route('uploadImage')}}" method="post" enctype="multipart/form-data" class="form-inline">
                         @csrf
                         <div class="form-group col-md-8">
@@ -20,8 +21,10 @@
                         <div class="form-group col-md-4">
                             <button  type="submit" name="submit" class="btn btn-primary btn-block">
                             Upload Files
-                        </button>
+                            </button>
+                            
                         </div>
+                        <div class="alert-text"> All images will save in original size !!!</div>
                     </form>
                 </div>
             </div>
@@ -53,5 +56,52 @@
 
         </div>
     </div>
+    <div class="row">
+        <div class="col-xl-8">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">List images</div>
+                <div class="card-body">
+                    <ul class="images">
+                        @foreach($images as $image)
+                        <li>
+                            <img src="{{asset('uploads/'.$image->name)}}">
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4">   
+            
+        </div>
+    </div>
 </div>
+
+<style type="text/css">
+    .images{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+    }
+    .images li{
+        float: left;
+        width: 150px;
+        height: 150px;
+        text-align: center;
+        margin: 10px;
+    }
+    .images li img{
+        max-width:150px;
+        max-height:150px;
+    }
+    .alert-text{
+        text-align: right;
+        color: #ff8181;
+        font-size: 14px;
+        width: 100%;
+        padding-top: 15px;
+        padding-right: 32px
+    }
+</style>
 @stop
