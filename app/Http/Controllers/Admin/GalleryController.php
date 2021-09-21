@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use App\Gallery;
 
 class GalleryController extends Controller
@@ -28,5 +29,14 @@ class GalleryController extends Controller
 
     	$file->move($this->folderPath,$new_name);
 		return back()->with('success','File uploaded successfully');
+    }
+
+    public function remove(Request $request){
+    	$image = Gallery::find($request->id);
+    	$image->delete();
+    	if(File::exists($this->folderPath.'/'.$image->name)) {
+    		File::delete($this->folderPath.'/'.$image->name);
+		}
+    	return back()->with('success','File uploaded successfully');
     }
 }

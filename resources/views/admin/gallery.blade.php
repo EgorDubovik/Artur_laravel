@@ -67,7 +67,7 @@
                         <li>
                             <img src="{{asset('uploads/'.$image->name)}}">
                             <div class="button-cont">
-                                <div class="remove"><i class="far fa-trash-alt"></i> remove</div>
+                                <a href="/admin/gallery/remove/{{$image->id}}" class="remove" onclick="remove()"><i class="far fa-trash-alt"></i> remove</a>
                                 <div class="is_ictive">disable</div>
                             </div>
                         </li>
@@ -142,4 +142,10 @@
         padding-right: 32px
     }
 </style>
+
+<script type="text/javascript">
+    function remove(){
+        if(confirm('Are you sure you want to deactivate it')) return true; else return false;
+    }
+</script>
 @stop
