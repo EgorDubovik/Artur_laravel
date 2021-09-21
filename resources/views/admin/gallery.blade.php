@@ -66,6 +66,10 @@
                         @foreach($images as $image)
                         <li>
                             <img src="{{asset('uploads/'.$image->name)}}">
+                            <div class="button-cont">
+                                <div class="remove"><i class="far fa-trash-alt"></i> remove</div>
+                                <div class="is_ictive">disable</div>
+                            </div>
                         </li>
                         @endforeach
                     </ul>
@@ -90,10 +94,44 @@
         height: 150px;
         text-align: center;
         margin: 10px;
+        position: relative;
     }
     .images li img{
         max-width:150px;
         max-height:150px;
+
+    }
+    .images li .button-cont{
+        position: absolute;
+        width: 100%;
+        height: 30px;
+        background: #000000bf;
+        bottom: 0px;
+        line-height: 27px;
+    }
+    .images li .button-cont .remove{
+        width: 74px;
+        height: 100%;
+        float: left;
+        border-right: 1px solid #777;
+        cursor: pointer;
+        color: #d67373;
+        font-size: 13px;
+
+    }
+    .images li .button-cont .remove:hover{
+        background: #000;
+        color: #fff;
+    }
+    .images li .button-cont .is_ictive{
+        width: 75px;
+        float: left;
+        height: 100%;
+        cursor: pointer;
+    }
+    .images li .button-cont .is_ictive:hover{
+        color: #fff;
+        background: #000;
     }
     .alert-text{
         text-align: right;
