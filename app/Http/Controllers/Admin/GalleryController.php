@@ -39,4 +39,9 @@ class GalleryController extends Controller
 		}
     	return back()->with('success','File uploaded successfully');
     }
+
+    public function getImages(Request $request){
+    	$images = Gallery::all();
+    	return $images;
+    }
 }
