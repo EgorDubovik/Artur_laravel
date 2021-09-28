@@ -42,6 +42,6 @@ class GalleryController extends Controller
 
     public function getImages(Request $request){
     	$images = Gallery::all();
-    	return $images;
+    	return response()->json($images);
     }
 }
