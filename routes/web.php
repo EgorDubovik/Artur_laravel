@@ -83,7 +83,7 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::get('gallery/remove/{id}',[GalleryController::class,'remove']);
 
 	});
-	Route::get('/gallery/getImages',[GalleryController::class,'getImages']);
+	
 	Route::get("/dashboard",[DashBoardController::class,'dashboard']);
 	Route::get("/transaction/{id}",[TransactionViewController::class,'index']);
 	Route::post("/getpayment",[DashBoardController::class,'getPay']);
@@ -100,3 +100,4 @@ Route::group(['middleware' => ['auth']], function () {
 	
 });
 
+Route::get('/gallery/getImages',[GalleryController::class,'getImages']);
