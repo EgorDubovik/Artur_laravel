@@ -40,7 +40,7 @@
 					<button style="margin-top: 20px" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">Add link</button>
 
 					<hr>
-					<div style="text-align: center;font-size: 18px;">Link: <a href="https://account.just-prep.com/random">https://dev.just-prep.com/random</a></div>
+					<div style="text-align: center;font-size: 18px;">Link: <a href="https://dev.just-prep.com/random">https://dev.just-prep.com/random</a></div>
 				</div>
 			</div>
 		</div>
